@@ -1,0 +1,35 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.code:4720",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "HH:mm"
+      },
+      "aggs": {
+        "creation_count": {
+          "value_count": {
+            "field": "@timestamp"
+          }
+        },
+        "creation_details": {
+          "terms": {
+            "script": {
+              "source": "'[' + doc['host.name'].value + ', Creator: ' + doc['user.name'].value + ', New User: ' + doc['user.target.name'].value + ']'"
+            },
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}

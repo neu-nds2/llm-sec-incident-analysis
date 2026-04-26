@@ -1,0 +1,35 @@
+# October 2021 ISC Forensic Contest - Ground Truth Answers
+# Date: 2021-10-22
+# Source: https://isc.sans.edu/diary/October+2021+Forensic+Contest+Answers+and+Analysis/27998
+#
+# Multi-host infection: 3 machines, 3 malware families (NanoCore, BazarLoader, Qakbot)
+# Only NanoCore is explicitly named in Suricata signatures (597 hits).
+# BazarLoader hinted by .bazar DNS queries; Qakbot C2 (23.111.114.52) absent from data.
+# Removed: Q6 malware families (only 1/3 in data), Q8 full mapping (not scorable)
+
+Q1: What are the IP addresses of the potentially infected internal hosts in the LAN?
+A1: 10.10.22.156, 10.10.22.157, 10.10.22.158
+
+Q2: What are the hostnames of the potentially infected machines in the LAN?
+A2: DESKTOP-NZ875R4, DESKTOP-CFA3367, DESKTOP-87WCE26
+
+Q3: What are the Windows human user account names (not machine accounts ending in $) of the potentially infected machines in the LAN?
+A3: marcus.cobb, agnes.warren, kevin.henderson
+
+Q4: What external servers (domains and IP addresses) were used to download malicious files?
+A4: sobolpand.top, 178.23.190.8, 190.14.37.244, 194.36.191.35
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in C2 communication?
+# Per published answers: 37.0.10.22 (NanoCore) + 23.111.114.52 (Qakbot, 0 hits in data)
+A5: 37.0.10.22
+
+Q6: What specific malicious file was downloaded by an internal host from multiple external IP addresses?
+A6: 44491.6090605324.dat
+
+Q7: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A7: 2021-10-22 14:00 UTC
+
+Q8: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+# 201.137.10.225 has 0 Suricata alerts — it's likely a mail server
+# targeted by Qakbot spambot activity, not a C2 server.
+A8: 201.137.10.225, legitimate service

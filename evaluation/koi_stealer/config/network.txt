@@ -1,0 +1,12 @@
+# Network Environment Context
+# This information helps the AI understand your network environment
+
+## Network Information for the Koi Stealer Scenario
+
+- LAN segment range:  172.17.0[.]0/24 (172.17.0[.]0 through 172.17.0[.]255)
+- Domain:  bepositive[.]com
+- Active Directory (AD) domain controller:  172.17.0[.]17 - WIN-CTL9XBQ9Y19
+- AD environment name:  BEPOSITIVE
+- LAN segment gateway:  172.17.0[.]1
+- LAN segment broadcast address:  172.17.0[.]255
+

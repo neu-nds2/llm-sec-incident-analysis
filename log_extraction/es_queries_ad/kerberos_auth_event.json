@@ -1,0 +1,37 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.code:4768 AND (user.name:Administrator OR user.name:*admin* OR user.name:*svc*) AND NOT source.ip:\"::1\"",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "HH:mm"
+      },
+      "aggs": {
+        "auth_count": {
+          "value_count": {
+            "field": "@timestamp"
+          }
+        },
+        "auth_details": {
+          "terms": {
+            "script": {
+              "source": "'Kerberos TGT auth: [Host: ' + doc['host.name'].value + ', User: ' + doc['user.name'].value + ']'"
+            },
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}
+
+

@@ -1,0 +1,391 @@
+{
+  "metadata": {
+    "query_file": "file_downloads.json",
+    "execution_time": "2026-04-13T18:12:15.368001",
+    "status_code": 200,
+    "duration_ms": 1200.739,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2026-02-28T00:00:00",
+      "lte": "2026-03-02T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443,
+                8080,
+                8443,
+                8000,
+                8888,
+                9000
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2026-02-28T00:00:00",
+                "lte": "2026-03-02T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "wildcard": {
+              "message": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*attachment*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*fuid*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.rar*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/x-msdownload*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.msi*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "download_domains": {
+        "terms": {
+          "field": "http.virtual_host"
+        }
+      },
+      "http_requests": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def get_pattern = /GET[ ]+([^\\s\\r\\n]+)/; def matcher = get_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher.group(1); } def uri_pattern = /\"uri\":\"([^\"]+)\"/; def matcher2 = uri_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher2.group(1); } } return 'no_http_uri';"
+          }
+        }
+      },
+      "file_transfers": {
+        "filter": {
+          "wildcard": {
+            "message": "*fuid*"
+          }
+        },
+        "aggs": {
+          "transfer_details": {
+            "terms": {
+              "script": {
+                "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def filename_pattern = /\"filename\":\"([^\"]+)\"/; def matcher = filename_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : file: ' + matcher.group(1); } def fuid_pattern = /\"fuid\":\"([^\"]+)\"/; def matcher2 = fuid_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : fuid: ' + matcher2.group(1); } } return 'file_transfer';"
+              }
+            }
+          }
+        }
+      },
+      "file_types": {
+        "terms": {
+          "script": {
+            "source": "if (doc['http.uri'].size() > 0) { String path = doc['http.uri'].value; if (path.contains('.exe')) return 'exe'; if (path.contains('.msi')) return 'msi'; if (path.contains('.ps1')) return 'powershell'; if (path.contains('.bat') || path.contains('.cmd')) return 'batch'; if (path.contains('.js')) return 'javascript'; if (path.contains('.zip') || path.contains('.rar')) return 'archive'; } if (doc['message.keyword'].size() > 0) { String msg = doc['message.keyword'].value; if (msg.contains('.ps1')) return 'powershell'; if (msg.contains('.exe')) return 'exe'; if (msg.contains('.msi')) return 'msi'; } return 'other';"
+          }
+        }
+      },
+      "download_sources": {
+        "terms": {
+          "field": "source.ip"
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "sort": [
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 730,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 108,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 1539,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "file_transfers": {
+        "doc_count": 598,
+        "transfer_details": {
+          "doc_count_error_upper_bound": 1,
+          "sum_other_doc_count": 316,
+          "buckets": [
+            {
+              "key": "file_transfer",
+              "doc_count": 273
+            },
+            {
+              "key": "10.2.28.88 -> 13.70.79.200:443 : fuid: F95H6kTOV7Ac6bcve",
+              "doc_count": 1
+            },
+            {
+              "key": "10.2.28.88 -> 13.89.178.27:443 : fuid: Fjm5jt1kCVqVQ0zXsb",
+              "doc_count": 1
+            },
+            {
+              "key": "10.2.28.88 -> 13.89.179.14:443 : fuid: F3leWR1jXmw5eIV2n4",
+              "doc_count": 1
+            },
+            {
+              "key": "10.2.28.88 -> 13.89.179.9:443 : fuid: FpfWem1XHYB3V7Z3Kb",
+              "doc_count": 1
+            },
+            {
+              "key": "10.2.28.88 -> 135.234.160.246:443 : fuid: F06TIy3seFMGIoCz69",
+              "doc_count": 1
+            },
+            {
+              "key": "10.2.28.88 -> 150.171.22.17:443 : fuid: FApV0N3DxwzTiwATnl",
+              "doc_count": 1
+            },
+            {
+              "key": "10.2.28.88 -> 150.171.27.11:443 : fuid: FPHQiS2gqfclBOrFL9",
+              "doc_count": 1
+            },
+            {
+              "key": "10.2.28.88 -> 150.171.27.11:443 : fuid: FWbsVE4la10bZ0rtc8",
+              "doc_count": 1
+            },
+            {
+              "key": "10.2.28.88 -> 150.171.27.11:443 : fuid: Fjw2NV3ZLuYwZhmo2l",
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      "download_sources": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "10.2.28.88",
+            "doc_count": 1539
+          }
+        ]
+      },
+      "http_requests": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 11,
+        "buckets": [
+          {
+            "key": "no_http_uri",
+            "doc_count": 1230
+          },
+          {
+            "key": "10.2.28.88 -> 45.131.214.85:443 : http://45.131.214.85/fakeurl.htm",
+            "doc_count": 264
+          },
+          {
+            "key": "10.2.28.88 -> 23.218.232.148:80 : /filestreamingservice/files/2132f61f-f790-4ae6-a355-8cf9a1533800?P1=1772824359&P2=404&P3=2&P4=JBAPgdPQ5bbXP3YOD9Ig2AVW51pLa6vxUcHeGTEAadbzNEO5DlV3Wra1C9WqE7WnEd5RG1oYpt8saZgMxML1KA==",
+            "doc_count": 11
+          },
+          {
+            "key": "10.2.28.88 -> 23.218.232.166:80 : /filestreamingservice/files/13d0ef9b-70c8-43c9-9a51-13c752dfb777?P1=1772817857&P2=404&P3=2&P4=NxsPWDqY/PRN4X5tyugkA+dfU9EeHebHQ3SqTAWWr5XPVngvgEZDtSFAEYlah9GHFrc+S/ExNx3X0xGxvdOPow==",
+            "doc_count": 7
+          },
+          {
+            "key": "10.2.28.88 -> 23.218.232.183:80 : /filestreamingservice/files/86061e48-63b3-483f-8dac-609df0cbb238?P1=1772824359&P2=404&P3=2&P4=M+r84JmdgFPOKPdw6GuIsCbfL0IaRRxCYqeiJbpH9IpxZr7vLbM4w9K8uMU5Ka6CyN/uMqIEMlyIHqGqCS8/Xg==",
+            "doc_count": 6
+          },
+          {
+            "key": "10.2.28.88 -> 23.218.232.142:80 : /filestreamingservice/files/0b18f766-7469-4aa3-88b7-99e69c55d14d?P1=1772628813&P2=404&P3=2&P4=P9O/ZqV3zHEog/8GWjY1LjxEXlCShXCmvVwfgCjP6c7Xjf6q9SdV5Cxrlht3k8c6RsZdgDSm48GRm8J1Kej36Q==",
+            "doc_count": 3
+          },
+          {
+            "key": "10.2.28.88 -> 23.218.232.142:80 : /filestreamingservice/files/ddbf4492-d475-4fe4-bcde-6cbac56f6034?P1=1772824359&P2=404&P3=2&P4=TMSkemQv9LZfDxme9Q9GxU0tc2G9uhdO6d7QU9JVJHOk+a0A4pJYzApqbFnNEQ6bt9QSukbCYOxGUmPIOR1Xgw==",
+            "doc_count": 3
+          },
+          {
+            "key": "10.2.28.88 -> 23.47.50.182:80 : /connecttest.txt",
+            "doc_count": 2
+          },
+          {
+            "key": "10.2.28.88 -> 150.171.27.11:80 : /browsernetworktime/time/1/current?cup2key=2:cHFgppt5zfs9cbgaKCO2n0tk698hI27wU971tyrEQQg&cup2hreq=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "doc_count": 1
+          },
+          {
+            "key": "10.2.28.88 -> 199.232.210.172:80 : /msdownload/update/v3/static/trustedr/en/authrootstl.cab?238f51c2ab526be6",
+            "doc_count": 1
+          }
+        ]
+      },
+      "download_domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "45.131.214.85",
+            "doc_count": 264
+          },
+          {
+            "key": "msedge.b.tlu.dl.delivery.mp.microsoft.com",
+            "doc_count": 30
+          },
+          {
+            "key": "ctldl.windowsupdate.com",
+            "doc_count": 9
+          },
+          {
+            "key": "ocsp.digicert.com",
+            "doc_count": 2
+          },
+          {
+            "key": "acroipm2.adobe.com",
+            "doc_count": 1
+          },
+          {
+            "key": "edge.microsoft.com",
+            "doc_count": 1
+          },
+          {
+            "key": "www.msftconnecttest.com",
+            "doc_count": 1
+          }
+        ]
+      },
+      "file_types": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "other",
+            "doc_count": 1539
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

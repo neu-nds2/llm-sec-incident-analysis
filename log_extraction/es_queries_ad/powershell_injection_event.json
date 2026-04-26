@@ -1,0 +1,36 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "process.name:powershell.exe AND event.code:10 AND winlog.event_data.GrantedAccess:0x1fffff",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "HH:mm"
+      },
+      "aggs": {
+        "injection_count": {
+          "value_count": {
+            "field": "@timestamp"
+          }
+        },
+        "injection_details": {
+          "terms": {
+            "script": {
+              "source": "'PowerShell Injection: [Host: ' + doc['host.name'].value + ', ProcessAccess, TargetImage: ' + (params._source.winlog?.event_data?.TargetImage ?: 'unknown') + ']'"
+            },
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}
+

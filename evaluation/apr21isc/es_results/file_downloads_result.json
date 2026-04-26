@@ -1,0 +1,420 @@
+{
+  "metadata": {
+    "query_file": "file_downloads.json",
+    "execution_time": "2026-04-11T18:04:32.316322",
+    "status_code": 200,
+    "duration_ms": 369.92900000000003,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2021-03-29T00:00:00",
+      "lte": "2021-03-30T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443,
+                8080,
+                8443,
+                8000,
+                8888,
+                9000
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2021-03-29T00:00:00",
+                "lte": "2021-03-30T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "wildcard": {
+              "message": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*attachment*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*fuid*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.rar*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/x-msdownload*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.msi*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "download_domains": {
+        "terms": {
+          "field": "http.virtual_host",
+          "size": 20
+        }
+      },
+      "http_requests": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def get_pattern = /GET[ ]+([^\\s\\r\\n]+)/; def matcher = get_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher.group(1); } def uri_pattern = /\"uri\":\"([^\"]+)\"/; def matcher2 = uri_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher2.group(1); } } return 'no_http_uri';"
+          }
+        }
+      },
+      "file_transfers": {
+        "filter": {
+          "wildcard": {
+            "message": "*fuid*"
+          }
+        },
+        "aggs": {
+          "transfer_details": {
+            "terms": {
+              "script": {
+                "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def filename_pattern = /\"filename\":\"([^\"]+)\"/; def matcher = filename_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : file: ' + matcher.group(1); } def fuid_pattern = /\"fuid\":\"([^\"]+)\"/; def matcher2 = fuid_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : fuid: ' + matcher2.group(1); } } return 'file_transfer';"
+              }
+            }
+          }
+        }
+      },
+      "file_types": {
+        "terms": {
+          "script": {
+            "source": "if (doc['http.uri'].size() > 0) { String path = doc['http.uri'].value; if (path.contains('.exe')) return 'exe'; if (path.contains('.msi')) return 'msi'; if (path.contains('.ps1')) return 'powershell'; if (path.contains('.bat') || path.contains('.cmd')) return 'batch'; if (path.contains('.js')) return 'javascript'; if (path.contains('.zip') || path.contains('.rar')) return 'archive'; } if (doc['message.keyword'].size() > 0) { String msg = doc['message.keyword'].value; if (msg.contains('.ps1')) return 'powershell'; if (msg.contains('.exe')) return 'exe'; if (msg.contains('.msi')) return 'msi'; } return 'other';"
+          }
+        }
+      },
+      "download_sources": {
+        "terms": {
+          "field": "source.ip"
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "sort": [
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 202,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 110,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 4179,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "download_domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "onedrive.live.com",
+            "doc_count": 1071
+          },
+          {
+            "key": "store-images.s-microsoft.com",
+            "doc_count": 12
+          },
+          {
+            "key": "checkip.amazonaws.com",
+            "doc_count": 7
+          },
+          {
+            "key": "ts-ocsp.ws.symantec.com",
+            "doc_count": 3
+          },
+          {
+            "key": "veso2.xyz",
+            "doc_count": 3
+          },
+          {
+            "key": "ocsp.verisign.com",
+            "doc_count": 2
+          },
+          {
+            "key": "217.12.218.46",
+            "doc_count": 1
+          },
+          {
+            "key": "admin.yougleeindia.in",
+            "doc_count": 1
+          },
+          {
+            "key": "api.ip.sb",
+            "doc_count": 1
+          },
+          {
+            "key": "ctldl.windowsupdate.com",
+            "doc_count": 1
+          },
+          {
+            "key": "s.symcd.com",
+            "doc_count": 1
+          },
+          {
+            "key": "s2.symcb.com",
+            "doc_count": 1
+          },
+          {
+            "key": "sv.symcd.com",
+            "doc_count": 1
+          }
+        ]
+      },
+      "http_requests": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 24,
+        "buckets": [
+          {
+            "key": "no_http_uri",
+            "doc_count": 2126
+          },
+          {
+            "key": "192.168.5.125 -> 217.12.218.46:80 : /preload?manifest=wac",
+            "doc_count": 1856
+          },
+          {
+            "key": "192.168.5.125 -> 217.12.218.46:80 : /sa",
+            "doc_count": 143
+          },
+          {
+            "key": "192.168.5.125 -> 107.21.162.206:80 : /",
+            "doc_count": 12
+          },
+          {
+            "key": "192.168.5.125 -> 34.193.115.2:80 : /",
+            "doc_count": 4
+          },
+          {
+            "key": "192.168.5.125 -> 52.204.109.97:80 : /",
+            "doc_count": 4
+          },
+          {
+            "key": "192.168.5.125 -> 3.224.94.38:80 : /",
+            "doc_count": 3
+          },
+          {
+            "key": "192.168.5.125 -> 52.20.197.7:80 : /",
+            "doc_count": 3
+          },
+          {
+            "key": "192.168.5.125 -> 172.67.75.172:80 : /ip",
+            "doc_count": 2
+          },
+          {
+            "key": "192.168.5.125 -> 176.111.174.53:80 : /campo/r/r1",
+            "doc_count": 2
+          }
+        ]
+      },
+      "file_transfers": {
+        "doc_count": 1944,
+        "transfer_details": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 974,
+          "buckets": [
+            {
+              "key": "file_transfer",
+              "doc_count": 961
+            },
+            {
+              "key": "192.168.5.125 -> 104.21.74.174:80 : fuid: F9pkCk47eaobtnKKJ",
+              "doc_count": 1
+            },
+            {
+              "key": "192.168.5.125 -> 104.21.74.174:80 : fuid: Fm7vSh3PCW5dN5oqZb",
+              "doc_count": 1
+            },
+            {
+              "key": "192.168.5.125 -> 107.21.162.206:80 : fuid: FEp36W2cRZVgCa5hB6",
+              "doc_count": 1
+            },
+            {
+              "key": "192.168.5.125 -> 107.21.162.206:80 : fuid: FYscFL3F9zWamVdQkb",
+              "doc_count": 1
+            },
+            {
+              "key": "192.168.5.125 -> 107.21.162.206:80 : fuid: FoWR1C3JdihoDp4RXf",
+              "doc_count": 1
+            },
+            {
+              "key": "192.168.5.125 -> 13.107.42.23:443 : fuid: F6ZpeN2J0roTJeKwrf",
+              "doc_count": 1
+            },
+            {
+              "key": "192.168.5.125 -> 13.107.42.23:443 : fuid: Fd7rhBiagE29O22Ta",
+              "doc_count": 1
+            },
+            {
+              "key": "192.168.5.125 -> 13.107.42.23:443 : fuid: FeRbvb2Sh63zJEufub",
+              "doc_count": 1
+            },
+            {
+              "key": "192.168.5.125 -> 168.62.200.169:443 : fuid: FDESeU16jOwEDIKEP3",
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      "file_types": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "other",
+            "doc_count": 4174
+          },
+          {
+            "key": "exe",
+            "doc_count": 5
+          }
+        ]
+      },
+      "download_sources": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "192.168.5.125",
+            "doc_count": 4179
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

@@ -1,0 +1,29 @@
+# BurninCandle Scenario - Ground Truth Answers (IcedID → Cobalt Strike)
+# Date: 2022-03-21
+# Source: https://www.malware-traffic-analysis.net/2022/03/21/index3.html
+# Note: Cobalt Strike C2 (23.227.198.203 / bupdater.com) has 0 hits in
+#   extracted data — not captured by the malware query library.
+#
+# Fixed: victim IP 10.0.18.14 → 10.0.19.14 (matches data + LAN range)
+# Removed: MAC address (not in chunks)
+
+Q1: What is the IP address of the potentially infected internal host in the LAN?
+A1: 10.0.19.14
+
+Q2: What is the hostname of the potentially infected machine in the LAN?
+A2: DESKTOP-5QS3D5D
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: patrick.zimmerman
+
+Q4: What external domains or IP addresses are associated with the initial infection and malware delivery?
+A4: oceriesfornot.top, antnosience.com, suncoastpinball.com, otectagain.top, seaskysafe.com, dilimoretast.com, filebin.net, situla.bitbit.net
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+A5: 188.166.154.118, 157.245.142.66, 160.153.32.99, 91.193.16.181
+
+Q6: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A6: 2022-03-21 20:00 UTC
+
+Q7: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A7: 157.245.142.66, C2 server

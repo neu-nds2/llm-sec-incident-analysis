@@ -1,0 +1,29 @@
+# Lumma Stealer Scenario - Ground Truth Answers
+# Date: 2026-01-31
+# Source: https://www.malware-traffic-analysis.net/2026/01/31/page2.html
+#
+# Note: the original questionnaire from the source had 6 questions, but
+# Q2 (MAC address) and Q5 (full user name) were removed because the data
+# extracted by the malware query library does not contain MAC addresses or
+# LDAP/identity records (out-of-coverage for this query set).
+
+Q1: What is the IP address of the infected Windows client?
+A1: 10.1.21.58
+
+Q2: What is the host name of the infected Windows client?
+A2: DESKTOP-ES9F3ML
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: gwyatt
+
+Q4: What is the domain from 153.92.1.49 that triggered the alert for Lumma Stealer?
+A4: whitepepper.su, 153.92.1.49
+
+Q5: Which of the three CIA components does the attacker target primarily: availability, integrity, or confidentiality?
+A5: confidentiality
+
+Q6: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A6: 2026-01-27 23:00 UTC
+
+Q7: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A7: 153.92.1.49, C2 server

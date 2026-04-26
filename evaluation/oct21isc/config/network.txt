@@ -1,0 +1,6 @@
+# Network Environment Context
+- LAN segment range: 10.10.22.0/24 (10.10.22.0 through 10.10.22.255)
+- Domain: enemywatch.net
+- Domain Controller: 10.10.22.22 - ENEMYWATCH-DC
+- LAN segment gateway: 10.10.22.1
+- LAN segment broadcast address: 10.10.22.255

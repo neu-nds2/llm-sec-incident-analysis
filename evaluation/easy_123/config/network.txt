@@ -1,0 +1,6 @@
+- LAN segment range:  10.2.28[.]0/24   (10.2.28[.]0 through 10.2.28[.]255)
+- Domain:  easyas123[.]tech
+- AD environment name:  EASYAS123
+- Active Directory (AD) domain controller:  10.2.28[.]2 - EASYAS123-DC
+- LAN segment gateway:  10.2.28[.]1
+- LAN segment broadcast address:  10.2.28[.]255

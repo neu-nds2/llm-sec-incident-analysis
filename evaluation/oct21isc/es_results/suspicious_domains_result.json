@@ -1,0 +1,654 @@
+{
+  "metadata": {
+    "query_file": "suspicious_domains.json",
+    "execution_time": "2026-04-13T12:28:34.418991",
+    "status_code": 200,
+    "duration_ms": 230.531,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2021-10-22T00:00:00",
+      "lte": "2021-10-22T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2021-10-22T00:00:00",
+                "lte": "2021-10-22T23:59:59"
+              }
+            }
+          }
+        ],
+        "must_not": [
+          {
+            "wildcard": {
+              "message": "*google.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*googleapis.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*googleusercontent.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*doubleclick.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*msn.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*bing.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*clarity.ms*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoft.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoft.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoftapp.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoftonline.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*msedge.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*azureedge.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*live.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*office.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*windows.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*adobe.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*liveperson.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*lpsnmedia.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*linkedin.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*skype.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*nvidia.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*azure.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*yahoo.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*facebook.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*footprintdns.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*licdn.com*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "domains": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value.toLowerCase(); def server_name_pattern = /\\\"server_name\\\":\\\"([^\\\"]+)\\\"/; def matcher = server_name_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } def sni_pattern = /server_name:\\s*([^\\s,\\r\\n]+)/; def matcher2 = sni_pattern.matcher(msg); if (matcher2.find()) { return matcher2.group(1); } } return null;"
+          },
+          "size": 50,
+          "min_doc_count": 1
+        },
+        "aggs": {
+          "top_source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "top_destination_ips": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 114,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 983,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "api.ipify.org",
+            "doc_count": 27,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 27
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "54.243.29.214",
+                  "doc_count": 10
+                },
+                {
+                  "key": "54.243.250.193",
+                  "doc_count": 7
+                },
+                {
+                  "key": "50.17.218.95",
+                  "doc_count": 6
+                },
+                {
+                  "key": "23.21.76.7",
+                  "doc_count": 4
+                }
+              ]
+            }
+          },
+          {
+            "key": "redinnovations.co.uk",
+            "doc_count": 7,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 7
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "83.223.99.191",
+                  "doc_count": 7
+                }
+              ]
+            }
+          },
+          {
+            "key": "tackleadvisors.com",
+            "doc_count": 7,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 7
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "198.136.61.225",
+                  "doc_count": 7
+                }
+              ]
+            }
+          },
+          {
+            "key": "www.calacatta.com",
+            "doc_count": 7,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 7
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "107.161.180.34",
+                  "doc_count": 7
+                }
+              ]
+            }
+          },
+          {
+            "key": "www.oftheearth.ca",
+            "doc_count": 7,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 7
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "198.50.182.64",
+                  "doc_count": 7
+                }
+              ]
+            }
+          },
+          {
+            "key": "pingosip.top",
+            "doc_count": 2,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 2
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "104.21.32.95",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "a.nel.cloudflare.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "35.190.80.1",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cj.dotomi.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "159.127.40.144",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "fp-afd.azurefd.us",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "20.140.56.70",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "img-prod-cms-rt-microsoft-com.akamaized.net",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "23.47.50.180",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "myexternalip.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "34.117.59.81",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "outlook.office365.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "52.96.55.242",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "slickdeals.net",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "23.222.241.43",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "www.backmarket.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "104.16.10.88",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "www.dellrefurbished.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "34.120.119.232",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "www.emjcd.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "159.127.40.144",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "www.openssl.org",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "72.247.207.22",
+                  "doc_count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

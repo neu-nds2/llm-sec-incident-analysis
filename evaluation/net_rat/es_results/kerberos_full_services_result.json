@@ -1,0 +1,199 @@
+{
+  "metadata": {
+    "query_file": "kerberos_full_services.json",
+    "execution_time": "2026-02-23T18:58:33.089312",
+    "status_code": 200,
+    "duration_ms": 90.696,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2024-11-26T00:00:00",
+      "lte": "2024-11-26T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "term": {
+              "destination.port": 88
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2024-11-26T00:00:00",
+                "lte": "2024-11-26T23:59:59"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "full_services": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def service_pattern = /\"service\":\"([^\"]+)\"/; def matcher = service_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } } return 'no_service_found';"
+          },
+          "size": 20
+        },
+        "aggs": {
+          "source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "kerberos.service"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 4,
+    "timed_out": false,
+    "_shards": {
+      "total": 92,
+      "successful": 92,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 16,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "full_services": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "krb_tcp",
+            "doc_count": 8,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.11.26.183",
+                  "doc_count": 8
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/NEMOTODES.HEALTH",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.11.26.183",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "LDAP/NEMOTODES-DC.nemotodes.health/nemotodes.health",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.11.26.183",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/NEMOTODES-DC",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.11.26.183",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/NEMOTODES-DC.nemotodes.health",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.11.26.183",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/desktop-b8tqk49.nemotodes.health",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.11.26.183",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/NEMOTODES",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.11.26.183",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "ldap/nemotodes-dc.nemotodes.health",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.11.26.183",
+                  "doc_count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

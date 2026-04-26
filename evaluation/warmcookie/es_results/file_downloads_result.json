@@ -1,0 +1,387 @@
+{
+  "metadata": {
+    "query_file": "file_downloads.json",
+    "execution_time": "2026-04-08T15:52:01.471634",
+    "status_code": 200,
+    "duration_ms": 241.57799999999997,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2024-08-14T00:00:00",
+      "lte": "2024-08-16T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443,
+                8080,
+                8443,
+                8000,
+                8888,
+                9000
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2024-08-14T00:00:00",
+                "lte": "2024-08-16T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "wildcard": {
+              "message": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*attachment*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*fuid*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.rar*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/x-msdownload*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.msi*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "download_domains": {
+        "terms": {
+          "field": "http.virtual_host"
+        }
+      },
+      "http_requests": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def get_pattern = /GET[ ]+([^\\s\\r\\n]+)/; def matcher = get_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher.group(1); } def uri_pattern = /\"uri\":\"([^\"]+)\"/; def matcher2 = uri_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher2.group(1); } } return 'no_http_uri';"
+          }
+        }
+      },
+      "file_transfers": {
+        "filter": {
+          "wildcard": {
+            "message": "*fuid*"
+          }
+        },
+        "aggs": {
+          "transfer_details": {
+            "terms": {
+              "script": {
+                "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def filename_pattern = /\"filename\":\"([^\"]+)\"/; def matcher = filename_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : file: ' + matcher.group(1); } def fuid_pattern = /\"fuid\":\"([^\"]+)\"/; def matcher2 = fuid_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : fuid: ' + matcher2.group(1); } } return 'file_transfer';"
+              }
+            }
+          }
+        }
+      },
+      "file_types": {
+        "terms": {
+          "script": {
+            "source": "if (doc['http.uri'].size() > 0) { String path = doc['http.uri'].value; if (path.contains('.exe')) return 'exe'; if (path.contains('.msi')) return 'msi'; if (path.contains('.ps1')) return 'powershell'; if (path.contains('.bat') || path.contains('.cmd')) return 'batch'; if (path.contains('.js')) return 'javascript'; if (path.contains('.zip') || path.contains('.rar')) return 'archive'; } if (doc['message.keyword'].size() > 0) { String msg = doc['message.keyword'].value; if (msg.contains('.ps1')) return 'powershell'; if (msg.contains('.exe')) return 'exe'; if (msg.contains('.msi')) return 'msi'; } return 'other';"
+          }
+        }
+      },
+      "download_sources": {
+        "terms": {
+          "field": "source.ip"
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "sort": [
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 126,
+    "timed_out": false,
+    "_shards": {
+      "total": 102,
+      "successful": 102,
+      "skipped": 100,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 1570,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "file_transfers": {
+        "doc_count": 661,
+        "transfer_details": {
+          "doc_count_error_upper_bound": 1,
+          "sum_other_doc_count": 339,
+          "buckets": [
+            {
+              "key": "file_transfer",
+              "doc_count": 313
+            },
+            {
+              "key": "10.8.15.133 -> 104.21.55.70:80 : file: Invoice 876597035_003.zip",
+              "doc_count": 1
+            },
+            {
+              "key": "10.8.15.133 -> 13.107.21.239:443 : fuid: Fq2eaB3mes5OTBfh11",
+              "doc_count": 1
+            },
+            {
+              "key": "10.8.15.133 -> 13.107.21.239:443 : fuid: Fzij3Q38fa4cYGVUDf",
+              "doc_count": 1
+            },
+            {
+              "key": "10.8.15.133 -> 13.85.23.206:443 : fuid: FxGb9x3qQx6uw4IeK3",
+              "doc_count": 1
+            },
+            {
+              "key": "10.8.15.133 -> 199.232.210.172:80 : fuid: FSh8n54COleagDNY7c",
+              "doc_count": 1
+            },
+            {
+              "key": "10.8.15.133 -> 199.232.210.172:80 : fuid: FVqcub4S5RJRa5ipy8",
+              "doc_count": 1
+            },
+            {
+              "key": "10.8.15.133 -> 20.125.209.212:443 : fuid: FTdK8xWfbfKNOp2Pa",
+              "doc_count": 1
+            },
+            {
+              "key": "10.8.15.133 -> 20.189.173.9:443 : fuid: FGIG8s1floME1LLqVj",
+              "doc_count": 1
+            },
+            {
+              "key": "10.8.15.133 -> 20.241.44.114:443 : fuid: FNlgaK3cZscpKjdHM2",
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      "download_sources": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "10.8.15.133",
+            "doc_count": 1570
+          }
+        ]
+      },
+      "http_requests": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "no_http_uri",
+            "doc_count": 942
+          },
+          {
+            "key": "10.8.15.133 -> 72.5.43.29:80 : /",
+            "doc_count": 611
+          },
+          {
+            "key": "10.8.15.133 -> 199.232.210.172:80 : /filestreamingservice/files/8f2381c2-652d-48a2-86f6-19cb7757f5dc?P1=1724113284&P2=404&P3=2&P4=QwGPFdJVa+Bw71q1beBnqYWdAtr86AnZ79l2/NOX9l1PkiMLSVObKUK4QmaPqxVAgCpCljWyTVtZO9mpmuJNlQ==",
+            "doc_count": 5
+          },
+          {
+            "key": "10.8.15.133 -> 199.232.210.172:80 : /filestreamingservice/files/f37dd878-a1b9-4f21-a8c9-65c3dd00f7a6?P1=1724225867&P2=404&P3=2&P4=IaxXE3ikzdIKvQz1E1qPcLRRfyHtwqWgjE0YDO8CsvKt6Jcq94KnSHhjEOc1Vkk62+udS1LrVl+tTvm0Hctz+A==",
+            "doc_count": 5
+          },
+          {
+            "key": "10.8.15.133 -> 23.205.110.48:80 : /connecttest.txt",
+            "doc_count": 2
+          },
+          {
+            "key": "10.8.15.133 -> 72.5.43.29:80 : /data/0f60a3e7baecf2748b1c8183ed37d1e4",
+            "doc_count": 2
+          },
+          {
+            "key": "10.8.15.133 -> 104.21.55.70:80 : /managements?16553a25e45250a41fd5&endeds=MIGpq&JStx=59bf050d37df88a9-ade43358-eaa1220b-0571422b-0f33e6aa150e86bafd0ed4&Ld=9d7502d88d752a27b1d00587309184b5a215",
+            "doc_count": 1
+          },
+          {
+            "key": "10.8.15.133 -> 204.79.197.203:80 : /ocsp/MFQwUjBQME4wTDAJBgUrDgMCGgUABBR2JNtr0JxEvYySpbyBWaqBmealCgQUzhUWO+oCo6Zr2tkr/eWMUr56UKgCEzMAPnPpacmgFoSqVQMAAAA+c+k=",
+            "doc_count": 1
+          },
+          {
+            "key": "10.8.15.133 -> 23.220.251.208:80 : /assets/Owner/arm/ProcessMAU.txt",
+            "doc_count": 1
+          }
+        ]
+      },
+      "download_domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "72.5.43.29",
+            "doc_count": 308
+          },
+          {
+            "key": "msedge.b.tlu.dl.delivery.mp.microsoft.com",
+            "doc_count": 10
+          },
+          {
+            "key": "acroipm2.adobe.com",
+            "doc_count": 1
+          },
+          {
+            "key": "oneocsp.microsoft.com",
+            "doc_count": 1
+          },
+          {
+            "key": "quote.checkfedexexp.com",
+            "doc_count": 1
+          },
+          {
+            "key": "www.msftconnecttest.com",
+            "doc_count": 1
+          }
+        ]
+      },
+      "file_types": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "other",
+            "doc_count": 1569
+          },
+          {
+            "key": "exe",
+            "doc_count": 1
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

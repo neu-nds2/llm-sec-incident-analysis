@@ -1,0 +1,38 @@
+# WarmCookie Scenario - Ground Truth Answers
+# Date: 2024-08-15
+# Source: https://www.malware-traffic-analysis.net/2024/08/15/index.html
+# Author writeup PDF: 2024-08-15-traffic-analysis-exercise-answers.pdf
+#
+# Notable: per the author, "none of the alerts on the network traffic identify
+# the traffic to 72.5.43.29 as WarmCookie" -- the C2 IP is NOT tagged by any
+# Suricata signature. Models must identify it from post-infection traffic
+# patterns rather than IDS attribution. The author also notes the alert set
+# was generated with "all possible ET signatures" enabled, producing many
+# informational alerts that need to be filtered out.
+
+Q1: What is the IP address of the potentially infected internal host in the LAN?
+A1: 10.8.15.133
+
+Q2: What is the hostname of the potentially infected machine in the LAN?
+A2: DESKTOP-H8ALZBV
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: plucero
+
+Q4: What are the likely suspicious domains or URLs for initial infection?
+# Both domains and their resolved (Cloudflare) IPs accepted:
+#   quote.checkfedexexp.com    -> 104.21.55.70   (ZIP download, GET /managements?...)
+#   business.checkfedexexp.com -> 172.67.170.169 (follow-up download from inside the .js)
+A4: quote.checkfedexexp.com, business.checkfedexexp.com, 104.21.55.70, 172.67.170.169
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+# WarmCookie C2 endpoint. The author explicitly notes no Suricata signature
+# attributes this IP to WarmCookie -- it has to be identified from POST-infection
+# traffic patterns (DLL download via BITS user-agent, repeated POST/GET to /).
+A5: 72.5.43.29
+
+Q6: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A6: 2024-08-15 00:00 UTC
+
+Q7: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A7: 72.5.43.29, C2 server

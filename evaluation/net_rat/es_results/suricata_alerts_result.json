@@ -1,0 +1,292 @@
+{
+  "metadata": {
+    "query_file": "suricata_alerts.json",
+    "execution_time": "2026-02-23T18:58:33.305703",
+    "status_code": 200,
+    "duration_ms": 133.08700000000002,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2024-11-26T00:00:00",
+      "lte": "2024-11-26T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "event.dataset": "suricata.alert"
+                  }
+                },
+                {
+                  "term": {
+                    "event.module": "suricata"
+                  }
+                },
+                {
+                  "term": {
+                    "tags": "alert"
+                  }
+                }
+              ],
+              "minimum_should_match": 1
+            }
+          },
+          {
+            "range": {
+              "source.ip": {
+                "gte": "10.0.0.0",
+                "lte": "172.31.255.255"
+              }
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2024-11-26T00:00:00",
+                "lte": "2024-11-26T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "range": {
+              "event.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "range": {
+              "rule.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "terms": {
+              "rule.category": [
+                "Misc Attack",
+                "Potential Corporate Privacy Violation",
+                "Trojan",
+                "Malware",
+                "Policy Violation"
+              ]
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*malware*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*trojan*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*suspicious*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*attack*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*DROP*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*ET*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*SURICATA*"
+            }
+          },
+          {
+            "range": {
+              "destination.port": {
+                "gte": 1024,
+                "lte": 65535
+              }
+            }
+          }
+        ],
+        "minimum_should_match": 1
+      }
+    },
+    "aggs": {
+      "alert_signatures": {
+        "terms": {
+          "field": "rule.name",
+          "size": 30
+        }
+      },
+      "high_severity_alerts": {
+        "filter": {
+          "range": {
+            "rule.severity": {
+              "gte": 1,
+              "lte": 2
+            }
+          }
+        },
+        "aggs": {
+          "high_severity_signatures": {
+            "terms": {
+              "field": "rule.name",
+              "size": 10
+            }
+          },
+          "high_severity_sources": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "high_severity__destinations": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 5
+            }
+          }
+        }
+      },
+      "alert_timeline": {
+        "date_histogram": {
+          "field": "@timestamp",
+          "calendar_interval": "1h"
+        }
+      }
+    },
+    "sort": [
+      {
+        "rule.severity": {
+          "order": "asc"
+        }
+      },
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 24,
+    "timed_out": false,
+    "_shards": {
+      "total": 92,
+      "successful": 92,
+      "skipped": 91,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 123,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "alert_signatures": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "ET INFO HTTP traffic on port 443 (POST)",
+            "doc_count": 58
+          },
+          {
+            "key": "ET REMOTE_ACCESS NetSupport Remote Admin Checkin",
+            "doc_count": 58
+          },
+          {
+            "key": "GPL NETBIOS SMB IPC$ unicode share access",
+            "doc_count": 5
+          },
+          {
+            "key": "ET INFO Microsoft Connection Test",
+            "doc_count": 1
+          },
+          {
+            "key": "ET REMOTE_ACCESS NetSupport GeoLocation Lookup Request",
+            "doc_count": 1
+          }
+        ]
+      },
+      "high_severity_alerts": {
+        "doc_count": 59,
+        "high_severity__destinations": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "194.180.191.64",
+              "doc_count": 58
+            },
+            {
+              "key": "104.26.1.231",
+              "doc_count": 1
+            }
+          ]
+        },
+        "high_severity_signatures": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "ET INFO HTTP traffic on port 443 (POST)",
+              "doc_count": 58
+            },
+            {
+              "key": "ET REMOTE_ACCESS NetSupport GeoLocation Lookup Request",
+              "doc_count": 1
+            }
+          ]
+        },
+        "high_severity_sources": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.11.26.183",
+              "doc_count": 59
+            }
+          ]
+        }
+      },
+      "alert_timeline": {
+        "buckets": [
+          {
+            "key_as_string": "2024-11-26T04:00:00.000Z",
+            "key": 1732593600000,
+            "doc_count": 31
+          },
+          {
+            "key_as_string": "2024-11-26T05:00:00.000Z",
+            "key": 1732597200000,
+            "doc_count": 92
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

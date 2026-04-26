@@ -1,0 +1,6 @@
+- LAN segment range:  10.8.15[.]0/24 (10.8.15[.]0 through 10.8.15[.]255)
+- Domain:  lafontainebleu[.]org
+- Active Directory (AD) domain controller:  10.8.15[.]4 - WIN-JEGJIX7Q9RS
+- AD environment name:  LAFONTAINBLEU
+- LAN segment gateway:  10.8.15[.]1
+- LAN segment broadcast address:  10.8.15[.]255

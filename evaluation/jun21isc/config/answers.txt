@@ -1,0 +1,39 @@
+# June 2021 ISC Forensic Contest - Ground Truth Answers
+# Date: 2021-06-16
+# Source: https://isc.sans.edu/diary/June+2021+Forensic+Contest+Answers+and+Analysis/27582
+#
+# Multi-host: 3 machines, 5 malware families
+# Host mapping per published answers:
+#   10.6.15.93  / DEKSTOP-A1CTJVY / raquel.anderson → AgentTesla
+#   10.6.15.119 / DESKTOP-NIEE9LP / tommy.vega → Hancitor + Cobalt Strike + Ficker Stealer
+#   10.6.15.187 / DESKTOP-YS6FZ2G / horace.maddox → Qakbot
+#
+# Removed: Q5 malware families (Qakbot absent from Suricata; AgentTesla
+#   not explicitly named in top signatures), Q7 host-mapping (not scorable),
+#   Q8 first-infection (subsumed by timestamp Q), Q10 user-vs-machine (not scorable)
+
+Q1: What are the IP addresses of the potentially infected internal hosts in the LAN?
+A1: 10.6.15.93, 10.6.15.119, 10.6.15.187
+
+Q2: What are the hostnames of the potentially infected machines in the LAN?
+A2: DEKSTOP-A1CTJVY, DESKTOP-NIEE9LP, DESKTOP-YS6FZ2G
+
+Q3: What are the Windows human user account names (not machine accounts ending in $) of the potentially infected machines in the LAN?
+A3: raquel.anderson, tommy.vega, horace.maddox
+
+Q4: What external domains or IP addresses are associated with the initial infection and malware delivery?
+A4: ststephenskisugu.church, srand04rf.ru, solarwindsonline.com, hadevatjulps.com
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in C2 communication?
+# Per published answers. 207.246.77.75 (Qakbot) has 0 hits in data.
+# 162.244.83.95 is Cobalt Strike (not AgentTesla as original GT stated).
+A5: 65.60.35.141, 194.226.60.15, 185.66.15.228, 162.244.83.95, 103.28.39.29, 104.244.121.13
+
+Q6: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A6: 2021-06-16 14:00 UTC
+
+Q7: Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.
+A7: zqyefcetkqg.biz
+
+Q8: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A8: 65.60.35.141, C2 server

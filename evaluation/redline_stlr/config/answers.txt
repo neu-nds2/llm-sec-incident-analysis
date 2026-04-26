@@ -1,0 +1,27 @@
+# RedLine Stealer Scenario - Ground Truth Answers
+# Date: 2023-07-10
+# Source: https://unit42.paloaltonetworks.com/wireshark-quiz-redline-stealer-answers/
+
+Q1: What is the IP address of the potentially infected internal host in the LAN?
+A1: 10.7.10.47
+
+Q2: What is the hostname of the potentially infected machine in the LAN?
+A2: DESKTOP-9PEA63H
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: rwalters
+
+Q4: What are the likely fake or suspicious domains / URLs for initial infection?
+A4: 623start.site, guiatelefonos.com
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+A5: 194.26.135.119
+
+Q6: Which of the three CIA components does the attacker target primarily: availability, integrity, or confidentiality?
+A6: confidentiality
+
+Q7: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A7: 2023-07-10 22:00 UTC
+
+Q8: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A8: 195.161.114.3, legitimate service

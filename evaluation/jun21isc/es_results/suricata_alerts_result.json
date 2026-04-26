@@ -1,0 +1,378 @@
+{
+  "metadata": {
+    "query_file": "suricata_alerts.json",
+    "execution_time": "2026-04-13T19:37:33.784216",
+    "status_code": 200,
+    "duration_ms": 162.28300000000002,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2021-06-16T00:00:00",
+      "lte": "2021-06-16T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "event.dataset": "suricata.alert"
+                  }
+                },
+                {
+                  "term": {
+                    "event.module": "suricata"
+                  }
+                },
+                {
+                  "term": {
+                    "tags": "alert"
+                  }
+                }
+              ],
+              "minimum_should_match": 1
+            }
+          },
+          {
+            "range": {
+              "source.ip": {
+                "gte": "10.0.0.0",
+                "lte": "172.31.255.255"
+              }
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2021-06-16T00:00:00",
+                "lte": "2021-06-16T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "range": {
+              "event.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "range": {
+              "rule.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "terms": {
+              "rule.category": [
+                "Misc Attack",
+                "Potential Corporate Privacy Violation",
+                "Trojan",
+                "Malware",
+                "Policy Violation"
+              ]
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*malware*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*trojan*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*suspicious*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*attack*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*DROP*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*ET*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*SURICATA*"
+            }
+          },
+          {
+            "range": {
+              "destination.port": {
+                "gte": 1024,
+                "lte": 65535
+              }
+            }
+          }
+        ],
+        "minimum_should_match": 1
+      }
+    },
+    "aggs": {
+      "alert_signatures": {
+        "terms": {
+          "field": "rule.name",
+          "size": 30
+        }
+      },
+      "high_severity_alerts": {
+        "filter": {
+          "range": {
+            "rule.severity": {
+              "gte": 1,
+              "lte": 2
+            }
+          }
+        },
+        "aggs": {
+          "high_severity_signatures": {
+            "terms": {
+              "field": "rule.name",
+              "size": 10
+            }
+          },
+          "high_severity_sources": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "high_severity__destinations": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 5
+            }
+          }
+        }
+      },
+      "alert_timeline": {
+        "date_histogram": {
+          "field": "@timestamp",
+          "calendar_interval": "1h"
+        }
+      }
+    },
+    "sort": [
+      {
+        "rule.severity": {
+          "order": "asc"
+        }
+      },
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 28,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 110,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 10000,
+        "relation": "gte"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "alert_signatures": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "ET MALWARE Cobalt Strike Beacon Observed",
+            "doc_count": 14137
+          },
+          {
+            "key": "ET MALWARE Tordal/Hancitor/Chanitor Checkin",
+            "doc_count": 78
+          },
+          {
+            "key": "ET JA3 Hash - [Abuse.ch] Possible Dridex",
+            "doc_count": 25
+          },
+          {
+            "key": "ET HUNTING GENERIC SUSPICIOUS POST to Dotted Quad with Fake Browser 1",
+            "doc_count": 9
+          },
+          {
+            "key": "ET INFO HTTP traffic on port 443 (POST)",
+            "doc_count": 9
+          },
+          {
+            "key": "ET INFO NTLM Session Setup Request - Auth",
+            "doc_count": 5
+          },
+          {
+            "key": "ET INFO NTLM Session Setup Request - Negotiate",
+            "doc_count": 5
+          },
+          {
+            "key": "ET INFO NTLMv1 Session Setup Response - Challenge",
+            "doc_count": 5
+          },
+          {
+            "key": "ET INFO External IP Lookup Domain (ipify .org) in DNS Lookup",
+            "doc_count": 2
+          },
+          {
+            "key": "ET MALWARE Win32/Ficker Stealer Activity M3",
+            "doc_count": 2
+          },
+          {
+            "key": "ET INFO External IP Lookup (ipify .org)",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO External IP Lookup api.ipify.org",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO Packed Executable Download",
+            "doc_count": 1
+          },
+          {
+            "key": "ET MALWARE AgentTesla Exfil Via SMTP",
+            "doc_count": 1
+          }
+        ]
+      },
+      "high_severity_alerts": {
+        "doc_count": 14238,
+        "high_severity__destinations": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 1,
+          "buckets": [
+            {
+              "key": "65.60.35.141",
+              "doc_count": 14155
+            },
+            {
+              "key": "194.226.60.15",
+              "doc_count": 78
+            },
+            {
+              "key": "185.66.15.228",
+              "doc_count": 2
+            },
+            {
+              "key": "50.19.92.227",
+              "doc_count": 1
+            },
+            {
+              "key": "54.225.78.40",
+              "doc_count": 1
+            }
+          ]
+        },
+        "high_severity_signatures": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "ET MALWARE Cobalt Strike Beacon Observed",
+              "doc_count": 14137
+            },
+            {
+              "key": "ET MALWARE Tordal/Hancitor/Chanitor Checkin",
+              "doc_count": 78
+            },
+            {
+              "key": "ET HUNTING GENERIC SUSPICIOUS POST to Dotted Quad with Fake Browser 1",
+              "doc_count": 9
+            },
+            {
+              "key": "ET INFO HTTP traffic on port 443 (POST)",
+              "doc_count": 9
+            },
+            {
+              "key": "ET MALWARE Win32/Ficker Stealer Activity M3",
+              "doc_count": 2
+            },
+            {
+              "key": "ET INFO External IP Lookup (ipify .org)",
+              "doc_count": 1
+            },
+            {
+              "key": "ET INFO External IP Lookup api.ipify.org",
+              "doc_count": 1
+            },
+            {
+              "key": "ET MALWARE AgentTesla Exfil Via SMTP",
+              "doc_count": 1
+            }
+          ]
+        },
+        "high_severity_sources": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.6.15.119",
+              "doc_count": 14237
+            },
+            {
+              "key": "10.6.15.93",
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      "alert_timeline": {
+        "buckets": [
+          {
+            "key_as_string": "2021-06-16T14:00:00.000Z",
+            "key": 1623852000000,
+            "doc_count": 1699
+          },
+          {
+            "key_as_string": "2021-06-16T15:00:00.000Z",
+            "key": 1623855600000,
+            "doc_count": 5715
+          },
+          {
+            "key_as_string": "2021-06-16T16:00:00.000Z",
+            "key": 1623859200000,
+            "doc_count": 5624
+          },
+          {
+            "key_as_string": "2021-06-16T17:00:00.000Z",
+            "key": 1623862800000,
+            "doc_count": 1243
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

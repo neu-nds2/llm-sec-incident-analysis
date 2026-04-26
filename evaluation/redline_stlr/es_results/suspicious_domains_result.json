@@ -1,0 +1,296 @@
+{
+  "metadata": {
+    "query_file": "suspicious_domains.json",
+    "execution_time": "2026-03-17T21:28:17.353397",
+    "status_code": 200,
+    "duration_ms": 166.447,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2023-07-10T00:00:00",
+      "lte": "2023-07-11T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2023-07-10T00:00:00",
+                "lte": "2023-07-11T23:59:59"
+              }
+            }
+          }
+        ],
+        "must_not": [
+          {
+            "wildcard": {
+              "message": "*google.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*googleapis.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*googleusercontent.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*doubleclick.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*msn.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*bing.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*clarity.ms*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoft.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoft.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoftapp.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoftonline.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*msedge.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*azureedge.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*live.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*office.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*windows.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*adobe.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*liveperson.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*lpsnmedia.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*linkedin.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*skype.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*nvidia.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*azure.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*yahoo.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*facebook.com*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "domains": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value.toLowerCase(); def server_name_pattern = /\\\"server_name\\\":\\\"([^\\\"]+)\\\"/; def matcher = server_name_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } def sni_pattern = /server_name:\\s*([^\\s,\\r\\n]+)/; def matcher2 = sni_pattern.matcher(msg); if (matcher2.find()) { return matcher2.group(1); } } return null;"
+          },
+          "size": 50,
+          "min_doc_count": 1
+        },
+        "aggs": {
+          "top_source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "top_destination_ips": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 44,
+    "timed_out": false,
+    "_shards": {
+      "total": 102,
+      "successful": 102,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 34,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "a6d04e539d712e4ef920661af4825316.clo.footprintdns.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.7.10.47",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "13.107.6.163",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "guiatelefonos.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.7.10.47",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "92.118.151.9",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "static-ecst.licdn.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.7.10.47",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "152.199.24.163",
+                  "doc_count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

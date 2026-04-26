@@ -1,0 +1,5 @@
+- LAN segment range:  10.0.19[.]0/24 (10.0.19[.]0 through 10.0.19[.]255)
+- Domain:  burnincandle[.]com
+- Domain controller:  10.0.19[.]9 - BURNINCANDLE-DC
+- LAN segment gateway:  10.0.19[.]1
+- LAN segment broadcast address:  10.0.19[.]255

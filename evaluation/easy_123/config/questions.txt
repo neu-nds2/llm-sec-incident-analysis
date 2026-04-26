@@ -1,0 +1,9 @@
+# Easy 123 Scenario (NetSupport RAT)
+# One question per line
+
+What is the IP address of the infected Windows client?
+What is the host name of the infected Windows client?
+What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?

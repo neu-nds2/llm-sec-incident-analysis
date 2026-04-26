@@ -1,0 +1,350 @@
+{
+  "metadata": {
+    "query_file": "suricata_alerts.json",
+    "execution_time": "2026-04-13T18:23:49.595016",
+    "status_code": 200,
+    "duration_ms": 402.63599999999997,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2022-03-21T00:00:00",
+      "lte": "2022-03-23T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "event.dataset": "suricata.alert"
+                  }
+                },
+                {
+                  "term": {
+                    "event.module": "suricata"
+                  }
+                },
+                {
+                  "term": {
+                    "tags": "alert"
+                  }
+                }
+              ],
+              "minimum_should_match": 1
+            }
+          },
+          {
+            "range": {
+              "source.ip": {
+                "gte": "10.0.0.0",
+                "lte": "172.31.255.255"
+              }
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2022-03-21T00:00:00",
+                "lte": "2022-03-23T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "range": {
+              "event.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "range": {
+              "rule.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "terms": {
+              "rule.category": [
+                "Misc Attack",
+                "Potential Corporate Privacy Violation",
+                "Trojan",
+                "Malware",
+                "Policy Violation"
+              ]
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*malware*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*trojan*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*suspicious*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*attack*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*DROP*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*ET*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*SURICATA*"
+            }
+          },
+          {
+            "range": {
+              "destination.port": {
+                "gte": 1024,
+                "lte": 65535
+              }
+            }
+          }
+        ],
+        "minimum_should_match": 1
+      }
+    },
+    "aggs": {
+      "alert_signatures": {
+        "terms": {
+          "field": "rule.name",
+          "size": 30
+        }
+      },
+      "high_severity_alerts": {
+        "filter": {
+          "range": {
+            "rule.severity": {
+              "gte": 1,
+              "lte": 2
+            }
+          }
+        },
+        "aggs": {
+          "high_severity_signatures": {
+            "terms": {
+              "field": "rule.name",
+              "size": 10
+            }
+          },
+          "high_severity_sources": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "high_severity__destinations": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 5
+            }
+          }
+        }
+      },
+      "alert_timeline": {
+        "date_histogram": {
+          "field": "@timestamp",
+          "calendar_interval": "1h"
+        }
+      }
+    },
+    "sort": [
+      {
+        "rule.severity": {
+          "order": "asc"
+        }
+      },
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 29,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 110,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 247,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "alert_signatures": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "ET INFO OpenSSL Demo CA - Internet Widgits Pty (O)",
+            "doc_count": 216
+          },
+          {
+            "key": "ET DNS Query to a *.top domain - Likely Hostile",
+            "doc_count": 22
+          },
+          {
+            "key": "GPL NETBIOS SMB IPC$ unicode share access",
+            "doc_count": 3
+          },
+          {
+            "key": "ET FILE_SHARING Observed DNS Query to Abused File Sharing Domain in DNS Lookup (filebin .net) ",
+            "doc_count": 1
+          },
+          {
+            "key": "ET HUNTING Request to .TOP Domain with Minimal Headers",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO HTTP Request to a *.top domain",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO Observed Abused File Sharing Domain in TLS SNI (filebin .net)",
+            "doc_count": 1
+          },
+          {
+            "key": "ET MALWARE Win32/IcedID Request Cookie",
+            "doc_count": 1
+          },
+          {
+            "key": "ET MALWARE Win32/IcedID Requesting Encoded Binary M4",
+            "doc_count": 1
+          }
+        ]
+      },
+      "high_severity_alerts": {
+        "doc_count": 26,
+        "high_severity__destinations": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.0.19.9",
+              "doc_count": 22
+            },
+            {
+              "key": "188.166.154.118",
+              "doc_count": 4
+            }
+          ]
+        },
+        "high_severity_signatures": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "ET DNS Query to a *.top domain - Likely Hostile",
+              "doc_count": 22
+            },
+            {
+              "key": "ET HUNTING Request to .TOP Domain with Minimal Headers",
+              "doc_count": 1
+            },
+            {
+              "key": "ET INFO HTTP Request to a *.top domain",
+              "doc_count": 1
+            },
+            {
+              "key": "ET MALWARE Win32/IcedID Request Cookie",
+              "doc_count": 1
+            },
+            {
+              "key": "ET MALWARE Win32/IcedID Requesting Encoded Binary M4",
+              "doc_count": 1
+            }
+          ]
+        },
+        "high_severity_sources": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.0.19.14",
+              "doc_count": 26
+            }
+          ]
+        }
+      },
+      "alert_timeline": {
+        "buckets": [
+          {
+            "key_as_string": "2022-03-21T20:00:00.000Z",
+            "key": 1647892800000,
+            "doc_count": 10
+          },
+          {
+            "key_as_string": "2022-03-21T21:00:00.000Z",
+            "key": 1647896400000,
+            "doc_count": 13
+          },
+          {
+            "key_as_string": "2022-03-21T22:00:00.000Z",
+            "key": 1647900000000,
+            "doc_count": 12
+          },
+          {
+            "key_as_string": "2022-03-21T23:00:00.000Z",
+            "key": 1647903600000,
+            "doc_count": 11
+          },
+          {
+            "key_as_string": "2022-03-22T00:00:00.000Z",
+            "key": 1647907200000,
+            "doc_count": 60
+          },
+          {
+            "key_as_string": "2022-03-22T01:00:00.000Z",
+            "key": 1647910800000,
+            "doc_count": 63
+          },
+          {
+            "key_as_string": "2022-03-22T02:00:00.000Z",
+            "key": 1647914400000,
+            "doc_count": 60
+          },
+          {
+            "key_as_string": "2022-03-22T03:00:00.000Z",
+            "key": 1647918000000,
+            "doc_count": 18
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

@@ -1,0 +1,30 @@
+# May 2021 ISC Forensic Contest - Ground Truth Answers
+# Date: 2021-05-04
+# Source: https://isc.sans.edu/diary/May+2021+Forensic+Contest+Answers+and+Analysis/27430
+#
+# Removed: Q5 malware family (Qakbot) — Suricata says "Possible Dridex"
+#   due to JA3 fingerprint overlap. Same issue as dec21isc.
+# Note: original answer file had victim IP as 172.16.4.206 but data
+#   shows 172.17.4.206 (matching the LAN range 172.17.4.0/24). Fixed.
+
+Q1: What was the IP address of the infected Windows computer?
+A1: 172.17.4.206
+
+Q2: What was the host name of the infected Windows computer?
+A2: DESKTOP-V0FEH1L
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: alfonso.paternoster
+
+Q4: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A4: 2021-05-04 22:00 UTC
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in C2 communication?
+# Per ISC SANS writeup: initial payload source
+A5: 185.183.99.115
+
+Q6: Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.
+A6: zqyefcetkqg.biz
+
+Q7: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A7: 45.32.211.207, C2 server

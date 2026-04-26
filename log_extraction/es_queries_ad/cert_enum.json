@@ -1,0 +1,36 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.code:4662",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "yyyy-MM-dd HH:mm"
+      },
+      "aggs": {
+        "cert_enum_count": {
+          "value_count": {
+            "field": "@timestamp"
+          }
+        },
+        "enum_details": {
+          "terms": {
+            "script": {
+              "source": "def host = doc['host.name'].size() > 0 ? doc['host.name'].value : 'host_unknown'; def user = doc['user.name'].size() > 0 ? doc['user.name'].value : 'user_unknown'; return 'Cert enum: [Host: ' + host + ', User: ' + user + ']';"
+            },
+            "size": 10
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}
+

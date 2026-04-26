@@ -1,0 +1,15 @@
+# December 2021 ISC Forensic Contest (Emotet)
+# One question per line
+#
+# Removed: "What malware families are associated with the JA3 signature?"
+#   Suricata says "Possible Dridex" but the actual malware is Emotet
+#   (shared JA3 fingerprint). No model can resolve this from the data alone.
+
+What was the IP address of the infected Windows computer?
+What was the host name of the infected Windows computer?
+What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+What are the likely suspicious domains used for malware delivery?
+Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.
+According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?

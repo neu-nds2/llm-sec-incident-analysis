@@ -1,0 +1,35 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.dataset:system.application AND message:*stopped* AND NOT event.provider:Microsoft-Windows-User* AND NOT event.provider:Microsoft-Windows-CertificationAuthority",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "HH:mm"
+      },
+      "aggs": {
+        "service_stop_count": {
+          "value_count": {
+            "field": "@timestamp"
+          }
+        },
+        "impact_details": {
+          "terms": {
+            "script": {
+              "source": "'Service stopped: [Host: ' + doc['host.name'].value + ', Provider: ' + doc['event.provider'].value + ', EventCode: ' + doc['event.code'].value + ']'"
+            },
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}

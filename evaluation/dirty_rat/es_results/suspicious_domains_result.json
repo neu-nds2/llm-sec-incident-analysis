@@ -1,0 +1,464 @@
+{
+  "metadata": {
+    "query_file": "suspicious_domains.json",
+    "execution_time": "2026-04-08T13:56:52.435544",
+    "status_code": 200,
+    "duration_ms": 94.231,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2024-07-29T00:00:00",
+      "lte": "2024-08-01T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2024-07-29T00:00:00",
+                "lte": "2024-08-01T23:59:59"
+              }
+            }
+          }
+        ],
+        "must_not": [
+          {
+            "wildcard": {
+              "message": "*google.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*googleapis.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*googleusercontent.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*doubleclick.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*msn.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*bing.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*clarity.ms*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoft.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoft.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoftapp.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoftonline.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*msedge.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*azureedge.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*live.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*office.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*windows.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*adobe.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*liveperson.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*lpsnmedia.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*linkedin.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*skype.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*nvidia.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*azure.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*yahoo.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*facebook.com*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "domains": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value.toLowerCase(); def server_name_pattern = /\\\"server_name\\\":\\\"([^\\\"]+)\\\"/; def matcher = server_name_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } def sni_pattern = /server_name:\\s*([^\\s,\\r\\n]+)/; def matcher2 = sni_pattern.matcher(msg); if (matcher2.find()) { return matcher2.group(1); } } return null;"
+          },
+          "size": 50,
+          "min_doc_count": 1
+        },
+        "aggs": {
+          "top_source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "top_destination_ips": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 51,
+    "timed_out": false,
+    "_shards": {
+      "total": 102,
+      "successful": 102,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 106,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "repo1.maven.org",
+            "doc_count": 3,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 3
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "199.232.196.209",
+                  "doc_count": 3
+                }
+              ]
+            }
+          },
+          {
+            "key": "autodiscover-s.outlook.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "40.97.199.114",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "default.exp-tas.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "13.107.5.93",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "ecn.dev.virtualearth.net",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "23.46.192.165",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "github.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "140.82.113.3",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "img-s-msn-com.akamaized.net",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "23.215.55.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "javadl-esd-secure.oracle.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "23.194.164.136",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "metadata.templates.cdn.office.net",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "23.221.22.68",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "objects.githubusercontent.com",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "185.199.110.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "oneclient.sfx.ms",
+            "doc_count": 1,
+            "top_source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.16.1.66",
+                  "doc_count": 1
+                }
+              ]
+            },
+            "top_destination_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "23.52.9.140",
+                  "doc_count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

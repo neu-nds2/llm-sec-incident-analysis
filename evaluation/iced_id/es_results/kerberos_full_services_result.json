@@ -1,0 +1,359 @@
+{
+  "metadata": {
+    "query_file": "kerberos_full_services.json",
+    "query_file_path": "queries_minimal\\kerberos_full_services.json",
+    "execution_time": "2026-02-18T12:50:18.718046",
+    "completion_time": "2026-02-18T12:50:18.872886",
+    "elasticsearch_url": "https://localhost:9200/logs-*/_search",
+    "elasticsearch_host": "https://localhost:9200",
+    "elasticsearch_username": "onion@onion.com",
+    "status_code": 200,
+    "execution_duration_ms": 154.84,
+    "elasticsearch_took_ms": 4,
+    "index_used": "logs-*",
+    "time_range_applied": {
+      "field": "@timestamp",
+      "gte": "2023-04-19T00:00:00",
+      "lte": "2023-04-19T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "term": {
+              "destination.port": 88
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2023-04-19T00:00:00",
+                "lte": "2023-04-19T23:59:59"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "full_services": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def service_pattern = /\"service\":\"([^\"]+)\"/; def matcher = service_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } } return 'no_service_found';"
+          },
+          "size": 20
+        },
+        "aggs": {
+          "source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "kerberos.service"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 4,
+    "timed_out": false,
+    "_shards": {
+      "total": 92,
+      "successful": 92,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 157,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "full_services": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "krb_tcp",
+            "doc_count": 66,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 48
+                },
+                {
+                  "key": "10.4.19.136",
+                  "doc_count": 12
+                },
+                {
+                  "key": "10.4.19.143",
+                  "doc_count": 6
+                }
+              ]
+            }
+          },
+          {
+            "key": "no_service_found",
+            "doc_count": 25,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 25
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/BOOGIENIGHTS.LIVE",
+            "doc_count": 24,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 20
+                },
+                {
+                  "key": "10.4.19.136",
+                  "doc_count": 4
+                }
+              ]
+            }
+          },
+          {
+            "key": "desktop-jal4d68$@BOOGIENIGHTS.LIVE",
+            "doc_count": 6,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.143",
+                  "doc_count": 6
+                }
+              ]
+            }
+          },
+          {
+            "key": "LDAP/WIN-GP4JHCK2JMV.boogienights.live/boogienights.live",
+            "doc_count": 5,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 4
+                },
+                {
+                  "key": "10.4.19.136",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/WIN-GP4JHCK2JMV.boogienights.live",
+            "doc_count": 5,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 4
+                },
+                {
+                  "key": "10.4.19.136",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/BOOGIENIGHTS",
+            "doc_count": 5,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.136",
+                  "doc_count": 3
+                },
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/boogienights.live",
+            "doc_count": 4,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 4
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/WIN-GP4JHCK2JMV",
+            "doc_count": 3,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.4.19.136",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "DESKTOP-RETP4BU$",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "LDAP/WIN-GP4JHCK2JMV.boogienights.live",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/WIN-GP4JHCK2JMV.boogienights.live/boogienights.live",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "desktop-retp4bu$",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/desktop-retp4bu.boogienights.live",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "ldap/win-gp4jhck2jmv.boogienights.live/boogienights.live",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.138",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/desktop-sff9ljf.boogienights.live",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.136",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "ldap/WIN-GP4JHCK2JMV.boogienights.live",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.4.19.136",
+                  "doc_count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

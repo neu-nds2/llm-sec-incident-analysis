@@ -1,0 +1,32 @@
+# December 2021 ISC Forensic Contest - Ground Truth Answers
+# Date: 2021-12-03
+# Source: https://isc.sans.edu/diary/28160
+#
+# Removed: Q5 malware family identification (Emotet vs Dridex).
+#   Suricata says "Possible Dridex" (JA3 fingerprint overlap) but
+#   the actual malware is Emotet per ISC SANS. No model can resolve
+#   this from the data alone — interesting finding but unfair to score.
+
+Q1: What was the IP address of the infected Windows computer?
+A1: 10.12.3.66
+
+Q2: What was the host name of the infected Windows computer?
+A2: DESKTOP-LUOABV1
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: darin.figueroa
+
+Q4: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A4: 2021-12-03 19:00 UTC
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in C2 communication?
+A5: 172.104.227.98, 163.172.50.82
+
+Q6: What are the likely suspicious domains used for malware delivery?
+A6: gamaes.shop, newsaarctech.com
+
+Q7: Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.
+A7: example.com
+
+Q8: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A8: 172.104.227.98, C2 server

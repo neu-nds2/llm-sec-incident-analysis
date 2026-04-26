@@ -1,0 +1,31 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.code:11 AND (file.path:*AppData* OR file.path:*ServiceProfiles* OR file.path:*Temp*)",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "HH:mm"
+      },
+      "aggs": {
+        "drop_details": {
+          "terms": {
+            "script": {
+              "source": "'File drop: [Host: ' + doc['host.name'].value + ', Process: ' + doc['process.name'].value + ', Path: ' + doc['file.path'].value + ']'"
+            },
+            "size": 30
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}
+

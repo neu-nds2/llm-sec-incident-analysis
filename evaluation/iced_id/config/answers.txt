@@ -1,0 +1,31 @@
+# IcedID Scenario - Ground Truth Answers
+# Date: 2023-04-19
+# Source: https://unit42.paloaltonetworks.com/wireshark-quiz-icedid-answers/
+
+Q1: What is the IP address of the potentially infected internal host in the LAN?
+A1: 10.4.19.136
+
+Q2: What is the hostname of the potentially infected machine in the LAN?
+A2: DESKTOP-SFF9LJF
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: csilva
+
+Q4: What are the likely fake or suspicious domains or IPs for initial infection?
+A4: 80.77.25.175 (malicious redirect to Firebase Storage URL delivering ZIP archive containing IcedID installer)
+
+Q5: What domain names AND external IP addresses are involved in command-and-control (C2) communication?
+# IcedID C2 indicators per the Unit 42 published answers. Both surface forms
+# (IP and resolved domain) are accepted for each indicator:
+#   askamoshopsi.com -> 104.168.53.18
+#   skansnekssky.com -> 217.199.121.56
+A5: 104.168.53.18, askamoshopsi.com, 217.199.121.56, skansnekssky.com
+
+Q6: Which of the three CIA components does the attacker target primarily: availability, integrity, or confidentiality?
+A6: confidentiality
+
+Q7: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A7: 2023-04-19 15:00 UTC
+
+Q8: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A8: 217.199.121.56, C2 server

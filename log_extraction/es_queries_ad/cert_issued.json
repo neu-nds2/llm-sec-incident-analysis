@@ -1,0 +1,35 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.code:4887",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "HH:mm"
+      },
+      "aggs": {
+        "cert_issued_count": {
+          "value_count": {
+            "field": "@timestamp"
+          }
+        },
+        "cert_issued_details": {
+          "terms": {
+            "script": {
+              "source": "'Cert Issued: [Host:' + doc['host.name'].value + ', Requester:' + doc['winlog.event_data.Requester'].value + ', ' + doc['winlog.event_data.Attributes'].value + ', Subject:' + doc['winlog.event_data.Subject'].value + ']'"
+            },
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}

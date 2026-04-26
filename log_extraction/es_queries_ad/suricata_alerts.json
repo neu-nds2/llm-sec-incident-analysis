@@ -1,0 +1,31 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.dataset:\"suricata.alert\" AND event.severity:[1 TO 3]",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "HH:mm:ss"
+      },
+      "aggs": {
+        "rule_src_dest": {
+          "terms": {
+            "script": {
+              "source": "'[' + doc['rule.name'].value + ', Source IP: ' + doc['source.ip'].value + ', Destination IP: ' + doc['destination.ip'].value + ']'"
+            },
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}
+

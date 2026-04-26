@@ -1,0 +1,343 @@
+{
+  "metadata": {
+    "query_file": "file_downloads.json",
+    "execution_time": "2026-04-08T13:56:51.970042",
+    "status_code": 200,
+    "duration_ms": 98.08200000000001,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2024-07-29T00:00:00",
+      "lte": "2024-08-01T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443,
+                8080,
+                8443,
+                8000,
+                8888,
+                9000
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2024-07-29T00:00:00",
+                "lte": "2024-08-01T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "wildcard": {
+              "message": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*attachment*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*fuid*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.rar*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/x-msdownload*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.msi*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "download_domains": {
+        "terms": {
+          "field": "http.virtual_host"
+        }
+      },
+      "http_requests": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def get_pattern = /GET[ ]+([^\\s\\r\\n]+)/; def matcher = get_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher.group(1); } def uri_pattern = /\"uri\":\"([^\"]+)\"/; def matcher2 = uri_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher2.group(1); } } return 'no_http_uri';"
+          }
+        }
+      },
+      "file_transfers": {
+        "filter": {
+          "wildcard": {
+            "message": "*fuid*"
+          }
+        },
+        "aggs": {
+          "transfer_details": {
+            "terms": {
+              "script": {
+                "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def filename_pattern = /\"filename\":\"([^\"]+)\"/; def matcher = filename_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : file: ' + matcher.group(1); } def fuid_pattern = /\"fuid\":\"([^\"]+)\"/; def matcher2 = fuid_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : fuid: ' + matcher2.group(1); } } return 'file_transfer';"
+              }
+            }
+          }
+        }
+      },
+      "file_types": {
+        "terms": {
+          "script": {
+            "source": "if (doc['http.uri'].size() > 0) { String path = doc['http.uri'].value; if (path.contains('.exe')) return 'exe'; if (path.contains('.msi')) return 'msi'; if (path.contains('.ps1')) return 'powershell'; if (path.contains('.bat') || path.contains('.cmd')) return 'batch'; if (path.contains('.js')) return 'javascript'; if (path.contains('.zip') || path.contains('.rar')) return 'archive'; } if (doc['message.keyword'].size() > 0) { String msg = doc['message.keyword'].value; if (msg.contains('.ps1')) return 'powershell'; if (msg.contains('.exe')) return 'exe'; if (msg.contains('.msi')) return 'msi'; } return 'other';"
+          }
+        }
+      },
+      "download_sources": {
+        "terms": {
+          "field": "source.ip"
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "sort": [
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 52,
+    "timed_out": false,
+    "_shards": {
+      "total": 102,
+      "successful": 102,
+      "skipped": 100,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 164,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "file_transfers": {
+        "doc_count": 23,
+        "transfer_details": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 12,
+          "buckets": [
+            {
+              "key": "file_transfer",
+              "doc_count": 2
+            },
+            {
+              "key": "172.16.1.66 -> 13.69.239.79:443 : fuid: FQyVNG1qSUWl88SPO8",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.66 -> 20.166.2.191:443 : fuid: FTAoZx1f3vyui6NSY8",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.66 -> 20.189.173.26:443 : fuid: Fm9YMM3CNdjDmDuB2h",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.66 -> 20.241.44.114:443 : fuid: F7RGOfAJ7v7njmqxc",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.66 -> 20.96.153.111:443 : fuid: FtBrUL3KjJyjPbQ5V8",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.66 -> 208.95.112.1:80 : fuid: FdlG6pwAk9IIWc546",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.66 -> 23.194.164.136:443 : fuid: FwX9H2P4ySsBUtJw5",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.66 -> 23.215.55.140:80 : fuid: FbBtHc4DJvYjRTHKi",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.66 -> 23.221.22.68:443 : fuid: FPikSY3rOlbAkpQ1Wa",
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      "download_sources": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "172.16.1.66",
+            "doc_count": 164
+          }
+        ]
+      },
+      "http_requests": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "no_http_uri",
+            "doc_count": 160
+          },
+          {
+            "key": "172.16.1.66 -> 208.95.112.1:80 : /json/",
+            "doc_count": 2
+          },
+          {
+            "key": "172.16.1.66 -> 23.215.55.140:80 : /connecttest.txt",
+            "doc_count": 2
+          }
+        ]
+      },
+      "download_domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "ip-api.com",
+            "doc_count": 1
+          },
+          {
+            "key": "www.msftconnecttest.com",
+            "doc_count": 1
+          }
+        ]
+      },
+      "file_types": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "other",
+            "doc_count": 164
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

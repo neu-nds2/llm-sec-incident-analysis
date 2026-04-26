@@ -1,0 +1,12 @@
+# Network Environment Context
+# This information helps the AI understand your network environment
+
+## Network Information for the NetSupport RAT Scenario
+
+- LAN segment range:  10.11.26[.]0/24 (10.11.26[.]0 through 10.11.26[.]255)
+- Domain:  nemotodes[.]health
+- Active Directory (AD) domain controller:  10.11.26[.]3 - NEMOTODES-DC
+- AD environment name:  NEMOTODES
+- LAN segment gateway:  10.11.26[.]1
+- LAN segment broadcast address:  10.11.26[.]255
+

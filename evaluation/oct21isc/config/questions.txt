@@ -1,0 +1,16 @@
+# October 2021 ISC Forensic Contest (NanoCore + BazarLoader + Qakbot)
+# Multi-host infection: 3 infected machines
+# One question per line
+#
+# Removed: Q6 malware families (only NanoCore in Suricata; BazarLoader
+#   only hinted by .bazar DNS; Qakbot absent — same JA3 issue)
+# Removed: Q8 full host mapping (not scorable with substring matching)
+
+What are the IP addresses of the potentially infected internal hosts in the LAN?
+What are the hostnames of the potentially infected machines in the LAN?
+What are the Windows human user account names (not machine accounts ending in $) of the potentially infected machines in the LAN?
+What external servers (domains and IP addresses) were used to download malicious files?
+What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+What specific malicious file was downloaded by an internal host from multiple external IP addresses?
+During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?

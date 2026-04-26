@@ -1,0 +1,496 @@
+{
+  "metadata": {
+    "query_file": "suspicious_domains.json",
+    "query_file_path": "queries_minimal\\suspicious_domains.json",
+    "execution_time": "2026-02-18T12:50:19.411883",
+    "completion_time": "2026-02-18T12:50:19.698408",
+    "elasticsearch_url": "https://localhost:9200/logs-*/_search",
+    "elasticsearch_host": "https://localhost:9200",
+    "elasticsearch_username": "onion@onion.com",
+    "status_code": 200,
+    "execution_duration_ms": 286.525,
+    "elasticsearch_took_ms": 164,
+    "index_used": "logs-*",
+    "time_range_applied": {
+      "field": "@timestamp",
+      "gte": "2023-04-19T00:00:00",
+      "lte": "2023-04-19T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2023-04-19T00:00:00",
+                "lte": "2023-04-19T23:59:59"
+              }
+            }
+          }
+        ],
+        "must_not": [
+          {
+            "wildcard": {
+              "message": "*google.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*maps.googleapis.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*fonts.googleapis.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*ajax.googleapis.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "safebrowsing.googleapis.com"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "update.googleapis.com"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*googleusercontent.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*doubleclick.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*msn.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*bing.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*clarity.ms*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoft.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoft.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoftapp.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*microsoftonline.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*msedge.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*azureedge.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*live.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*office.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*windows.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*adobe.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*liveperson.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*lpsnmedia.net*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*linkedin.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*skype.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*nvidia.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*azure.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*yahoo.com*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*facebook.com*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "domains": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value.toLowerCase(); def server_name_pattern = /\\\"server_name\\\":\\\"([^\\\"]+)\\\"/; def matcher = server_name_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } def sni_pattern = /server_name:\\s*([^\\s,\\r\\n]+)/; def matcher2 = sni_pattern.matcher(msg); if (matcher2.find()) { return matcher2.group(1); } } return null;"
+          },
+          "size": 50,
+          "min_doc_count": 1
+        }
+      },
+      "direct_ip_connections": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; if (!msg.contains('server_name') && doc.containsKey('destination.ip')) { return doc['destination.ip'].value; } } return null;"
+          },
+          "size": 30,
+          "min_doc_count": 1
+        }
+      },
+      "http_raw_ip_requests": {
+        "filter": {
+          "bool": {
+            "must": [
+              {
+                "exists": {
+                  "field": "http.method"
+                }
+              },
+              {
+                "regexp": {
+                  "http.virtual_host": "[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+"
+                }
+              }
+            ]
+          }
+        },
+        "aggs": {
+          "raw_ip_hosts": {
+            "terms": {
+              "field": "http.virtual_host",
+              "size": 50,
+              "order": {
+                "_count": "desc"
+              }
+            },
+            "aggs": {
+              "uris": {
+                "terms": {
+                  "field": "http.uri",
+                  "size": 20
+                },
+                "aggs": {
+                  "methods": {
+                    "terms": {
+                      "field": "http.method"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 164,
+    "timed_out": false,
+    "_shards": {
+      "total": 92,
+      "successful": 92,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 819,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "http_raw_ip_requests": {
+        "doc_count": 1,
+        "raw_ip_hosts": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "80.77.25.175",
+              "doc_count": 1,
+              "uris": {
+                "doc_count_error_upper_bound": 0,
+                "sum_other_doc_count": 0,
+                "buckets": [
+                  {
+                    "key": "/main.php",
+                    "doc_count": 1,
+                    "methods": {
+                      "doc_count_error_upper_bound": 0,
+                      "sum_other_doc_count": 0,
+                      "buckets": [
+                        {
+                          "key": "GET",
+                          "doc_count": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "direct_ip_connections": {
+        "doc_count_error_upper_bound": 3,
+        "sum_other_doc_count": 302,
+        "buckets": [
+          {
+            "key": "217.199.121.56",
+            "doc_count": 75
+          },
+          {
+            "key": "204.79.197.203",
+            "doc_count": 57
+          },
+          {
+            "key": "204.79.197.200",
+            "doc_count": 29
+          },
+          {
+            "key": "40.83.247.108",
+            "doc_count": 29
+          },
+          {
+            "key": "51.104.167.186",
+            "doc_count": 25
+          },
+          {
+            "key": "173.223.109.212",
+            "doc_count": 16
+          },
+          {
+            "key": "209.197.3.8",
+            "doc_count": 13
+          },
+          {
+            "key": "20.231.121.79",
+            "doc_count": 12
+          },
+          {
+            "key": "204.79.197.239",
+            "doc_count": 12
+          },
+          {
+            "key": "20.54.25.4",
+            "doc_count": 11
+          },
+          {
+            "key": "23.218.232.178",
+            "doc_count": 11
+          },
+          {
+            "key": "20.242.220.11",
+            "doc_count": 10
+          },
+          {
+            "key": "23.37.112.211",
+            "doc_count": 10
+          },
+          {
+            "key": "51.104.162.168",
+            "doc_count": 10
+          },
+          {
+            "key": "13.107.42.16",
+            "doc_count": 8
+          },
+          {
+            "key": "13.89.179.8",
+            "doc_count": 8
+          },
+          {
+            "key": "23.214.44.116",
+            "doc_count": 8
+          },
+          {
+            "key": "23.36.63.240",
+            "doc_count": 8
+          },
+          {
+            "key": "52.113.194.132",
+            "doc_count": 8
+          },
+          {
+            "key": "13.89.179.10",
+            "doc_count": 7
+          },
+          {
+            "key": "104.168.53.18",
+            "doc_count": 6
+          },
+          {
+            "key": "104.95.51.242",
+            "doc_count": 6
+          },
+          {
+            "key": "20.189.173.5",
+            "doc_count": 6
+          },
+          {
+            "key": "20.191.46.109",
+            "doc_count": 6
+          },
+          {
+            "key": "20.242.39.171",
+            "doc_count": 6
+          },
+          {
+            "key": "52.185.211.133",
+            "doc_count": 6
+          },
+          {
+            "key": "192.153.57.233",
+            "doc_count": 5
+          },
+          {
+            "key": "20.189.173.15",
+            "doc_count": 5
+          },
+          {
+            "key": "20.191.46.211",
+            "doc_count": 5
+          },
+          {
+            "key": "20.54.24.231",
+            "doc_count": 5
+          }
+        ]
+      },
+      "domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "skansnekssky.com",
+            "doc_count": 69
+          },
+          {
+            "key": "ecn.dev.virtualearth.net",
+            "doc_count": 7
+          },
+          {
+            "key": "askamoshopsi.com",
+            "doc_count": 3
+          },
+          {
+            "key": "static-ecst.licdn.com",
+            "doc_count": 3
+          },
+          {
+            "key": "da.xboxservices.com",
+            "doc_count": 2
+          },
+          {
+            "key": "firebasestorage.googleapis.com",
+            "doc_count": 2
+          },
+          {
+            "key": "img-s-msn-com.akamaized.net",
+            "doc_count": 2
+          },
+          {
+            "key": "www.bingapis.com",
+            "doc_count": 2
+          },
+          {
+            "key": "aefd.nelreports.net",
+            "doc_count": 1
+          },
+          {
+            "key": "clients.config.office.net",
+            "doc_count": 1
+          },
+          {
+            "key": "fp-afd.azurefd.us",
+            "doc_count": 1
+          },
+          {
+            "key": "spakernakurs.com",
+            "doc_count": 1
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

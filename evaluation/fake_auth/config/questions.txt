@@ -1,0 +1,16 @@
+# Security Incident Response Questions
+# One question per line
+
+# === INCIDENT QUESTIONS for the Malware Datasets ===
+What is the IP address of the potentially infected internal host in the LAN??
+What is the hostname of the potentially infected machine in the LAN?
+What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+What are the likely fake or suspicious domains / URLs for initial infection?
+What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+
+# === Active Directory attack recreation and defensive actions recommendations ===
+# What did the attacker do during the attack timeline? What defenses should be implemented to counter the attacker's actions? 
+
+During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.
+According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?

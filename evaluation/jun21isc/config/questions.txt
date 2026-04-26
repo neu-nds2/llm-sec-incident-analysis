@@ -1,0 +1,12 @@
+# June 2021 ISC Forensic Contest (AgentTesla + Hancitor/Cobalt Strike/Ficker + Qakbot)
+# Multi-host infection: 3 infected machines, 5 malware families
+# One question per line
+
+What are the IP addresses of the potentially infected internal hosts in the LAN?
+What are the hostnames of the potentially infected machines in the LAN?
+What are the Windows human user account names (not machine accounts ending in $) of the potentially infected machines in the LAN?
+What external domains or IP addresses are associated with the initial infection and malware delivery?
+What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.
+According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?

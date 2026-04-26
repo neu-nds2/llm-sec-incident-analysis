@@ -1,0 +1,36 @@
+# Finding Gozi - Reference Answers
+# Date: 2023-03-06
+# Source: https://unit42.paloaltonetworks.com/march-wireshark-gozi-answers/
+#
+# Removed (not answerable from the malware query library's 8-chunk output):
+#   Q4: unapromo.com (initial infection domain — not captured by suspicious_domains query)
+#   Q6: 46.8.19.32   (SMB delivery IP — SMB events not in query library)
+#   Q7: server.exe   (malware binary name — SMB events not in query library)
+
+Q1: What is the IP address of the potentially infected internal host in the LAN?
+A1: 172.16.1.137
+
+Q2: What is the hostname of the potentially infected machine in the LAN?
+A2: DESKTOP-3GJL3PV
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: sherita.kolb
+
+Q4: What are the likely fake or suspicious domains for initial infection?
+A4: unapromo.com
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+A5: 62.173.140.103, 62.173.138.138, 62.173.149.243, 62.173.140.94, 31.41.44.60, 46.8.19.233, 5.44.45.201, 89.116.236.41, 62.173.140.76, 31.41.44.49, 46.8.19.86
+
+Q6: What are the exact filenames of the encoded modules or plugins downloaded by the malware?
+A6: stilak32.rar, stilak64.rar, cook32.rar, cook64.rar
+
+
+Q7: Which of the three CIA components does the attacker target primarily: availability, integrity, or confidentiality?
+A7: confidentiality
+
+Q8: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A8: 2023-03-07 02:00 UTC
+
+Q9: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A9: 62.173.138.138, C2 server

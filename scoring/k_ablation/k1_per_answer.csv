@@ -1,0 +1,1033 @@
+scenario,provider,question,recall,correct,n_cited,n_retrieved,single_chunk,multi_chunk,citation_precision,citation_efficiency,cited,retrieved,predicted,reference
+apr21isc,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.168.5.125,192.168.5.125
+apr21isc,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),laptop-x9naq2eu
+apr21isc,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_clients_result.json,kerberos_clients_result.json,(none),wilmer.coughlin
+apr21isc,Claude Sonnet 4,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-03-29 22:00 utc,2021-03-29 22:00 utc
+apr21isc,Claude Sonnet 4,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,bazaloader/bazar backdoor,baza
+apr21isc,Claude Sonnet 4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),104.21.74.174;176.111.174.53;184.72.1.208;217.12.218.46;54.184.119.29;8.209.100.246
+apr21isc,Claude Sonnet 4,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,gtmers.xyz,gtmers.xyz;veso2.xyz
+apr21isc,Claude Sonnet 4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),forenzik.kz
+apr21isc,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.168.5.125,192.168.5.125
+apr21isc,Cisco 8B,2,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,192.168.5.125,laptop-x9naq2eu
+apr21isc,Cisco 8B,3,1.0,1,1,1,1,0,1.0,1.0,kerberos_clients_result.json,kerberos_clients_result.json,wilmer.coughlin,wilmer.coughlin
+apr21isc,Cisco 8B,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-03-29 22:00:00,2021-03-29 22:00 utc
+apr21isc,Cisco 8B,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,bazaloader;bazar backdoor,baza
+apr21isc,Cisco 8B,6,0.0,0,0,1,0,0,,0.0,,suspicious_certificates_result.json,(none),104.21.74.174;176.111.174.53;184.72.1.208;217.12.218.46;54.184.119.29;8.209.100.246
+apr21isc,Cisco 8B,7,0.5,1,0,1,0,0,,0.0,,suspicious_domains_result.json,192.168.5.125;8.209.100.246;gtmers.xyz,gtmers.xyz;veso2.xyz
+apr21isc,Cisco 8B,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,no,forenzik.kz
+apr21isc,DeepSeek V3,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.168.5.125,192.168.5.125
+apr21isc,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),laptop-x9naq2eu
+apr21isc,DeepSeek V3,3,1.0,1,1,1,1,0,1.0,1.0,kerberos_clients_result.json,kerberos_clients_result.json,wilmer.coughlin,wilmer.coughlin
+apr21isc,DeepSeek V3,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-03-29 22:00,2021-03-29 22:00 utc
+apr21isc,DeepSeek V3,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,bazaloader;bazarbackdoor,baza
+apr21isc,DeepSeek V3,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),104.21.74.174;176.111.174.53;184.72.1.208;217.12.218.46;54.184.119.29;8.209.100.246
+apr21isc,DeepSeek V3,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,gtmers.xyz,gtmers.xyz;veso2.xyz
+apr21isc,DeepSeek V3,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),forenzik.kz
+apr21isc,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.168.5.125,192.168.5.125
+apr21isc,Ollama 3.1:70b,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),laptop-x9naq2eu
+apr21isc,Ollama 3.1:70b,3,1.0,1,1,1,1,0,1.0,1.0,kerberos_clients_result.json,kerberos_clients_result.json,wilmer.coughlin,wilmer.coughlin
+apr21isc,Ollama 3.1:70b,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-03-29 22:00,2021-03-29 22:00 utc
+apr21isc,Ollama 3.1:70b,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,bazaloader;bazar backdoor,baza
+apr21isc,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,not found,104.21.74.174;176.111.174.53;184.72.1.208;217.12.218.46;54.184.119.29;8.209.100.246
+apr21isc,Ollama 3.1:70b,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,gtmers.xyz,gtmers.xyz;veso2.xyz
+apr21isc,Ollama 3.1:70b,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,not found,forenzik.kz
+apr21isc,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.168.5.125,192.168.5.125
+apr21isc,GPT-4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),laptop-x9naq2eu
+apr21isc,GPT-4,3,1.0,1,1,1,1,0,1.0,1.0,kerberos_clients_result.json,kerberos_clients_result.json,wilmer.coughlin,wilmer.coughlin
+apr21isc,GPT-4,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-03-29 22:00,2021-03-29 22:00 utc
+apr21isc,GPT-4,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,bazaloader;bazar backdoor,baza
+apr21isc,GPT-4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),104.21.74.174;176.111.174.53;184.72.1.208;217.12.218.46;54.184.119.29;8.209.100.246
+apr21isc,GPT-4,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""fonts.gstatic.com"";""gtmers.xyz"";""img-prod-cms-rt-microsoft-com.akamaized.net""",gtmers.xyz;veso2.xyz
+apr21isc,GPT-4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),forenzik.kz
+apr21isc,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.168.5.125,192.168.5.125
+apr21isc,GPT-4o,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),laptop-x9naq2eu
+apr21isc,GPT-4o,3,1.0,1,1,1,1,0,1.0,1.0,kerberos_clients_result.json,kerberos_clients_result.json,wilmer.coughlin,wilmer.coughlin
+apr21isc,GPT-4o,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-03-29 22:00,2021-03-29 22:00 utc
+apr21isc,GPT-4o,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,bazaloader;bazar backdoor,baza
+apr21isc,GPT-4o,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),104.21.74.174;176.111.174.53;184.72.1.208;217.12.218.46;54.184.119.29;8.209.100.246
+apr21isc,GPT-4o,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,fonts.gstatic.com;gtmers.xyz;img-prod-cms-rt-microsoft-com.akamaized.net,gtmers.xyz;veso2.xyz
+apr21isc,GPT-4o,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),forenzik.kz
+apr21isc,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.168.5.125,192.168.5.125
+apr21isc,GPT-5.2,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),laptop-x9naq2eu
+apr21isc,GPT-5.2,3,1.0,1,1,1,1,0,1.0,1.0,kerberos_clients_result.json,kerberos_clients_result.json,wilmer.coughlin,wilmer.coughlin
+apr21isc,GPT-5.2,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-03-29 22:00,2021-03-29 22:00 utc
+apr21isc,GPT-5.2,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,bazaloader;bazar backdoor,baza
+apr21isc,GPT-5.2,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),104.21.74.174;176.111.174.53;184.72.1.208;217.12.218.46;54.184.119.29;8.209.100.246
+apr21isc,GPT-5.2,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""fonts.gstatic.com"";""gtmers.xyz"";""img-prod-cms-rt-microsoft-com.akamaized.net""",gtmers.xyz;veso2.xyz
+apr21isc,GPT-5.2,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),forenzik.kz
+apr21isc,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.168.5.125,192.168.5.125
+apr21isc,GPT-5-mini,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),laptop-x9naq2eu
+apr21isc,GPT-5-mini,3,1.0,1,1,1,1,0,1.0,1.0,kerberos_clients_result.json,kerberos_clients_result.json,wilmer.coughlin,wilmer.coughlin
+apr21isc,GPT-5-mini,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-03-29 22:00,2021-03-29 22:00 utc
+apr21isc,GPT-5-mini,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,bazaloader;bazar backdoor,baza
+apr21isc,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),104.21.74.174;176.111.174.53;184.72.1.208;217.12.218.46;54.184.119.29;8.209.100.246
+apr21isc,GPT-5-mini,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""fonts.gstatic.com"";""gtmers.xyz"";""img-prod-cms-rt-microsoft-com.akamaized.net""",gtmers.xyz;veso2.xyz
+apr21isc,GPT-5-mini,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),forenzik.kz
+burnincandle,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.19.14,10.0.19.14
+burnincandle,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-5qs3d5d
+burnincandle,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),patrick.zimmerman
+burnincandle,Claude Sonnet 4,4,0.88,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,antnosience.com (157.245.142.66);dilimoretast.com (91.193.16.181);filebin.net (185.47.40.36);otectagain.top (157.245.142.66);seaskysafe.com (91.193.16.181);situla.bitbit.net (87.238.33.8);suncoastpinball.com (160.153.32.99),antnosience.com;dilimoretast.com;filebin.net;oceriesfornot.top;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com
+burnincandle,Claude Sonnet 4,5,0.75,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181,157.245.142.66;160.153.32.99;188.166.154.118;91.193.16.181
+burnincandle,Claude Sonnet 4,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2022-03-21 20:00 utc
+burnincandle,Claude Sonnet 4,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;c2 server,157.245.142.66;c2 server
+burnincandle,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.19.14,10.0.19.14
+burnincandle,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-5qs3d5d,desktop-5qs3d5d
+burnincandle,Cisco 8B,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-5qs3d5d,patrick.zimmerman
+burnincandle,Cisco 8B,4,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181,antnosience.com;dilimoretast.com;filebin.net;oceriesfornot.top;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com
+burnincandle,Cisco 8B,5,0.75,1,0,1,0,0,,0.0,,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181,157.245.142.66;160.153.32.99;188.166.154.118;91.193.16.181
+burnincandle,Cisco 8B,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-11-15 00:00,2022-03-21 20:00 utc
+burnincandle,Cisco 8B,7,1.0,1,0,1,0,0,,0.0,,suspicious_domains_result.json,157.245.142.66;c2 server,157.245.142.66;c2 server
+burnincandle,DeepSeek V3,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.19.14,10.0.19.14
+burnincandle,DeepSeek V3,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-5qs3d5d,desktop-5qs3d5d
+burnincandle,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),patrick.zimmerman
+burnincandle,DeepSeek V3,4,0.88,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181;antnosience.com;dilimoretast.com;filebin.net;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com,antnosience.com;dilimoretast.com;filebin.net;oceriesfornot.top;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com
+burnincandle,DeepSeek V3,5,0.75,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181,157.245.142.66;160.153.32.99;188.166.154.118;91.193.16.181
+burnincandle,DeepSeek V3,6,0.0,0,0,1,0,0,,0.0,,suricata_alerts_result.json,(none),2022-03-21 20:00 utc
+burnincandle,DeepSeek V3,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;c2 server,157.245.142.66;c2 server
+burnincandle,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.19.14,10.0.19.14
+burnincandle,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-5qs3d5d,desktop-5qs3d5d
+burnincandle,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),patrick.zimmerman
+burnincandle,Ollama 3.1:70b,4,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;91.193.16.181;antnosience.com;dilimoretast.com;otectagain.top;seaskysafe.com,antnosience.com;dilimoretast.com;filebin.net;oceriesfornot.top;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com
+burnincandle,Ollama 3.1:70b,5,0.75,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181,157.245.142.66;160.153.32.99;188.166.154.118;91.193.16.181
+burnincandle,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2022-03-21 20:00 utc
+burnincandle,Ollama 3.1:70b,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66,157.245.142.66;c2 server
+burnincandle,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.19.14,10.0.19.14
+burnincandle,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-5qs3d5d,desktop-5qs3d5d
+burnincandle,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),patrick.zimmerman
+burnincandle,GPT-4,4,0.88,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,antnosience.com;dilimoretast.com;filebin.net;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com,antnosience.com;dilimoretast.com;filebin.net;oceriesfornot.top;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com
+burnincandle,GPT-4,5,0.75,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181,157.245.142.66;160.153.32.99;188.166.154.118;91.193.16.181
+burnincandle,GPT-4,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2022-01-15 03:45 utc,2022-03-21 20:00 utc
+burnincandle,GPT-4,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66,157.245.142.66;c2 server
+burnincandle,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.19.14,10.0.19.14
+burnincandle,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-5qs3d5d,desktop-5qs3d5d
+burnincandle,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),patrick.zimmerman
+burnincandle,GPT-4o,4,0.88,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,antnosience.com;dilimoretast.com;filebin.net;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com,antnosience.com;dilimoretast.com;filebin.net;oceriesfornot.top;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com
+burnincandle,GPT-4o,5,0.75,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181,157.245.142.66;160.153.32.99;188.166.154.118;91.193.16.181
+burnincandle,GPT-4o,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2022-03-21 20:00 utc
+burnincandle,GPT-4o,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66,157.245.142.66;c2 server
+burnincandle,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.19.14,10.0.19.14
+burnincandle,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-5qs3d5d,desktop-5qs3d5d
+burnincandle,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),patrick.zimmerman
+burnincandle,GPT-5.2,4,0.88,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,antnosience.com;dilimoretast.com;filebin.net;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com,antnosience.com;dilimoretast.com;filebin.net;oceriesfornot.top;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com
+burnincandle,GPT-5.2,5,0.75,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181,157.245.142.66;160.153.32.99;188.166.154.118;91.193.16.181
+burnincandle,GPT-5.2,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2022-01-15 03:00,2022-03-21 20:00 utc
+burnincandle,GPT-5.2,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66,157.245.142.66;c2 server
+burnincandle,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.19.14,10.0.19.14
+burnincandle,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-5qs3d5d,desktop-5qs3d5d
+burnincandle,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),patrick.zimmerman
+burnincandle,GPT-5-mini,4,0.88,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,antnosience.com;dilimoretast.com;filebin.net;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com,antnosience.com;dilimoretast.com;filebin.net;oceriesfornot.top;otectagain.top;seaskysafe.com;situla.bitbit.net;suncoastpinball.com
+burnincandle,GPT-5-mini,5,0.75,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66;160.153.32.99;185.47.40.36;87.238.33.8;91.193.16.181,157.245.142.66;160.153.32.99;188.166.154.118;91.193.16.181
+burnincandle,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2022-03-21 20:00 utc
+burnincandle,GPT-5-mini,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,157.245.142.66,157.245.142.66;c2 server
+dec21isc,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.12.3.66,10.12.3.66
+dec21isc,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-luoabv1
+dec21isc,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),darin.figueroa
+dec21isc,Claude Sonnet 4,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-12-03 19:00 utc,2021-12-03 19:00 utc
+dec21isc,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.3.6.28,163.172.50.82;172.104.227.98
+dec21isc,Claude Sonnet 4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,gameplayapi.intel.com,gamaes.shop;newsaarctech.com
+dec21isc,Claude Sonnet 4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),example.com
+dec21isc,Claude Sonnet 4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),172.104.227.98;c2 server
+dec21isc,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.12.3.66,10.12.3.66
+dec21isc,Cisco 8B,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-luoabv1
+dec21isc,Cisco 8B,3,0.0,0,0,1,0,0,,0.0,,kerberos_hostnames_result.json,desktop-luoabv1,darin.figueroa
+dec21isc,Cisco 8B,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-12-03t19:00:00.000z,2021-12-03 19:00 utc
+dec21isc,Cisco 8B,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.3.6.28,163.172.50.82;172.104.227.98
+dec21isc,Cisco 8B,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,gameplayapi.intel.com,gamaes.shop;newsaarctech.com
+dec21isc,Cisco 8B,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,not found,example.com
+dec21isc,Cisco 8B,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.3.6.28,172.104.227.98;c2 server
+dec21isc,DeepSeek V3,1,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),10.12.3.66
+dec21isc,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-luoabv1
+dec21isc,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),darin.figueroa
+dec21isc,DeepSeek V3,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-12-03 19:00,2021-12-03 19:00 utc
+dec21isc,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),163.172.50.82;172.104.227.98
+dec21isc,DeepSeek V3,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),gamaes.shop;newsaarctech.com
+dec21isc,DeepSeek V3,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),example.com
+dec21isc,DeepSeek V3,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),172.104.227.98;c2 server
+dec21isc,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.12.3.66,10.12.3.66
+dec21isc,Ollama 3.1:70b,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-luoabv1
+dec21isc,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),darin.figueroa
+dec21isc,Ollama 3.1:70b,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-12-03 19:00,2021-12-03 19:00 utc
+dec21isc,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.3.6.28,163.172.50.82;172.104.227.98
+dec21isc,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,gameplayapi.intel.com,gamaes.shop;newsaarctech.com
+dec21isc,Ollama 3.1:70b,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,not found,example.com
+dec21isc,Ollama 3.1:70b,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.3.6.28,172.104.227.98;c2 server
+dec21isc,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.12.3.66,10.12.3.66
+dec21isc,GPT-4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-luoabv1
+dec21isc,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),darin.figueroa
+dec21isc,GPT-4,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-12-03 19:00 utc,2021-12-03 19:00 utc
+dec21isc,GPT-4,5,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),163.172.50.82;172.104.227.98
+dec21isc,GPT-4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,gameplayapi.intel.com,gamaes.shop;newsaarctech.com
+dec21isc,GPT-4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),example.com
+dec21isc,GPT-4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),172.104.227.98;c2 server
+dec21isc,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.12.3.66,10.12.3.66
+dec21isc,GPT-4o,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-luoabv1
+dec21isc,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),darin.figueroa
+dec21isc,GPT-4o,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-12-03 19:00 utc,2021-12-03 19:00 utc
+dec21isc,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.3.6.28,163.172.50.82;172.104.227.98
+dec21isc,GPT-4o,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""gameplayapi.intel.com""",gamaes.shop;newsaarctech.com
+dec21isc,GPT-4o,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),example.com
+dec21isc,GPT-4o,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),172.104.227.98;c2 server
+dec21isc,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.12.3.66,10.12.3.66
+dec21isc,GPT-5.2,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-luoabv1
+dec21isc,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-luoabv1,darin.figueroa
+dec21isc,GPT-5.2,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-12-03 19:00,2021-12-03 19:00 utc
+dec21isc,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.3.6.28,163.172.50.82;172.104.227.98
+dec21isc,GPT-5.2,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""gameplayapi.intel.com""",gamaes.shop;newsaarctech.com
+dec21isc,GPT-5.2,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),example.com
+dec21isc,GPT-5.2,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),172.104.227.98;c2 server
+dec21isc,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.12.3.66,10.12.3.66
+dec21isc,GPT-5-mini,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-luoabv1
+dec21isc,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),darin.figueroa
+dec21isc,GPT-5-mini,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-12-03 19:00,2021-12-03 19:00 utc
+dec21isc,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.3.6.28,163.172.50.82;172.104.227.98
+dec21isc,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""gameplayapi.intel.com""",gamaes.shop;newsaarctech.com
+dec21isc,GPT-5-mini,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),example.com
+dec21isc,GPT-5-mini,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),172.104.227.98;c2 server
+dirty_rat,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.66,172.16.1.66
+dirty_rat,Claude Sonnet 4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-skbr25f,desktop-skbr25f
+dirty_rat,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),ccollier
+dirty_rat,Claude Sonnet 4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),github.com;ip-api.com;objects.githubusercontent.com;repo1.maven.org
+dirty_rat,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),141.98.10.79
+dirty_rat,Claude Sonnet 4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-07-30 02:00 utc,2024-07-30 02:00 utc
+dirty_rat,Claude Sonnet 4,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,199.232.196.209;legitimate service (repo1.maven.org - maven repository),23.52.9.222;legitimate service
+dirty_rat,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.66,172.16.1.66
+dirty_rat,Cisco 8B,2,1.0,1,0,1,0,0,,0.0,,kerberos_hostnames_result.json,desktop-skbr25f,desktop-skbr25f
+dirty_rat,Cisco 8B,3,0.0,0,0,1,0,0,,0.0,,kerberos_hostnames_result.json,desktop-skbr25f,ccollier
+dirty_rat,Cisco 8B,4,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,13.107.5.93;140.82.113.3;185.199.110.133;199.232.196.209;23.194.164.136;23.215.55.133;23.221.22.68;23.46.192.165;23.52.9.140;40.97.199.114,github.com;ip-api.com;objects.githubusercontent.com;repo1.maven.org
+dirty_rat,Cisco 8B,5,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),141.98.10.79
+dirty_rat,Cisco 8B,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-07-30 02:00:00,2024-07-30 02:00 utc
+dirty_rat,Cisco 8B,7,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,199.232.196.209;c2 server,23.52.9.222;legitimate service
+dirty_rat,DeepSeek V3,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.66,172.16.1.66
+dirty_rat,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-skbr25f
+dirty_rat,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),ccollier
+dirty_rat,DeepSeek V3,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),github.com;ip-api.com;objects.githubusercontent.com;repo1.maven.org
+dirty_rat,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),141.98.10.79
+dirty_rat,DeepSeek V3,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-07-30 02:00,2024-07-30 02:00 utc
+dirty_rat,DeepSeek V3,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,199.232.196.209;legitimate service,23.52.9.222;legitimate service
+dirty_rat,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.66,172.16.1.66
+dirty_rat,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-skbr25f,desktop-skbr25f
+dirty_rat,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),ccollier
+dirty_rat,Ollama 3.1:70b,4,0.25,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,199.232.196.209;repo1.maven.org,github.com;ip-api.com;objects.githubusercontent.com;repo1.maven.org
+dirty_rat,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;140.82.113.3;185.199.110.133;199.232.196.209;23.194.164.136;23.215.55.133;23.221.22.68;23.46.192.165;23.52.9.140;40.97.199.114,141.98.10.79
+dirty_rat,Ollama 3.1:70b,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-07-30 02:00,2024-07-30 02:00 utc
+dirty_rat,Ollama 3.1:70b,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,199.232.196.209,23.52.9.222;legitimate service
+dirty_rat,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.66,172.16.1.66
+dirty_rat,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-skbr25f,desktop-skbr25f
+dirty_rat,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),ccollier
+dirty_rat,GPT-4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;140.82.113.3;185.199.110.133;199.232.196.209;23.194.164.136;23.215.55.133;23.221.22.68;23.46.192.165;23.52.9.140;40.97.199.114,github.com;ip-api.com;objects.githubusercontent.com;repo1.maven.org
+dirty_rat,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),141.98.10.79
+dirty_rat,GPT-4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-07-30 02:00 utc,2024-07-30 02:00 utc
+dirty_rat,GPT-4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),23.52.9.222;legitimate service
+dirty_rat,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.66,172.16.1.66
+dirty_rat,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-skbr25f,desktop-skbr25f
+dirty_rat,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-skbr25f,ccollier
+dirty_rat,GPT-4o,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;140.82.113.3;185.199.110.133;199.232.196.209;23.194.164.136;23.215.55.133;23.221.22.68;23.46.192.165;23.52.9.140;40.97.199.114,github.com;ip-api.com;objects.githubusercontent.com;repo1.maven.org
+dirty_rat,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),141.98.10.79
+dirty_rat,GPT-4o,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-07-30 02:00,2024-07-30 02:00 utc
+dirty_rat,GPT-4o,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),23.52.9.222;legitimate service
+dirty_rat,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.66,172.16.1.66
+dirty_rat,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-skbr25f,desktop-skbr25f
+dirty_rat,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),ccollier
+dirty_rat,GPT-5.2,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;140.82.113.3;185.199.110.133;199.232.196.209;23.194.164.136;23.215.55.133;23.221.22.68;23.46.192.165;23.52.9.140;40.97.199.114,github.com;ip-api.com;objects.githubusercontent.com;repo1.maven.org
+dirty_rat,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),141.98.10.79
+dirty_rat,GPT-5.2,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-07-30 02:00 utc,2024-07-30 02:00 utc
+dirty_rat,GPT-5.2,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),23.52.9.222;legitimate service
+dirty_rat,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.66,172.16.1.66
+dirty_rat,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,"""desktop-skbr25f""",desktop-skbr25f
+dirty_rat,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,"""desktop-skbr25f""",ccollier
+dirty_rat,GPT-5-mini,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;140.82.113.3;185.199.110.133;199.232.196.209;23.194.164.136;23.215.55.133;23.221.22.68;23.46.192.165;23.52.9.140;40.97.199.114,github.com;ip-api.com;objects.githubusercontent.com;repo1.maven.org
+dirty_rat,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),141.98.10.79
+dirty_rat,GPT-5-mini,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-07-30 02:00 utc,2024-07-30 02:00 utc
+dirty_rat,GPT-5-mini,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),23.52.9.222;legitimate service
+easy_123,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,10.2.28.88,10.2.28.88
+easy_123,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-teyq2nr
+easy_123,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),brolf
+easy_123,Claude Sonnet 4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.218.232.156,45.131.214.85
+easy_123,Claude Sonnet 4,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-02-28 19:00 utc,2026-02-28 19:00 utc
+easy_123,Claude Sonnet 4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),45.131.214.85;c2 server
+easy_123,Cisco 8B,1,1.0,1,0,1,0,0,,0.0,,kerberos_hostnames_result.json,10.2.28.88,10.2.28.88
+easy_123,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-teyq2nr,desktop-teyq2nr
+easy_123,Cisco 8B,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-teyq2nr,brolf
+easy_123,Cisco 8B,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,184.29.31.84;23.218.232.156;23.218.232.170;23.55.178.208;23.55.178.219;23.64.147.24,45.131.214.85
+easy_123,Cisco 8B,5,1.0,1,0,1,0,0,,0.0,,suricata_alerts_result.json,2026-02-28t19:00:00.000z,2026-02-28 19:00 utc
+easy_123,Cisco 8B,6,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,23.55.178.208,45.131.214.85;c2 server
+easy_123,DeepSeek V3,1,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),10.2.28.88
+easy_123,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-teyq2nr
+easy_123,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),brolf
+easy_123,DeepSeek V3,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),45.131.214.85
+easy_123,DeepSeek V3,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-02-28 19:00,2026-02-28 19:00 utc
+easy_123,DeepSeek V3,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),45.131.214.85;c2 server
+easy_123,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,10.2.28.88,10.2.28.88
+easy_123,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-teyq2nr,desktop-teyq2nr
+easy_123,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),brolf
+easy_123,Ollama 3.1:70b,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,184.29.31.84;23.218.232.156;23.218.232.170;23.55.178.208;23.55.178.219;23.64.147.24,45.131.214.85
+easy_123,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-02-28 20:00,2026-02-28 19:00 utc
+easy_123,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.55.178.208;23.55.178.219,45.131.214.85;c2 server
+easy_123,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,10.2.28.88,10.2.28.88
+easy_123,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-teyq2nr,desktop-teyq2nr
+easy_123,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,"""desktop-teyq2nr""",brolf
+easy_123,GPT-4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,184.29.31.84;23.218.232.156;23.218.232.170;23.55.178.208;23.55.178.219;23.64.147.24,45.131.214.85
+easy_123,GPT-4,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-02-28 19:00,2026-02-28 19:00 utc
+easy_123,GPT-4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),45.131.214.85;c2 server
+easy_123,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,10.2.28.88,10.2.28.88
+easy_123,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-teyq2nr,desktop-teyq2nr
+easy_123,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),brolf
+easy_123,GPT-4o,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,184.29.31.84;23.218.232.156;23.218.232.170;23.55.178.208;23.55.178.219;23.64.147.24,45.131.214.85
+easy_123,GPT-4o,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-02-28 19:00 utc,2026-02-28 19:00 utc
+easy_123,GPT-4o,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),45.131.214.85;c2 server
+easy_123,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,10.2.28.88,10.2.28.88
+easy_123,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-teyq2nr,desktop-teyq2nr
+easy_123,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),brolf
+easy_123,GPT-5.2,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,184.29.31.84;23.218.232.156;23.218.232.170;23.55.178.208;23.55.178.219;23.64.147.24,45.131.214.85
+easy_123,GPT-5.2,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-02-28 19:00,2026-02-28 19:00 utc
+easy_123,GPT-5.2,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),45.131.214.85;c2 server
+easy_123,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,10.2.28.88,10.2.28.88
+easy_123,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-teyq2nr,desktop-teyq2nr
+easy_123,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),brolf
+easy_123,GPT-5-mini,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,184.29.31.84;23.218.232.156;23.218.232.170;23.55.178.208;23.55.178.219;23.64.147.24,45.131.214.85
+easy_123,GPT-5-mini,5,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-02-28 19:00 utc,2026-02-28 19:00 utc
+easy_123,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),45.131.214.85;c2 server
+fake_auth,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,10.1.17.215
+fake_auth,Claude Sonnet 4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),shutchenson
+fake_auth,Claude Sonnet 4,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,appointedtimeagriculture.com (217.70.186.109);authenticatoor.org (82.221.136.26);google-authenticator.burleson-appliance.net (104.21.64.1);jadserve.postrelease.com (44.237.90.153),authenticatoor.org
+fake_auth,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.21.64.1;192.132.33.69;217.70.186.109;44.237.90.153;82.221.136.26,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,Claude Sonnet 4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2025-01-22 19:00 utc,2025-01-22 19:00 utc
+fake_auth,Claude Sonnet 4,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,45.125.66.252;45.125.66.32,45.125.66.252;45.125.66.32
+fake_auth,Claude Sonnet 4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,tie between 23.212.73.35 and 23.199.168.146 (both received 2 connections from infected host 10.1.17.215). 23.212.73.35 appears to be a legitimate microsoft service (oneclient.sfx.ms);while 23.199.168.146 appears to be an advertising service (px.owneriq.net).,5.252.153.241;c2 server
+fake_auth,Cisco 8B,1,1.0,1,0,1,0,0,,0.0,,suspicious_domains_result.json,10.1.17.215,10.1.17.215
+fake_auth,Cisco 8B,2,1.0,1,0,1,0,0,,0.0,,kerberos_hostnames_result.json,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,Cisco 8B,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,l8c5gsj,shutchenson
+fake_auth,Cisco 8B,4,1.0,1,0,1,0,0,,0.0,,suspicious_domains_result.json,appointedtimeagriculture.com;authenticatoor.org;bttrack.com;google-authenticator.burleson-appliance.net,authenticatoor.org
+fake_auth,Cisco 8B,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.199.168.146;23.212.73.35,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,Cisco 8B,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2025-01-22 19:00,2025-01-22 19:00 utc
+fake_auth,Cisco 8B,7,1.0,1,0,1,0,0,,0.0,,suspicious_certificates_result.json,45.125.66.252;45.125.66.32,45.125.66.252;45.125.66.32
+fake_auth,Cisco 8B,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""23.199.168.146"";""legitimate service""",5.252.153.241;c2 server
+fake_auth,DeepSeek V3,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,10.1.17.215
+fake_auth,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-l8c5gsj
+fake_auth,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),shutchenson
+fake_auth,DeepSeek V3,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,appointedtimeagriculture.com;authenticatoor.org;google-authenticator.burleson-appliance.net,authenticatoor.org
+fake_auth,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,217.70.186.109;82.221.136.26,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,DeepSeek V3,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2025-01-22 19:00,2025-01-22 19:00 utc
+fake_auth,DeepSeek V3,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,45.125.66.252;45.125.66.32,45.125.66.252;45.125.66.32
+fake_auth,DeepSeek V3,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),5.252.153.241;c2 server
+fake_auth,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,10.1.17.215
+fake_auth,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),shutchenson
+fake_auth,Ollama 3.1:70b,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,appointedtimeagriculture.com;authenticatoor.org;google-authenticator.burleson-appliance.net,authenticatoor.org
+fake_auth,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.132.33.69;217.70.186.109;23.212.73.35;23.41.241.15;23.55.125.39;82.221.136.26,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,Ollama 3.1:70b,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2025-01-22 19:00,2025-01-22 19:00 utc
+fake_auth,Ollama 3.1:70b,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,45.125.66.252;45.125.66.32,45.125.66.252;45.125.66.32
+fake_auth,Ollama 3.1:70b,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.212.73.35,5.252.153.241;c2 server
+fake_auth,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,10.1.17.215
+fake_auth,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),shutchenson
+fake_auth,GPT-4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),authenticatoor.org
+fake_auth,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,192.132.33.69;217.70.186.109,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,GPT-4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2025-01-22 19:00 utc,2025-01-22 19:00 utc
+fake_auth,GPT-4,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,45.125.66.252;45.125.66.32,45.125.66.252;45.125.66.32
+fake_auth,GPT-4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,5.252.153.241;c2 server
+fake_auth,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,10.1.17.215
+fake_auth,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),shutchenson
+fake_auth,GPT-4o,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),authenticatoor.org
+fake_auth,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.18.8.76;104.21.64.1;192.132.33.69;217.70.186.109;3.82.67.153;35.71.139.29;35.84.233.181;44.237.90.153;52.32.135.66;82.221.136.26,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,GPT-4o,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2025-01-22 19:00 utc,2025-01-22 19:00 utc
+fake_auth,GPT-4o,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,45.125.66.252;45.125.66.32,45.125.66.252;45.125.66.32
+fake_auth,GPT-4o,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,5.252.153.241;c2 server
+fake_auth,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,10.1.17.215
+fake_auth,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),shutchenson
+fake_auth,GPT-5.2,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,appointedtimeagriculture.com;authenticatoor.org;bttrack.com;google-authenticator.burleson-appliance.net;jadserve.postrelease.com;oneclient.sfx.ms;play.vidyard.com,authenticatoor.org
+fake_auth,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,3.82.67.153;82.221.136.26,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,GPT-5.2,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2025-01-22 19:00 utc,2025-01-22 19:00 utc
+fake_auth,GPT-5.2,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,45.125.66.252;45.125.66.32,45.125.66.252;45.125.66.32
+fake_auth,GPT-5.2,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,5.252.153.241;c2 server
+fake_auth,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,10.1.17.215
+fake_auth,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),shutchenson
+fake_auth,GPT-5-mini,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,appointedtimeagriculture.com;authenticatoor.org;bttrack.com;google-authenticator.burleson-appliance.net;jadserve.postrelease.com;mscom.demdex.net;play.vidyard.com,authenticatoor.org
+fake_auth,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.18.8.76;104.21.64.1;192.132.33.69;217.70.186.109;3.82.67.153;35.71.139.29;35.84.233.181;44.237.90.153;52.32.135.66;82.221.136.26,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,GPT-5-mini,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2025-01-22 19:00,2025-01-22 19:00 utc
+fake_auth,GPT-5-mini,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,45.125.66.252;45.125.66.32,45.125.66.252;45.125.66.32
+fake_auth,GPT-5-mini,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.17.215,5.252.153.241;c2 server
+gozi,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.137,172.16.1.137
+gozi,Claude Sonnet 4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-3gjl3pv (ip: 172.16.1.137),desktop-3gjl3pv
+gozi,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),sherita.kolb
+gozi,Claude Sonnet 4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),unapromo.com
+gozi,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),31.41.44.49;31.41.44.60;46.8.19.233;46.8.19.86;5.44.45.201;62.173.138.138;62.173.140.103;62.173.140.76;62.173.140.94;62.173.149.243;89.116.236.41
+gozi,Claude Sonnet 4,6,0.5,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,cook32.rar;cook64.rar,cook32.rar;cook64.rar;stilak32.rar;stilak64.rar
+gozi,Claude Sonnet 4,7,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+gozi,Claude Sonnet 4,8,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-03-07 02:00 utc,2023-03-07 02:00 utc
+gozi,Claude Sonnet 4,9,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163 received the most connections (2) from infected host 172.16.1.137;appears to be legitimate google service (fonts.gstatic.com);not c2 server,62.173.138.138;c2 server
+gozi,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.137,172.16.1.137
+gozi,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-3gjl3pv,desktop-3gjl3pv
+gozi,Cisco 8B,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-3gjl3pv,sherita.kolb
+gozi,Cisco 8B,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,fonts.gstatic.com;www.gstatic.com,unapromo.com
+gozi,Cisco 8B,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163;142.251.143.195,31.41.44.49;31.41.44.60;46.8.19.233;46.8.19.86;5.44.45.201;62.173.138.138;62.173.140.103;62.173.140.76;62.173.140.94;62.173.149.243;89.116.236.41
+gozi,Cisco 8B,6,0.5,1,2,1,0,1,0.0,2.0,et malware ursnif payload request (cook32.rar)+et malware ursnif payload request (cook64.rar),suricata_alerts_result.json,cook32.rar;cook64.rar,cook32.rar;cook64.rar;stilak32.rar;stilak64.rar
+gozi,Cisco 8B,7,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+gozi,Cisco 8B,8,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-03-07 02:00:00,2023-03-07 02:00 utc
+gozi,Cisco 8B,9,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163,62.173.138.138;c2 server
+gozi,DeepSeek V3,1,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),172.16.1.137
+gozi,DeepSeek V3,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-3gjl3pv,desktop-3gjl3pv
+gozi,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),sherita.kolb
+gozi,DeepSeek V3,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),unapromo.com
+gozi,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),31.41.44.49;31.41.44.60;46.8.19.233;46.8.19.86;5.44.45.201;62.173.138.138;62.173.140.103;62.173.140.76;62.173.140.94;62.173.149.243;89.116.236.41
+gozi,DeepSeek V3,6,0.5,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,cook32.rar;cook64.rar,cook32.rar;cook64.rar;stilak32.rar;stilak64.rar
+gozi,DeepSeek V3,7,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+gozi,DeepSeek V3,8,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-03-07 02:00,2023-03-07 02:00 utc
+gozi,DeepSeek V3,9,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163;legitimate service,62.173.138.138;c2 server
+gozi,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.137,172.16.1.137
+gozi,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-3gjl3pv,desktop-3gjl3pv
+gozi,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),sherita.kolb
+gozi,Ollama 3.1:70b,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),unapromo.com
+gozi,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163;142.251.143.195,31.41.44.49;31.41.44.60;46.8.19.233;46.8.19.86;5.44.45.201;62.173.138.138;62.173.140.103;62.173.140.76;62.173.140.94;62.173.149.243;89.116.236.41
+gozi,Ollama 3.1:70b,6,0.5,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,cook32.rar;cook64.rar,cook32.rar;cook64.rar;stilak32.rar;stilak64.rar
+gozi,Ollama 3.1:70b,7,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),confidentiality
+gozi,Ollama 3.1:70b,8,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-03-07 02:00,2023-03-07 02:00 utc
+gozi,Ollama 3.1:70b,9,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163,62.173.138.138;c2 server
+gozi,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.137,172.16.1.137
+gozi,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-3gjl3pv,desktop-3gjl3pv
+gozi,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),sherita.kolb
+gozi,GPT-4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,fonts.gstatic.com;www.gstatic.com,unapromo.com
+gozi,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163;142.251.143.195,31.41.44.49;31.41.44.60;46.8.19.233;46.8.19.86;5.44.45.201;62.173.138.138;62.173.140.103;62.173.140.76;62.173.140.94;62.173.149.243;89.116.236.41
+gozi,GPT-4,6,0.5,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,cook32.rar;cook64.rar,cook32.rar;cook64.rar;stilak32.rar;stilak64.rar
+gozi,GPT-4,7,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+gozi,GPT-4,8,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-03-07 02:00 utc,2023-03-07 02:00 utc
+gozi,GPT-4,9,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),62.173.138.138;c2 server
+gozi,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.137,172.16.1.137
+gozi,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-3gjl3pv,desktop-3gjl3pv
+gozi,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),sherita.kolb
+gozi,GPT-4o,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,fonts.gstatic.com;www.gstatic.com,unapromo.com
+gozi,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163;142.251.143.195,31.41.44.49;31.41.44.60;46.8.19.233;46.8.19.86;5.44.45.201;62.173.138.138;62.173.140.103;62.173.140.76;62.173.140.94;62.173.149.243;89.116.236.41
+gozi,GPT-4o,6,0.5,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,cook32.rar;cook64.rar,cook32.rar;cook64.rar;stilak32.rar;stilak64.rar
+gozi,GPT-4o,7,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+gozi,GPT-4o,8,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-03-07 02:00 utc,2023-03-07 02:00 utc
+gozi,GPT-4o,9,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),62.173.138.138;c2 server
+gozi,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.137,172.16.1.137
+gozi,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-3gjl3pv,desktop-3gjl3pv
+gozi,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),sherita.kolb
+gozi,GPT-5.2,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,fonts.gstatic.com;www.gstatic.com,unapromo.com
+gozi,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163;142.251.143.195,31.41.44.49;31.41.44.60;46.8.19.233;46.8.19.86;5.44.45.201;62.173.138.138;62.173.140.103;62.173.140.76;62.173.140.94;62.173.149.243;89.116.236.41
+gozi,GPT-5.2,6,0.5,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,cook32.rar;cook64.rar,cook32.rar;cook64.rar;stilak32.rar;stilak64.rar
+gozi,GPT-5.2,7,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+gozi,GPT-5.2,8,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-03-07 02:00 utc,2023-03-07 02:00 utc
+gozi,GPT-5.2,9,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),62.173.138.138;c2 server
+gozi,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.16.1.137,172.16.1.137
+gozi,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-3gjl3pv,desktop-3gjl3pv
+gozi,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,"""desktop-3gjl3pv""",sherita.kolb
+gozi,GPT-5-mini,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,fonts.gstatic.com;www.gstatic.com,unapromo.com
+gozi,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,142.251.143.163;142.251.143.195,31.41.44.49;31.41.44.60;46.8.19.233;46.8.19.86;5.44.45.201;62.173.138.138;62.173.140.103;62.173.140.76;62.173.140.94;62.173.149.243;89.116.236.41
+gozi,GPT-5-mini,6,0.5,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,cook32.rar;cook64.rar,cook32.rar;cook64.rar;stilak32.rar;stilak64.rar
+gozi,GPT-5-mini,7,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+gozi,GPT-5-mini,8,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-03-07 02:00 utc,2023-03-07 02:00 utc
+gozi,GPT-5-mini,9,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),62.173.138.138;c2 server
+iced_id,Claude Sonnet 4,1,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),10.4.19.136
+iced_id,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-sff9ljf
+iced_id,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),csilva
+iced_id,Claude Sonnet 4,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,http://80.77.25.175/main.php,80.77.25.175
+iced_id,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,80.77.25.175,104.168.53.18;217.199.121.56;askamoshopsi.com;skansnekssky.com
+iced_id,Claude Sonnet 4,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+iced_id,Claude Sonnet 4,7,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2023-04-19 15:00 utc
+iced_id,Claude Sonnet 4,8,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,217.199.121.56 with 75 connections;likely a c2 server,217.199.121.56;c2 server
+iced_id,Cisco 8B,1,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),10.4.19.136
+iced_id,Cisco 8B,2,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),desktop-sff9ljf
+iced_id,Cisco 8B,3,0.0,0,0,1,0,0,,0.0,,suricata_alerts_result.json,not found,csilva
+iced_id,Cisco 8B,4,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),80.77.25.175
+iced_id,Cisco 8B,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,80.77.25.175,104.168.53.18;217.199.121.56;askamoshopsi.com;skansnekssky.com
+iced_id,Cisco 8B,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+iced_id,Cisco 8B,7,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2023-04-19 15:00 utc
+iced_id,Cisco 8B,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,217.199.121.56,217.199.121.56;c2 server
+iced_id,DeepSeek V3,1,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),10.4.19.136
+iced_id,DeepSeek V3,2,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),desktop-sff9ljf
+iced_id,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),csilva
+iced_id,DeepSeek V3,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,http://80.77.25.175/main.php,80.77.25.175
+iced_id,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,80.77.25.175,104.168.53.18;217.199.121.56;askamoshopsi.com;skansnekssky.com
+iced_id,DeepSeek V3,6,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),confidentiality
+iced_id,DeepSeek V3,7,0.0,0,0,1,0,0,,0.0,,suricata_alerts_result.json,(none),2023-04-19 15:00 utc
+iced_id,DeepSeek V3,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,217.199.121.56;unknown,217.199.121.56;c2 server
+iced_id,Ollama 3.1:70b,1,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),10.4.19.136
+iced_id,Ollama 3.1:70b,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-sff9ljf
+iced_id,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),csilva
+iced_id,Ollama 3.1:70b,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,80.77.25.175/main.php,80.77.25.175
+iced_id,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,80.77.25.175,104.168.53.18;217.199.121.56;askamoshopsi.com;skansnekssky.com
+iced_id,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),confidentiality
+iced_id,Ollama 3.1:70b,7,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2023-04-19 15:00 utc
+iced_id,Ollama 3.1:70b,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,217.199.121.56,217.199.121.56;c2 server
+iced_id,GPT-4,1,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),10.4.19.136
+iced_id,GPT-4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-sff9ljf
+iced_id,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),csilva
+iced_id,GPT-4,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,/main.php;80.77.25.175,80.77.25.175
+iced_id,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,80.77.25.175;boogienights.live,104.168.53.18;217.199.121.56;askamoshopsi.com;skansnekssky.com
+iced_id,GPT-4,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+iced_id,GPT-4,7,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2022-01-15 03:45,2023-04-19 15:00 utc
+iced_id,GPT-4,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,217.199.121.56,217.199.121.56;c2 server
+iced_id,GPT-4o,1,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),10.4.19.136
+iced_id,GPT-4o,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-sff9ljf
+iced_id,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),csilva
+iced_id,GPT-4o,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,/main.php;80.77.25.175,80.77.25.175
+iced_id,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,80.77.25.175;boogienights.live,104.168.53.18;217.199.121.56;askamoshopsi.com;skansnekssky.com
+iced_id,GPT-4o,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+iced_id,GPT-4o,7,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2022-01-15 03:45,2023-04-19 15:00 utc
+iced_id,GPT-4o,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,217.199.121.56,217.199.121.56;c2 server
+iced_id,GPT-5.2,1,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),10.4.19.136
+iced_id,GPT-5.2,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-sff9ljf
+iced_id,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),csilva
+iced_id,GPT-5.2,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,/main.php;80.77.25.175,80.77.25.175
+iced_id,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,80.77.25.175;boogienights.live,104.168.53.18;217.199.121.56;askamoshopsi.com;skansnekssky.com
+iced_id,GPT-5.2,6,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,integrity,confidentiality
+iced_id,GPT-5.2,7,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2022-01-15 03:45,2023-04-19 15:00 utc
+iced_id,GPT-5.2,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,217.199.121.56,217.199.121.56;c2 server
+iced_id,GPT-5-mini,1,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),10.4.19.136
+iced_id,GPT-5-mini,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-sff9ljf
+iced_id,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),csilva
+iced_id,GPT-5-mini,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,/main.php;80.77.25.175,80.77.25.175
+iced_id,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,80.77.25.175;boogienights.live,104.168.53.18;217.199.121.56;askamoshopsi.com;skansnekssky.com
+iced_id,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,integrity,confidentiality
+iced_id,GPT-5-mini,7,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2023-04-19 15:00 utc
+iced_id,GPT-5-mini,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,217.199.121.56,217.199.121.56;c2 server
+jun21isc,Claude Sonnet 4,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187,10.6.15.119;10.6.15.187;10.6.15.93
+jun21isc,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),dekstop-a1ctjvy;desktop-niee9lp;desktop-ys6fz2g
+jun21isc,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),horace.maddox;raquel.anderson;tommy.vega
+jun21isc,Claude Sonnet 4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),hadevatjulps.com;solarwindsonline.com;srand04rf.ru;ststephenskisugu.church
+jun21isc,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),103.28.39.29;104.244.121.13;162.244.83.95;185.66.15.228;194.226.60.15;65.60.35.141
+jun21isc,Claude Sonnet 4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-06-16 14:00 utc,2021-06-16 14:00 utc
+jun21isc,Claude Sonnet 4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+jun21isc,Claude Sonnet 4,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.221.22.73 and 172.217.14.174 (tied with 3 connections each);both are legitimate services - adroll advertising platform and google analytics respectively;not c2 servers,65.60.35.141;c2 server
+jun21isc,Cisco 8B,1,0.67,1,0,1,0,0,,0.0,,suspicious_domains_result.json,10.6.15.119;10.6.15.187,10.6.15.119;10.6.15.187;10.6.15.93
+jun21isc,Cisco 8B,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119,dekstop-a1ctjvy;desktop-niee9lp;desktop-ys6fz2g
+jun21isc,Cisco 8B,3,0.0,0,0,1,0,0,,0.0,,suspicious_certificates_result.json,not found,horace.maddox;raquel.anderson;tommy.vega
+jun21isc,Cisco 8B,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,103.28.39.29;192.185.88.195;corazonarquitectura.com;khangland.pro,hadevatjulps.com;solarwindsonline.com;srand04rf.ru;ststephenskisugu.church
+jun21isc,Cisco 8B,5,0.0,0,0,1,0,0,,0.0,,suspicious_certificates_result.json,(none),103.28.39.29;104.244.121.13;162.244.83.95;185.66.15.228;194.226.60.15;65.60.35.141
+jun21isc,Cisco 8B,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-06-16 14:00,2021-06-16 14:00 utc
+jun21isc,Cisco 8B,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,not found,zqyefcetkqg.biz
+jun21isc,Cisco 8B,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.221.22.73;legitimate service,65.60.35.141;c2 server
+jun21isc,DeepSeek V3,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187,10.6.15.119;10.6.15.187;10.6.15.93
+jun21isc,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),dekstop-a1ctjvy;desktop-niee9lp;desktop-ys6fz2g
+jun21isc,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),horace.maddox;raquel.anderson;tommy.vega
+jun21isc,DeepSeek V3,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),hadevatjulps.com;solarwindsonline.com;srand04rf.ru;ststephenskisugu.church
+jun21isc,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),103.28.39.29;104.244.121.13;162.244.83.95;185.66.15.228;194.226.60.15;65.60.35.141
+jun21isc,DeepSeek V3,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-06-16 14:00,2021-06-16 14:00 utc
+jun21isc,DeepSeek V3,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+jun21isc,DeepSeek V3,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),65.60.35.141;c2 server
+jun21isc,Ollama 3.1:70b,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187,10.6.15.119;10.6.15.187;10.6.15.93
+jun21isc,Ollama 3.1:70b,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),dekstop-a1ctjvy;desktop-niee9lp;desktop-ys6fz2g
+jun21isc,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),horace.maddox;raquel.anderson;tommy.vega
+jun21isc,Ollama 3.1:70b,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),hadevatjulps.com;solarwindsonline.com;srand04rf.ru;ststephenskisugu.church
+jun21isc,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,not found,103.28.39.29;104.244.121.13;162.244.83.95;185.66.15.228;194.226.60.15;65.60.35.141
+jun21isc,Ollama 3.1:70b,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-06-16 14:00 utc,2021-06-16 14:00 utc
+jun21isc,Ollama 3.1:70b,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+jun21isc,Ollama 3.1:70b,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),65.60.35.141;c2 server
+jun21isc,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187;10.6.15.93,10.6.15.119;10.6.15.187;10.6.15.93
+jun21isc,GPT-4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187,dekstop-a1ctjvy;desktop-niee9lp;desktop-ys6fz2g
+jun21isc,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),horace.maddox;raquel.anderson;tommy.vega
+jun21isc,GPT-4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,103.28.39.29;104.18.99.194;104.244.42.133;104.254.148.133;104.94.66.155;107.178.254.65;13.108.233.254;13.110.32.36;13.225.51.72;13.225.51.77;13.249.75.112;13.249.75.39;130.211.5.208;151.101.2.217;162.247.243.146;172.217.14.174;172.67.196.121;173.223.108.63;173.223.156.159;192.185.112.212;192.185.88.195;23.221.22.73;23.222.241.54;23.4.48.124;3.210.3.115;3.211.208.250;3.225.67.81;3.93.105.71;34.192.222.167;35.186.194.58;35.190.60.146;35.201.112.186;50.31.142.95;52.25.42.84;52.44.89.131;52.71.230.189,hadevatjulps.com;solarwindsonline.com;srand04rf.ru;ststephenskisugu.church
+jun21isc,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),103.28.39.29;104.244.121.13;162.244.83.95;185.66.15.228;194.226.60.15;65.60.35.141
+jun21isc,GPT-4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-06-16 14:00,2021-06-16 14:00 utc
+jun21isc,GPT-4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+jun21isc,GPT-4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),65.60.35.141;c2 server
+jun21isc,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187;10.6.15.93,10.6.15.119;10.6.15.187;10.6.15.93
+jun21isc,GPT-4o,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187,dekstop-a1ctjvy;desktop-niee9lp;desktop-ys6fz2g
+jun21isc,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),horace.maddox;raquel.anderson;tommy.vega
+jun21isc,GPT-4o,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,103.28.39.29;104.244.121.13;104.244.42.133;104.254.148.133;104.94.66.155;107.178.254.65;13.108.233.254;13.110.32.36;13.225.51.72;13.225.51.77;13.249.75.112;13.249.75.39;130.211.5.208;151.101.2.110;151.101.2.217;162.247.243.146;172.217.14.174;172.67.196.121;173.223.108.63;173.223.156.159;23.221.22.73;23.222.241.54;23.4.48.124;3.210.3.115;3.211.208.250;3.225.67.81;3.93.105.71;35.186.194.58;35.190.60.146;35.201.112.186;50.31.142.95;52.25.42.84;52.44.89.131;52.71.230.189,hadevatjulps.com;solarwindsonline.com;srand04rf.ru;ststephenskisugu.church
+jun21isc,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),103.28.39.29;104.244.121.13;162.244.83.95;185.66.15.228;194.226.60.15;65.60.35.141
+jun21isc,GPT-4o,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-06-16 14:00,2021-06-16 14:00 utc
+jun21isc,GPT-4o,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+jun21isc,GPT-4o,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119,65.60.35.141;c2 server
+jun21isc,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187;10.6.15.93,10.6.15.119;10.6.15.187;10.6.15.93
+jun21isc,GPT-5.2,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187,dekstop-a1ctjvy;desktop-niee9lp;desktop-ys6fz2g
+jun21isc,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),horace.maddox;raquel.anderson;tommy.vega
+jun21isc,GPT-5.2,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,103.28.39.29;104.18.99.194;104.244.42.133;104.254.148.133;104.94.66.155;107.178.254.65;13.108.233.254;13.110.32.36;13.225.51.72;13.225.51.77;13.249.75.112;13.249.75.39;130.211.5.208;151.101.2.217;162.247.243.146;172.217.14.174;172.67.196.121;173.223.108.63;173.223.156.159;192.185.112.212;192.185.88.195;23.221.22.73;23.222.241.54;23.4.48.124;3.210.3.115;3.211.208.250;3.225.67.81;3.93.105.71;34.192.222.167;35.186.194.58;35.190.60.146;35.201.112.186;50.31.142.95;52.25.42.84;52.44.89.131;52.71.230.189,hadevatjulps.com;solarwindsonline.com;srand04rf.ru;ststephenskisugu.church
+jun21isc,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),103.28.39.29;104.244.121.13;162.244.83.95;185.66.15.228;194.226.60.15;65.60.35.141
+jun21isc,GPT-5.2,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-06-16 14:00,2021-06-16 14:00 utc
+jun21isc,GPT-5.2,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+jun21isc,GPT-5.2,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),65.60.35.141;c2 server
+jun21isc,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187;10.6.15.93,10.6.15.119;10.6.15.187;10.6.15.93
+jun21isc,GPT-5-mini,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119;10.6.15.187,dekstop-a1ctjvy;desktop-niee9lp;desktop-ys6fz2g
+jun21isc,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),horace.maddox;raquel.anderson;tommy.vega
+jun21isc,GPT-5-mini,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,103.28.39.29;104.18.99.194;104.244.121.13;104.244.42.133;104.254.148.133;104.94.66.155;107.178.254.65;13.108.233.254;13.110.32.36;13.225.51.72;13.225.51.77;13.249.75.112;13.249.75.39;130.211.5.208;151.101.2.110;151.101.2.217;162.247.243.146;172.217.14.174;172.67.196.121;173.223.108.63;173.223.156.159;192.185.112.212;192.185.88.195;23.221.22.73;23.222.241.54;23.4.48.124;3.210.3.115;3.211.208.250;3.225.67.81;3.93.105.71;34.192.222.167;35.186.194.58;35.190.60.146;35.201.112.186;50.31.142.95;52.25.42.84;52.44.89.131;52.71.230.189,hadevatjulps.com;solarwindsonline.com;srand04rf.ru;ststephenskisugu.church
+jun21isc,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),103.28.39.29;104.244.121.13;162.244.83.95;185.66.15.228;194.226.60.15;65.60.35.141
+jun21isc,GPT-5-mini,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-06-16 14:00,2021-06-16 14:00 utc
+jun21isc,GPT-5-mini,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+jun21isc,GPT-5-mini,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.6.15.119,65.60.35.141;c2 server
+koi_stealer,Claude Sonnet 4,1,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),172.17.0.99
+koi_stealer,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-rnvo9at
+koi_stealer,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),afletcher
+koi_stealer,Claude Sonnet 4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),www.bellantonicioccolato.it
+koi_stealer,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197
+koi_stealer,Claude Sonnet 4,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+koi_stealer,Claude Sonnet 4,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-09-04 17:00 utc,2024-09-04 17:00 utc
+koi_stealer,Claude Sonnet 4,8,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),79.124.78.197;c2 server
+koi_stealer,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,172.17.0.99,172.17.0.99
+koi_stealer,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-rnvo9at,desktop-rnvo9at
+koi_stealer,Cisco 8B,3,0.0,0,0,1,0,0,,0.0,,kerberos_hostnames_result.json,desktop-rnvo9at,afletcher
+koi_stealer,Cisco 8B,4,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),www.bellantonicioccolato.it
+koi_stealer,Cisco 8B,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,sso.godaddy;sso.godaddy.com;www.bellantonicioccolato,79.124.78.197
+koi_stealer,Cisco 8B,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+koi_stealer,Cisco 8B,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-09-04 17:00,2024-09-04 17:00 utc
+koi_stealer,Cisco 8B,8,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),79.124.78.197;c2 server
+koi_stealer,DeepSeek V3,1,0.0,0,0,1,0,0,,0.0,,kerberos_hostnames_result.json,(none),172.17.0.99
+koi_stealer,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-rnvo9at
+koi_stealer,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),afletcher
+koi_stealer,DeepSeek V3,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,www.bellantonicioccolato.it,www.bellantonicioccolato.it
+koi_stealer,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197
+koi_stealer,DeepSeek V3,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+koi_stealer,DeepSeek V3,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-09-04 17:00,2024-09-04 17:00 utc
+koi_stealer,DeepSeek V3,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197;c2 server
+koi_stealer,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,172.17.0.99,172.17.0.99
+koi_stealer,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-rnvo9at,desktop-rnvo9at
+koi_stealer,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),afletcher
+koi_stealer,Ollama 3.1:70b,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,www.bellantonicioccolato.it,www.bellantonicioccolato.it
+koi_stealer,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,not found,79.124.78.197
+koi_stealer,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,availability,confidentiality
+koi_stealer,Ollama 3.1:70b,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-09-04 17:00,2024-09-04 17:00 utc
+koi_stealer,Ollama 3.1:70b,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197;c2 server
+koi_stealer,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,172.17.0.99,172.17.0.99
+koi_stealer,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-rnvo9at,desktop-rnvo9at
+koi_stealer,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),afletcher
+koi_stealer,GPT-4,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,sso.godaddy.com;www.bellantonicioccolato.it,www.bellantonicioccolato.it
+koi_stealer,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197
+koi_stealer,GPT-4,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+koi_stealer,GPT-4,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-09-04 17:00 utc,2024-09-04 17:00 utc
+koi_stealer,GPT-4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197;c2 server
+koi_stealer,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,172.17.0.99,172.17.0.99
+koi_stealer,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-rnvo9at,desktop-rnvo9at
+koi_stealer,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),afletcher
+koi_stealer,GPT-4o,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""img-s-msn-com.akamaized.net"";""oneclient.sfx.ms"";""sso.godaddy.com"";""weathermapdata.blob.core.windows.net"";""www.bellantonicioccolato.it""",www.bellantonicioccolato.it
+koi_stealer,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197
+koi_stealer,GPT-4o,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+koi_stealer,GPT-4o,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-09-04 17:00,2024-09-04 17:00 utc
+koi_stealer,GPT-4o,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197;c2 server
+koi_stealer,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,172.17.0.99,172.17.0.99
+koi_stealer,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-rnvo9at,desktop-rnvo9at
+koi_stealer,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),afletcher
+koi_stealer,GPT-5.2,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,sso.godaddy.com;www.bellantonicioccolato.it,www.bellantonicioccolato.it
+koi_stealer,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197
+koi_stealer,GPT-5.2,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+koi_stealer,GPT-5.2,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-09-04 17:00 utc,2024-09-04 17:00 utc
+koi_stealer,GPT-5.2,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197;c2 server
+koi_stealer,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,172.17.0.99,172.17.0.99
+koi_stealer,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-rnvo9at,desktop-rnvo9at
+koi_stealer,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),afletcher
+koi_stealer,GPT-5-mini,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,sso.godaddy.com;www.bellantonicioccolato.it,www.bellantonicioccolato.it
+koi_stealer,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197
+koi_stealer,GPT-5-mini,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+koi_stealer,GPT-5-mini,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-09-04 17:00,2024-09-04 17:00 utc
+koi_stealer,GPT-5-mini,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),79.124.78.197;c2 server
+lumma_stealer,Claude Sonnet 4,1,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),10.1.21.58
+lumma_stealer,Claude Sonnet 4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-es9f3ml,desktop-es9f3ml
+lumma_stealer,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),gwyatt
+lumma_stealer,Claude Sonnet 4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),153.92.1.49;whitepepper.su
+lumma_stealer,Claude Sonnet 4,5,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+lumma_stealer,Claude Sonnet 4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-01-27 23:00 utc,2026-01-27 23:00 utc
+lumma_stealer,Claude Sonnet 4,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,153.92.1.49 received the most connections (16) from infected host 10.1.21.58;and it appears to be a c2 server based on the suspicious domain whitepepper.su,153.92.1.49;c2 server
+lumma_stealer,Cisco 8B,1,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,10.1.21.101,10.1.21.58
+lumma_stealer,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-es9f3ml,desktop-es9f3ml
+lumma_stealer,Cisco 8B,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,desktop-es9f3ml,gwyatt
+lumma_stealer,Cisco 8B,4,0.5,1,0,1,0,0,,0.0,,suspicious_domains_result.json,domain: whitepepper.su;ip: 10.1.21.58,153.92.1.49;whitepepper.su
+lumma_stealer,Cisco 8B,5,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+lumma_stealer,Cisco 8B,6,0.0,0,0,1,0,0,,0.0,,suricata_alerts_result.json,2026-05-25 04:02:00 utc,2026-01-27 23:00 utc
+lumma_stealer,Cisco 8B,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,153.92.1.49;c2 server,153.92.1.49;c2 server
+lumma_stealer,DeepSeek V3,1,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),10.1.21.58
+lumma_stealer,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-es9f3ml
+lumma_stealer,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),gwyatt
+lumma_stealer,DeepSeek V3,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),153.92.1.49;whitepepper.su
+lumma_stealer,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),confidentiality
+lumma_stealer,DeepSeek V3,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-01-27 23:00,2026-01-27 23:00 utc
+lumma_stealer,DeepSeek V3,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,153.92.1.49;c2 server,153.92.1.49;c2 server
+lumma_stealer,Ollama 3.1:70b,1,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),10.1.21.58
+lumma_stealer,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-es9f3ml,desktop-es9f3ml
+lumma_stealer,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),gwyatt
+lumma_stealer,Ollama 3.1:70b,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),153.92.1.49;whitepepper.su
+lumma_stealer,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,availability,confidentiality
+lumma_stealer,Ollama 3.1:70b,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-01-27 23:00 utc,2026-01-27 23:00 utc
+lumma_stealer,Ollama 3.1:70b,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,153.92.1.49,153.92.1.49;c2 server
+lumma_stealer,GPT-4,1,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),10.1.21.58
+lumma_stealer,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-es9f3ml,desktop-es9f3ml
+lumma_stealer,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),gwyatt
+lumma_stealer,GPT-4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),153.92.1.49;whitepepper.su
+lumma_stealer,GPT-4,5,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+lumma_stealer,GPT-4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-01-27 23:00 utc,2026-01-27 23:00 utc
+lumma_stealer,GPT-4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),153.92.1.49;c2 server
+lumma_stealer,GPT-4o,1,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),10.1.21.58
+lumma_stealer,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-es9f3ml,desktop-es9f3ml
+lumma_stealer,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),gwyatt
+lumma_stealer,GPT-4o,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),153.92.1.49;whitepepper.su
+lumma_stealer,GPT-4o,5,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+lumma_stealer,GPT-4o,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-01-27 23:00 utc,2026-01-27 23:00 utc
+lumma_stealer,GPT-4o,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.21.58,153.92.1.49;c2 server
+lumma_stealer,GPT-5.2,1,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),10.1.21.58
+lumma_stealer,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-es9f3ml,desktop-es9f3ml
+lumma_stealer,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),gwyatt
+lumma_stealer,GPT-5.2,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),153.92.1.49;whitepepper.su
+lumma_stealer,GPT-5.2,5,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+lumma_stealer,GPT-5.2,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-01-27 23:00 utc,2026-01-27 23:00 utc
+lumma_stealer,GPT-5.2,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.21.58,153.92.1.49;c2 server
+lumma_stealer,GPT-5-mini,1,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),10.1.21.58
+lumma_stealer,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-es9f3ml,desktop-es9f3ml
+lumma_stealer,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),gwyatt
+lumma_stealer,GPT-5-mini,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),153.92.1.49;whitepepper.su
+lumma_stealer,GPT-5-mini,5,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+lumma_stealer,GPT-5-mini,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2026-01-27 23:00 utc,2026-01-27 23:00 utc
+lumma_stealer,GPT-5-mini,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.1.21.58,153.92.1.49;c2 server
+may21isc,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,172.17.4.206
+may21isc,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-v0feh1l
+may21isc,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),alfonso.paternoster
+may21isc,Claude Sonnet 4,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-05-04 22:00 utc,2021-05-04 22:00 utc
+may21isc,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.21.48.44;50.19.216.111;54.225.155.255;54.235.175.90,185.183.99.115
+may21isc,Claude Sonnet 4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+may21isc,Claude Sonnet 4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,54.225.155.255;legitimate service (api.ipify.org),45.32.211.207;c2 server
+may21isc,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,172.17.4.206
+may21isc,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-v0feh1l,desktop-v0feh1l
+may21isc,Cisco 8B,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,172.17.4.206;desktop-v0feh1l,alfonso.paternoster
+may21isc,Cisco 8B,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-05-04t22:00:00.000z,2021-05-04 22:00 utc
+may21isc,Cisco 8B,5,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,172.17.4.206,185.183.99.115
+may21isc,Cisco 8B,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,no,zqyefcetkqg.biz
+may21isc,Cisco 8B,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,54.225.155.255;c2,45.32.211.207;c2 server
+may21isc,DeepSeek V3,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,172.17.4.206
+may21isc,DeepSeek V3,2,0.0,0,0,1,0,0,,0.0,,kerberos_hostnames_result.json,(none),desktop-v0feh1l
+may21isc,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),alfonso.paternoster
+may21isc,DeepSeek V3,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-05-04 22:00,2021-05-04 22:00 utc
+may21isc,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.21.48.44;50.19.216.111;54.225.155.255;54.235.175.90,185.183.99.115
+may21isc,DeepSeek V3,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+may21isc,DeepSeek V3,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),45.32.211.207;c2 server
+may21isc,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,172.17.4.206
+may21isc,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-v0feh1l,desktop-v0feh1l
+may21isc,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),alfonso.paternoster
+may21isc,Ollama 3.1:70b,4,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-05-04 23:00,2021-05-04 22:00 utc
+may21isc,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.21.48.44;23.47.52.180;50.19.216.111;54.225.155.255;54.235.175.90,185.183.99.115
+may21isc,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+may21isc,Ollama 3.1:70b,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,54.225.155.255,45.32.211.207;c2 server
+may21isc,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,172.17.4.206
+may21isc,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-v0feh1l,desktop-v0feh1l
+may21isc,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),alfonso.paternoster
+may21isc,GPT-4,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-05-04 22:00,2021-05-04 22:00 utc
+may21isc,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.21.48.44;50.19.216.111;54.225.155.255;54.235.175.90,185.183.99.115
+may21isc,GPT-4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+may21isc,GPT-4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),45.32.211.207;c2 server
+may21isc,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,172.17.4.206
+may21isc,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-v0feh1l,desktop-v0feh1l
+may21isc,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),alfonso.paternoster
+may21isc,GPT-4o,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-05-04 22:00,2021-05-04 22:00 utc
+may21isc,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.21.48.44;50.19.216.111;54.225.155.255;54.235.175.90,185.183.99.115
+may21isc,GPT-4o,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+may21isc,GPT-4o,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,45.32.211.207;c2 server
+may21isc,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,172.17.4.206
+may21isc,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-v0feh1l,desktop-v0feh1l
+may21isc,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),alfonso.paternoster
+may21isc,GPT-5.2,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-05-04 22:00,2021-05-04 22:00 utc
+may21isc,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.21.48.44;50.19.216.111;54.225.155.255;54.235.175.90,185.183.99.115
+may21isc,GPT-5.2,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+may21isc,GPT-5.2,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,45.32.211.207;c2 server
+may21isc,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,172.17.4.206
+may21isc,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-v0feh1l,desktop-v0feh1l
+may21isc,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),alfonso.paternoster
+may21isc,GPT-5-mini,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-05-04 22:00,2021-05-04 22:00 utc
+may21isc,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.21.48.44;50.19.216.111;54.225.155.255;54.235.175.90,185.183.99.115
+may21isc,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,(none),zqyefcetkqg.biz
+may21isc,GPT-5-mini,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.17.4.206,45.32.211.207;c2 server
+net_rat,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,10.11.26.183
+net_rat,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-b8tqk49
+net_rat,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),oboomwald
+net_rat,Claude Sonnet 4,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,classicgrand.com;confirmsubscription.com;modandcrackedapk.com,classicgrand.com;modandcrackedapk.com
+net_rat,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.56.30.207;193.42.38.139;213.246.109.5;52.8.34.0,194.180.191.64
+net_rat,Claude Sonnet 4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-11-26 04:00 utc,2024-11-26 04:00 utc
+net_rat,Claude Sonnet 4,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,193.42.38.139 is a c2 server (8 connections from infected host 10.11.26.183 to modandcrackedapk.com),194.180.191.64;c2 server
+net_rat,Cisco 8B,1,1.0,1,0,1,0,0,,0.0,,suspicious_domains_result.json,10.11.26.183,10.11.26.183
+net_rat,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-b8tqk49,desktop-b8tqk49
+net_rat,Cisco 8B,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-b8tqk49,oboomwald
+net_rat,Cisco 8B,4,0.5,1,0,1,0,0,,0.0,,suspicious_domains_result.json,modandcrackedapk.com,classicgrand.com;modandcrackedapk.com
+net_rat,Cisco 8B,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;13.56.30.207;193.42.38.139;52.8.34.0,194.180.191.64
+net_rat,Cisco 8B,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-11-26 04:00,2024-11-26 04:00 utc
+net_rat,Cisco 8B,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,193.42.38.139,194.180.191.64;c2 server
+net_rat,DeepSeek V3,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,10.11.26.183
+net_rat,DeepSeek V3,2,0.0,0,0,1,0,0,,0.0,,kerberos_hostnames_result.json,(none),desktop-b8tqk49
+net_rat,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),oboomwald
+net_rat,DeepSeek V3,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,classicgrand.com;confirmsubscription.com;modandcrackedapk.com,classicgrand.com;modandcrackedapk.com
+net_rat,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.56.30.207;193.42.38.139;213.246.109.5;52.8.34.0,194.180.191.64
+net_rat,DeepSeek V3,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-11-26 04:00,2024-11-26 04:00 utc
+net_rat,DeepSeek V3,7,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,193.42.38.139;c2 server,194.180.191.64;c2 server
+net_rat,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,10.11.26.183
+net_rat,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-b8tqk49,desktop-b8tqk49
+net_rat,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),oboomwald
+net_rat,Ollama 3.1:70b,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,classicgrand.com;confirmsubscription.com;default.exp-tas.com;modandcrackedapk.com,classicgrand.com;modandcrackedapk.com
+net_rat,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.56.30.207;193.42.38.139;213.246.109.5;52.8.34.0,194.180.191.64
+net_rat,Ollama 3.1:70b,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-11-26 04:00 utc,2024-11-26 04:00 utc
+net_rat,Ollama 3.1:70b,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,193.42.38.139,194.180.191.64;c2 server
+net_rat,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,10.11.26.183
+net_rat,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-b8tqk49,desktop-b8tqk49
+net_rat,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),oboomwald
+net_rat,GPT-4,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""classicgrand.com"";""confirmsubscription.com"";""default.exp-tas.com"";""modandcrackedapk.com""",classicgrand.com;modandcrackedapk.com
+net_rat,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;13.56.30.207;142.250.138.94;193.42.38.139;213.246.109.5;52.8.34.0,194.180.191.64
+net_rat,GPT-4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-11-26 04:00,2024-11-26 04:00 utc
+net_rat,GPT-4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,194.180.191.64;c2 server
+net_rat,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,10.11.26.183
+net_rat,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,"the potentially infected machine in the lan is identified by the hostname ""desktop-b8tqk49"" with the ip address 10.11.26.183.",desktop-b8tqk49
+net_rat,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),oboomwald
+net_rat,GPT-4o,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,classicgrand.com;confirmsubscription.com;default.exp-tas.com;modandcrackedapk.com,classicgrand.com;modandcrackedapk.com
+net_rat,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;13.56.30.207;142.250.138.94;193.42.38.139;213.246.109.5;52.8.34.0,194.180.191.64
+net_rat,GPT-4o,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-11-26 04:00,2024-11-26 04:00 utc
+net_rat,GPT-4o,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,194.180.191.64;c2 server
+net_rat,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,10.11.26.183
+net_rat,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-b8tqk49,desktop-b8tqk49
+net_rat,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),oboomwald
+net_rat,GPT-5.2,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,classicgrand.com;confirmsubscription.com;default.exp-tas.com;modandcrackedapk.com,classicgrand.com;modandcrackedapk.com
+net_rat,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;13.56.30.207;142.250.138.94;193.42.38.139;213.246.109.5;52.8.34.0,194.180.191.64
+net_rat,GPT-5.2,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-11-26 04:00,2024-11-26 04:00 utc
+net_rat,GPT-5.2,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,194.180.191.64;c2 server
+net_rat,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,10.11.26.183
+net_rat,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-b8tqk49,desktop-b8tqk49
+net_rat,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),oboomwald
+net_rat,GPT-5-mini,4,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,classicgrand.com;confirmsubscription.com;default.exp-tas.com;modandcrackedapk.com,classicgrand.com;modandcrackedapk.com
+net_rat,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;13.56.30.207;142.250.138.94;193.42.38.139;213.246.109.5;52.8.34.0,194.180.191.64
+net_rat,GPT-5-mini,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-11-26 04:00 utc,2024-11-26 04:00 utc
+net_rat,GPT-5-mini,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.11.26.183,194.180.191.64;c2 server
+oct21isc,Claude Sonnet 4,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,10.10.22.156;10.10.22.157;10.10.22.158
+oct21isc,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-87wce26;desktop-cfa3367;desktop-nz875r4
+oct21isc,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),agnes.warren;kevin.henderson;marcus.cobb
+oct21isc,Claude Sonnet 4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),178.23.190.8;190.14.37.244;194.36.191.35;sobolpand.top
+oct21isc,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.21.32.95;107.161.180.34;198.136.61.225;198.50.182.64;23.21.76.7;34.117.59.81;50.17.218.95;54.243.250.193;54.243.29.214;83.223.99.191,37.0.10.22
+oct21isc,Claude Sonnet 4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),44491.6090605324.dat
+oct21isc,Claude Sonnet 4,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-10-22 14:00,2021-10-22 14:00 utc
+oct21isc,Claude Sonnet 4,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,54.243.29.214 - legitimate service (api.ipify.org ip lookup service),201.137.10.225;legitimate service
+oct21isc,Cisco 8B,1,0.33,1,0,1,0,0,,0.0,,suspicious_domains_result.json,10.10.22.156,10.10.22.156;10.10.22.157;10.10.22.158
+oct21isc,Cisco 8B,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""enemywatch-dc"";""hostname_10.10.22.156""",desktop-87wce26;desktop-cfa3367;desktop-nz875r4
+oct21isc,Cisco 8B,3,0.0,0,0,1,0,0,,0.0,,suricata_alerts_result.json,(none),agnes.warren;kevin.henderson;marcus.cobb
+oct21isc,Cisco 8B,4,0.0,0,1,1,1,0,0.0,1.0,suricata_alerts_result.json,suspicious_domains_result.json,"""54.243.29.214""",178.23.190.8;190.14.37.244;194.36.191.35;sobolpand.top
+oct21isc,Cisco 8B,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,107.161.180.34;198.136.61.225;198.50.182.64;54.243.29.214;83.223.99.191,37.0.10.22
+oct21isc,Cisco 8B,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.158;2023-09-15t08:30:00z;2023-09-18t14:45:00z;malicious file,44491.6090605324.dat
+oct21isc,Cisco 8B,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-10-22 14:00,2021-10-22 14:00 utc
+oct21isc,Cisco 8B,8,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,54.243.29.214 (c2 server),201.137.10.225;legitimate service
+oct21isc,DeepSeek V3,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,10.10.22.156;10.10.22.157;10.10.22.158
+oct21isc,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-87wce26;desktop-cfa3367;desktop-nz875r4
+oct21isc,DeepSeek V3,3,0.0,0,0,1,0,0,,0.0,,suricata_alerts_result.json,(none),agnes.warren;kevin.henderson;marcus.cobb
+oct21isc,DeepSeek V3,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),178.23.190.8;190.14.37.244;194.36.191.35;sobolpand.top
+oct21isc,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.21.32.95;107.161.180.34;198.136.61.225;198.50.182.64;23.21.76.7;34.117.59.81;50.17.218.95;54.243.250.193;54.243.29.214;83.223.99.191,37.0.10.22
+oct21isc,DeepSeek V3,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),44491.6090605324.dat
+oct21isc,DeepSeek V3,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-10-22 14:00,2021-10-22 14:00 utc
+oct21isc,DeepSeek V3,8,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,54.243.29.214;legitimate service,201.137.10.225;legitimate service
+oct21isc,Ollama 3.1:70b,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,10.10.22.156;10.10.22.157;10.10.22.158
+oct21isc,Ollama 3.1:70b,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),desktop-87wce26;desktop-cfa3367;desktop-nz875r4
+oct21isc,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),agnes.warren;kevin.henderson;marcus.cobb
+oct21isc,Ollama 3.1:70b,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,107.161.180.34;198.136.61.225;198.50.182.64;23.21.76.7;50.17.218.95;54.243.250.193;54.243.29.214;83.223.99.191;api.ipify.org;redinnovations.co.uk;tackleadvisors.com;www.calacatta.com;www.oftheearth.ca,178.23.190.8;190.14.37.244;194.36.191.35;sobolpand.top
+oct21isc,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.21.32.95;107.161.180.34;198.136.61.225;23.21.76.7;50.17.218.95;54.243.250.193;54.243.29.214;83.223.99.191,37.0.10.22
+oct21isc,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,not found,44491.6090605324.dat
+oct21isc,Ollama 3.1:70b,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-10-22 14:00,2021-10-22 14:00 utc
+oct21isc,Ollama 3.1:70b,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,54.243.29.214,201.137.10.225;legitimate service
+oct21isc,GPT-4,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,10.10.22.156;10.10.22.157;10.10.22.158
+oct21isc,GPT-4,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158;enemywatch-dc,desktop-87wce26;desktop-cfa3367;desktop-nz875r4
+oct21isc,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),agnes.warren;kevin.henderson;marcus.cobb
+oct21isc,GPT-4,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,107.161.180.34;198.136.61.225;198.50.182.64;23.21.76.7;50.17.218.95;54.243.250.193;54.243.29.214;83.223.99.191,178.23.190.8;190.14.37.244;194.36.191.35;sobolpand.top
+oct21isc,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.21.32.95;107.161.180.34;159.127.40.144;198.136.61.225;198.50.182.64;20.140.56.70;23.21.76.7;23.47.50.180;50.17.218.95;54.243.250.193;54.243.29.214,37.0.10.22
+oct21isc,GPT-4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),44491.6090605324.dat
+oct21isc,GPT-4,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-10-22 14:00 utc,2021-10-22 14:00 utc
+oct21isc,GPT-4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.158,201.137.10.225;legitimate service
+oct21isc,GPT-4o,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,10.10.22.156;10.10.22.157;10.10.22.158
+oct21isc,GPT-4o,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,desktop-87wce26;desktop-cfa3367;desktop-nz875r4
+oct21isc,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),agnes.warren;kevin.henderson;marcus.cobb
+oct21isc,GPT-4o,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,107.161.180.34;198.136.61.225;198.50.182.64;23.21.76.7;50.17.218.95;54.243.250.193;54.243.29.214;83.223.99.191,178.23.190.8;190.14.37.244;194.36.191.35;sobolpand.top
+oct21isc,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.16.10.88;104.21.32.95;107.161.180.34;159.127.40.144;198.136.61.225;198.50.182.64;20.140.56.70;23.21.76.7;23.222.241.43;23.47.50.180;34.117.59.81;34.120.119.232;35.190.80.1;50.17.218.95;52.96.55.242;54.243.250.193;54.243.29.214;72.247.207.22,37.0.10.22
+oct21isc,GPT-4o,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),44491.6090605324.dat
+oct21isc,GPT-4o,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-10-22 14:00,2021-10-22 14:00 utc
+oct21isc,GPT-4o,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.158,201.137.10.225;legitimate service
+oct21isc,GPT-5.2,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,10.10.22.156;10.10.22.157;10.10.22.158
+oct21isc,GPT-5.2,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,desktop-87wce26;desktop-cfa3367;desktop-nz875r4
+oct21isc,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),agnes.warren;kevin.henderson;marcus.cobb
+oct21isc,GPT-5.2,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,107.161.180.34;198.136.61.225;198.50.182.64;23.21.76.7;50.17.218.95;54.243.250.193;54.243.29.214;83.223.99.191,178.23.190.8;190.14.37.244;194.36.191.35;sobolpand.top
+oct21isc,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.16.10.88;104.21.32.95;107.161.180.34;159.127.40.144;198.136.61.225;198.50.182.64;20.140.56.70;23.21.76.7;23.222.241.43;23.47.50.180;34.117.59.81;34.120.119.232;35.190.80.1;50.17.218.95;52.96.55.242;54.243.250.193;54.243.29.214;72.247.207.22,37.0.10.22
+oct21isc,GPT-5.2,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),44491.6090605324.dat
+oct21isc,GPT-5.2,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-10-22 14:00,2021-10-22 14:00 utc
+oct21isc,GPT-5.2,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.158,201.137.10.225;legitimate service
+oct21isc,GPT-5-mini,1,0.67,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,10.10.22.156;10.10.22.157;10.10.22.158
+oct21isc,GPT-5-mini,2,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.156;10.10.22.158,desktop-87wce26;desktop-cfa3367;desktop-nz875r4
+oct21isc,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),agnes.warren;kevin.henderson;marcus.cobb
+oct21isc,GPT-5-mini,4,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,107.161.180.34;198.136.61.225;198.50.182.64;23.21.76.7;50.17.218.95;54.243.250.193;54.243.29.214;83.223.99.191,178.23.190.8;190.14.37.244;194.36.191.35;sobolpand.top
+oct21isc,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.21.32.95;107.161.180.34;159.127.40.144;198.136.61.225;198.50.182.64;20.140.56.70;23.21.76.7;23.47.50.180;50.17.218.95;54.243.250.193;54.243.29.214,37.0.10.22
+oct21isc,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),44491.6090605324.dat
+oct21isc,GPT-5-mini,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2021-10-22 14:00,2021-10-22 14:00 utc
+oct21isc,GPT-5-mini,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.10.22.158,201.137.10.225;legitimate service
+qakbot,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,10.0.0.149
+qakbot,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-e7fhjs4
+qakbot,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),damon.bauer
+qakbot,Claude Sonnet 4,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-02-03 17:00 utc,2023-02-03 17:00 utc
+qakbot,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,file_downloads_result.json,file_downloads_result.json,(none),http://128.254.207.55/86607.dat
+qakbot,Claude Sonnet 4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,185.2.4.16;88.135.68.140,102.156.32.143;208.187.122.74;23.111.114.52;5.75.205.43;78.31.67.7
+qakbot,Claude Sonnet 4,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,vipsauna.com,vipsauna.com
+qakbot,Claude Sonnet 4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,72.163.4.185;legitimate service,208.187.122.74;c2 server
+qakbot,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,10.0.0.149
+qakbot,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-e7fhjs4,desktop-e7fhjs4
+qakbot,Cisco 8B,3,0.0,0,0,1,0,0,,0.0,,suricata_alerts_result.json,wuser01,damon.bauer
+qakbot,Cisco 8B,4,1.0,1,0,1,0,0,,0.0,,suricata_alerts_result.json,2023-02-03 17:00,2023-02-03 17:00 utc
+qakbot,Cisco 8B,5,0.0,0,0,1,0,0,,0.0,,file_downloads_result.json,(none),http://128.254.207.55/86607.dat
+qakbot,Cisco 8B,6,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,13.107.237.57;138.1.33.162;152.216.7.110;184.28.39.150;184.86.169.24;185.2.4.16;209.131.162.45;52.13.171.212;68.87.41.40;72.163.4.185;88.135.68.140,102.156.32.143;208.187.122.74;23.111.114.52;5.75.205.43;78.31.67.7
+qakbot,Cisco 8B,7,1.0,1,0,1,0,0,,0.0,,suspicious_certificates_result.json,vipsauna.com,vipsauna.com
+qakbot,Cisco 8B,8,0.5,1,0,1,0,0,,0.0,,suspicious_domains_result.json,`[209.131.162.45;c2 server,208.187.122.74;c2 server
+qakbot,DeepSeek V3,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,10.0.0.149
+qakbot,DeepSeek V3,2,0.0,0,0,1,0,0,,0.0,,kerberos_hostnames_result.json,(none),desktop-e7fhjs4
+qakbot,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),damon.bauer
+qakbot,DeepSeek V3,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-02-03 17:00,2023-02-03 17:00 utc
+qakbot,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,file_downloads_result.json,file_downloads_result.json,(none),http://128.254.207.55/86607.dat
+qakbot,DeepSeek V3,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,185.2.4.16;88.135.68.140,102.156.32.143;208.187.122.74;23.111.114.52;5.75.205.43;78.31.67.7
+qakbot,DeepSeek V3,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,vipsauna.com,vipsauna.com
+qakbot,DeepSeek V3,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,209.131.162.45;legitimate service,208.187.122.74;c2 server
+qakbot,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,10.0.0.149
+qakbot,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-e7fhjs4,desktop-e7fhjs4
+qakbot,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),damon.bauer
+qakbot,Ollama 3.1:70b,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-02-03 17:00,2023-02-03 17:00 utc
+qakbot,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,file_downloads_result.json,file_downloads_result.json,(none),http://128.254.207.55/86607.dat
+qakbot,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.237.57;184.28.39.150;185.2.4.16;88.135.68.140,102.156.32.143;208.187.122.74;23.111.114.52;5.75.205.43;78.31.67.7
+qakbot,Ollama 3.1:70b,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,vipsauna.com,vipsauna.com
+qakbot,Ollama 3.1:70b,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,72.163.4.185,208.187.122.74;c2 server
+qakbot,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,10.0.0.149
+qakbot,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-e7fhjs4,desktop-e7fhjs4
+qakbot,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),damon.bauer
+qakbot,GPT-4,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-02-03 17:00,2023-02-03 17:00 utc
+qakbot,GPT-4,5,1.0,1,1,1,1,0,1.0,1.0,file_downloads_result.json,file_downloads_result.json,128.254.207.55,http://128.254.207.55/86607.dat
+qakbot,GPT-4,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.93.55.25;13.107.237.57;138.1.33.162;152.216.7.110;172.64.155.106;184.28.39.150;184.51.39.62;184.86.169.24;185.2.4.16;209.131.162.45;23.2.51.218;23.210.67.195;23.214.54.85;52.13.171.212;68.87.41.40;69.58.187.40;72.163.4.185;72.247.204.96;88.135.68.140;96.6.184.69,102.156.32.143;208.187.122.74;23.111.114.52;5.75.205.43;78.31.67.7
+qakbot,GPT-4,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,vipsauna.com,vipsauna.com
+qakbot,GPT-4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,208.187.122.74;c2 server
+qakbot,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,10.0.0.149
+qakbot,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-e7fhjs4,desktop-e7fhjs4
+qakbot,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),damon.bauer
+qakbot,GPT-4o,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-02-03 17:00,2023-02-03 17:00 utc
+qakbot,GPT-4o,5,1.0,1,1,1,1,0,1.0,1.0,file_downloads_result.json,file_downloads_result.json,128.254.207.55,http://128.254.207.55/86607.dat
+qakbot,GPT-4o,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.93.55.25;13.107.237.57;138.1.33.162;152.216.7.110;172.64.155.106;184.28.39.150;184.51.39.62;184.86.169.24;185.2.4.16;209.131.162.45;23.2.51.218;23.210.67.195;23.214.54.85;52.13.171.212;68.87.41.40;69.58.187.40;72.163.4.185;72.247.204.96;88.135.68.140;96.6.184.69,102.156.32.143;208.187.122.74;23.111.114.52;5.75.205.43;78.31.67.7
+qakbot,GPT-4o,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,vipsauna.com,vipsauna.com
+qakbot,GPT-4o,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,208.187.122.74;c2 server
+qakbot,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,10.0.0.149
+qakbot,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-e7fhjs4,desktop-e7fhjs4
+qakbot,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),damon.bauer
+qakbot,GPT-5.2,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-02-03 17:00,2023-02-03 17:00 utc
+qakbot,GPT-5.2,5,1.0,1,1,1,1,0,1.0,1.0,file_downloads_result.json,file_downloads_result.json,128.254.207.55,http://128.254.207.55/86607.dat
+qakbot,GPT-5.2,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.93.55.25;13.107.237.57;138.1.33.162;152.216.7.110;172.64.155.106;184.28.39.150;184.51.39.62;184.86.169.24;185.2.4.16;209.131.162.45;23.2.51.218;23.210.67.195;23.214.54.85;52.13.171.212;68.87.41.40;69.58.187.40;72.163.4.185;72.247.204.96;88.135.68.140;96.6.184.69,102.156.32.143;208.187.122.74;23.111.114.52;5.75.205.43;78.31.67.7
+qakbot,GPT-5.2,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,vipsauna.com,vipsauna.com
+qakbot,GPT-5.2,8,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,(none),208.187.122.74;c2 server
+qakbot,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,10.0.0.149
+qakbot,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-e7fhjs4,desktop-e7fhjs4
+qakbot,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),damon.bauer
+qakbot,GPT-5-mini,4,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-02-03 17:00 utc,2023-02-03 17:00 utc
+qakbot,GPT-5-mini,5,1.0,1,1,1,1,0,1.0,1.0,file_downloads_result.json,file_downloads_result.json,128.254.207.55,http://128.254.207.55/86607.dat
+qakbot,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,104.93.55.25;13.107.237.57;138.1.33.162;152.216.7.110;172.64.155.106;184.28.39.150;184.51.39.62;184.86.169.24;185.2.4.16;209.131.162.45;23.2.51.218;23.210.67.195;23.214.54.85;52.13.171.212;68.87.41.40;69.58.187.40;72.163.4.185;72.247.204.96;88.135.68.140;96.6.184.69,102.156.32.143;208.187.122.74;23.111.114.52;5.75.205.43;78.31.67.7
+qakbot,GPT-5-mini,7,1.0,1,1,1,1,0,1.0,1.0,suspicious_certificates_result.json,suspicious_certificates_result.json,vipsauna.com,vipsauna.com
+qakbot,GPT-5-mini,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.0.0.149,208.187.122.74;c2 server
+redline_stlr,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.7.10.47,10.7.10.47
+redline_stlr,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-9pea63h
+redline_stlr,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),rwalters
+redline_stlr,Claude Sonnet 4,4,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,a6d04e539d712e4ef920661af4825316.clo.footprintdns.com;guiatelefonos.com,623start.site;guiatelefonos.com
+redline_stlr,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.6.163;92.118.151.9,194.26.135.119
+redline_stlr,Claude Sonnet 4,6,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),confidentiality
+redline_stlr,Claude Sonnet 4,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-07-10 22:00,2023-07-10 22:00 utc
+redline_stlr,Claude Sonnet 4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),195.161.114.3;legitimate service
+redline_stlr,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.7.10.47,10.7.10.47
+redline_stlr,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-9pea63h,desktop-9pea63h
+redline_stlr,Cisco 8B,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),rwalters
+redline_stlr,Cisco 8B,4,0.5,1,0,1,0,0,,0.0,,suspicious_domains_result.json,a6d04e539d712e4ef920661af4825316.clo.footprintdns.com;guiatelefonos.com;static-ecst.licdn.com,623start.site;guiatelefonos.com
+redline_stlr,Cisco 8B,5,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,13.107.6.163;152.199.24.163;92.118.151.9,194.26.135.119
+redline_stlr,Cisco 8B,6,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,integrity,confidentiality
+redline_stlr,Cisco 8B,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-07-10 22:00,2023-07-10 22:00 utc
+redline_stlr,Cisco 8B,8,0.0,0,0,1,0,0,,0.0,,suspicious_domains_result.json,13.107.6.163,195.161.114.3;legitimate service
+redline_stlr,DeepSeek V3,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.7.10.47,10.7.10.47
+redline_stlr,DeepSeek V3,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-9pea63h,desktop-9pea63h
+redline_stlr,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),rwalters
+redline_stlr,DeepSeek V3,4,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,a6d04e539d712e4ef920661af4825316.clo.footprintdns.com;guiatelefonos.com,623start.site;guiatelefonos.com
+redline_stlr,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.6.163;92.118.151.9,194.26.135.119
+redline_stlr,DeepSeek V3,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+redline_stlr,DeepSeek V3,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-07-10 22:00 utc,2023-07-10 22:00 utc
+redline_stlr,DeepSeek V3,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),195.161.114.3;legitimate service
+redline_stlr,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.7.10.47,10.7.10.47
+redline_stlr,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-9pea63h,desktop-9pea63h
+redline_stlr,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),rwalters
+redline_stlr,Ollama 3.1:70b,4,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,a6d04e539d712e4ef920661af4825316.clo.footprintdns.com;guiatelefonos.com,623start.site;guiatelefonos.com
+redline_stlr,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.6.163;92.118.151.9,194.26.135.119
+redline_stlr,Ollama 3.1:70b,6,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,(none),confidentiality
+redline_stlr,Ollama 3.1:70b,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-07-10 22:00,2023-07-10 22:00 utc
+redline_stlr,Ollama 3.1:70b,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),195.161.114.3;legitimate service
+redline_stlr,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.7.10.47,10.7.10.47
+redline_stlr,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-9pea63h,desktop-9pea63h
+redline_stlr,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),rwalters
+redline_stlr,GPT-4,4,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,"""a6d04e539d712e4ef920661af4825316.clo.footprintdns.com"";""guiatelefonos.com"";""static-ecst.licdn.com""",623start.site;guiatelefonos.com
+redline_stlr,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.6.163;152.199.24.163;92.118.151.9,194.26.135.119
+redline_stlr,GPT-4,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+redline_stlr,GPT-4,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-07-10 22:00,2023-07-10 22:00 utc
+redline_stlr,GPT-4,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),195.161.114.3;legitimate service
+redline_stlr,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.7.10.47,10.7.10.47
+redline_stlr,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-9pea63h,desktop-9pea63h
+redline_stlr,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),rwalters
+redline_stlr,GPT-4o,4,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,a6d04e539d712e4ef920661af4825316.clo.footprintdns.com;guiatelefonos.com,623start.site;guiatelefonos.com
+redline_stlr,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.6.163;152.199.24.163;92.118.151.9,194.26.135.119
+redline_stlr,GPT-4o,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+redline_stlr,GPT-4o,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-07-10 22:00,2023-07-10 22:00 utc
+redline_stlr,GPT-4o,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),195.161.114.3;legitimate service
+redline_stlr,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.7.10.47,10.7.10.47
+redline_stlr,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-9pea63h,desktop-9pea63h
+redline_stlr,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),rwalters
+redline_stlr,GPT-5.2,4,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,a6d04e539d712e4ef920661af4825316.clo.footprintdns.com;guiatelefonos.com,623start.site;guiatelefonos.com
+redline_stlr,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.6.163;152.199.24.163;92.118.151.9,194.26.135.119
+redline_stlr,GPT-5.2,6,1.0,1,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,confidentiality,confidentiality
+redline_stlr,GPT-5.2,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-07-10 22:00 utc,2023-07-10 22:00 utc
+redline_stlr,GPT-5.2,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.6.163,195.161.114.3;legitimate service
+redline_stlr,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.7.10.47,10.7.10.47
+redline_stlr,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-9pea63h,desktop-9pea63h
+redline_stlr,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),rwalters
+redline_stlr,GPT-5-mini,4,0.5,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,a6d04e539d712e4ef920661af4825316.clo.footprintdns.com;guiatelefonos.com,623start.site;guiatelefonos.com
+redline_stlr,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.6.163;152.199.24.163;92.118.151.9,194.26.135.119
+redline_stlr,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,kerberos_full_services_result.json,kerberos_full_services_result.json,integrity,confidentiality
+redline_stlr,GPT-5-mini,7,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2023-07-10 22:00 utc,2023-07-10 22:00 utc
+redline_stlr,GPT-5-mini,8,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),195.161.114.3;legitimate service
+warmcookie,Claude Sonnet 4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.8.15.133,10.8.15.133
+warmcookie,Claude Sonnet 4,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-h8alzbv
+warmcookie,Claude Sonnet 4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),plucero
+warmcookie,Claude Sonnet 4,4,0.25,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,business.checkfedexexp.com;bzib.nelreports.net,104.21.55.70;172.67.170.169;business.checkfedexexp.com;quote.checkfedexexp.com
+warmcookie,Claude Sonnet 4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),72.5.43.29
+warmcookie,Claude Sonnet 4,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2024-08-15 00:00 utc
+warmcookie,Claude Sonnet 4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.205.110.12 and 204.79.197.219 are tied with 2 connections each;both serving legitimate microsoft services,72.5.43.29;c2 server
+warmcookie,Cisco 8B,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.8.15.133,10.8.15.133
+warmcookie,Cisco 8B,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,10.8.15.133;desktop-h8alzbv,desktop-h8alzbv
+warmcookie,Cisco 8B,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,h8alzbv,plucero
+warmcookie,Cisco 8B,4,0.25,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,business.checkfedexexp.com;bzib.nelreports.net;sb.scorecardresearch.com,104.21.55.70;172.67.170.169;business.checkfedexexp.com;quote.checkfedexexp.com
+warmcookie,Cisco 8B,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.8.15.133,72.5.43.29
+warmcookie,Cisco 8B,6,0.0,0,0,1,0,0,,0.0,,suricata_alerts_result.json,2024-08-14t00:00:00.000z,2024-08-15 00:00 utc
+warmcookie,Cisco 8B,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.205.110.12;img-smsn-com.akamaized.net,72.5.43.29;c2 server
+warmcookie,DeepSeek V3,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.8.15.133,10.8.15.133
+warmcookie,DeepSeek V3,2,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),desktop-h8alzbv
+warmcookie,DeepSeek V3,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),plucero
+warmcookie,DeepSeek V3,4,0.25,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,business.checkfedexexp.com;bzib.nelreports.net,104.21.55.70;172.67.170.169;business.checkfedexexp.com;quote.checkfedexexp.com
+warmcookie,DeepSeek V3,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,172.67.170.159,72.5.43.29
+warmcookie,DeepSeek V3,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2024-08-15 00:00 utc
+warmcookie,DeepSeek V3,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),72.5.43.29;c2 server
+warmcookie,Ollama 3.1:70b,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.8.15.133,10.8.15.133
+warmcookie,Ollama 3.1:70b,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-h8alzbv,desktop-h8alzbv
+warmcookie,Ollama 3.1:70b,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),plucero
+warmcookie,Ollama 3.1:70b,4,0.25,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,business.checkfedexexp.com;bzib.nelreports.net,104.21.55.70;172.67.170.169;business.checkfedexexp.com;quote.checkfedexexp.com
+warmcookie,Ollama 3.1:70b,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;172.67.170.159;18.160.156.115;23.205.110.12;23.215.55.139;23.43.244.167;23.56.233.15;23.63.205.134,72.5.43.29
+warmcookie,Ollama 3.1:70b,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-08-15 00:00,2024-08-15 00:00 utc
+warmcookie,Ollama 3.1:70b,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,23.205.110.12,72.5.43.29;c2 server
+warmcookie,GPT-4,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.8.15.133,10.8.15.133
+warmcookie,GPT-4,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,"the potentially infected machine in the lan has the hostname ""desktop-h8alzbv"" with the ip address 10.8.15.133.",desktop-h8alzbv
+warmcookie,GPT-4,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),plucero
+warmcookie,GPT-4,4,0.25,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,business.checkfedexexp.com;bzib.nelreports.net;default.exp-tas.com;ecn-us.dev.virtualearth.net;img-s-msn-com.akamaized.net;oneclient.sfx.ms;ow1.res.office365.com;r.msftstatic.com;sb.scorecardresearch.com;weathermapdata.blob.core.windows.net,104.21.55.70;172.67.170.169;business.checkfedexexp.com;quote.checkfedexexp.com
+warmcookie,GPT-4,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;172.67.170.159;18.160.156.115;20.60.228.1;204.79.197.219;23.205.110.12;23.215.55.139;23.43.244.167;23.53.13.205;23.56.233.15;23.63.205.134,72.5.43.29
+warmcookie,GPT-4,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-08-15 00:00,2024-08-15 00:00 utc
+warmcookie,GPT-4,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),72.5.43.29;c2 server
+warmcookie,GPT-4o,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.8.15.133,10.8.15.133
+warmcookie,GPT-4o,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-h8alzbv,desktop-h8alzbv
+warmcookie,GPT-4o,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,"""desktop-h8alzbv""",plucero
+warmcookie,GPT-4o,4,0.25,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,business.checkfedexexp.com;bzib.nelreports.net;default.exp-tas.com;ecn-us.dev.virtualearth.net;img-s-msn-com.akamaized.net;oneclient.sfx.ms;ow1.res.office365.com;r.msftstatic.com;sb.scorecardresearch.com;weathermapdata.blob.core.windows.net,104.21.55.70;172.67.170.169;business.checkfedexexp.com;quote.checkfedexexp.com
+warmcookie,GPT-4o,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;172.67.170.159;18.160.156.115;20.60.228.1;204.79.197.219;23.205.110.12;23.215.55.139;23.43.244.167;23.53.13.205;23.56.233.15;23.63.205.134,72.5.43.29
+warmcookie,GPT-4o,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-08-15 00:00,2024-08-15 00:00 utc
+warmcookie,GPT-4o,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),72.5.43.29;c2 server
+warmcookie,GPT-5.2,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.8.15.133,10.8.15.133
+warmcookie,GPT-5.2,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-h8alzbv,desktop-h8alzbv
+warmcookie,GPT-5.2,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),plucero
+warmcookie,GPT-5.2,4,0.25,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,business.checkfedexexp.com;bzib.nelreports.net;default.exp-tas.com;ecn-us.dev.virtualearth.net;img-s-msn-com.akamaized.net;oneclient.sfx.ms;ow1.res.office365.com;r.msftstatic.com;sb.scorecardresearch.com;weathermapdata.blob.core.windows.net,104.21.55.70;172.67.170.169;business.checkfedexexp.com;quote.checkfedexexp.com
+warmcookie,GPT-5.2,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;172.67.170.159;18.160.156.115;20.60.228.1;204.79.197.219;23.205.110.12;23.215.55.139;23.43.244.167;23.53.13.205;23.56.233.15;23.63.205.134,72.5.43.29
+warmcookie,GPT-5.2,6,1.0,1,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,2024-08-15 00:00,2024-08-15 00:00 utc
+warmcookie,GPT-5.2,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),72.5.43.29;c2 server
+warmcookie,GPT-5-mini,1,1.0,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,10.8.15.133,10.8.15.133
+warmcookie,GPT-5-mini,2,1.0,1,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,desktop-h8alzbv,desktop-h8alzbv
+warmcookie,GPT-5-mini,3,0.0,0,1,1,1,0,1.0,1.0,kerberos_hostnames_result.json,kerberos_hostnames_result.json,(none),plucero
+warmcookie,GPT-5-mini,4,0.25,1,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,business.checkfedexexp.com;bzib.nelreports.net;default.exp-tas.com;ecn-us.dev.virtualearth.net;img-s-msn-com.akamaized.net;oneclient.sfx.ms;ow1.res.office365.com;r.msftstatic.com;sb.scorecardresearch.com;weathermapdata.blob.core.windows.net,104.21.55.70;172.67.170.169;business.checkfedexexp.com;quote.checkfedexexp.com
+warmcookie,GPT-5-mini,5,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,13.107.5.93;172.67.170.159;18.160.156.115;20.60.228.1;204.79.197.219;23.205.110.12;23.215.55.139;23.43.244.167;23.53.13.205;23.56.233.15;23.63.205.134,72.5.43.29
+warmcookie,GPT-5-mini,6,0.0,0,1,1,1,0,1.0,1.0,suricata_alerts_result.json,suricata_alerts_result.json,(none),2024-08-15 00:00 utc
+warmcookie,GPT-5-mini,7,0.0,0,1,1,1,0,1.0,1.0,suspicious_domains_result.json,suspicious_domains_result.json,(none),72.5.43.29;c2 server

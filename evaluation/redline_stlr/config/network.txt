@@ -1,0 +1,6 @@
+- LAN segment range: 10.7.10[.]0/24 (10.7.10[.]1 through 10.7.10[.]255)
+- Domain: coolweathercoat[.]com
+- Domain controller IP address: 10.7.10[.]9
+- Domain controller hostname: WIN-S3WT6LGQFVX
+- LAN segment gateway: 10.7.10[.]1
+- LAN segment broadcast address: 10.7.10[.]255

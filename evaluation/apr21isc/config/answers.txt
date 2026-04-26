@@ -1,0 +1,36 @@
+# April 2021 ISC Forensic Contest - Ground Truth Answers
+# Date: 2021-03-29
+# Source: https://isc.sans.edu/diary/April+2021+Forensic+Contest+Answers+and+Analysis/27308
+#
+# Removed: Cobalt Strike and Anchor from Q5 — neither appears in the
+#   extracted Suricata data. Only BazaLoader/Bazar is identifiable.
+
+Q1: What was the IP address of the infected Windows computer?
+A1: 192.168.5.125
+
+Q2: What was the host name of the infected Windows computer?
+A2: LAPTOP-X9NAQ2EU
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: wilmer.coughlin
+
+Q4: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A4: 2021-03-29 22:00 UTC
+
+Q5: What malware family do the IDS alerts identify?
+# Suricata has explicit signatures: "ET MALWARE Observed Malicious SSL
+# Cert (BazaLoader CnC)" and "ET MALWARE Observed Malicious SSL Cert
+# (Bazar Backdoor)". Both names refer to the same malware family.
+# Both "BazaLoader" and "Bazar Backdoor" refer to the same family.
+# Using the common prefix so either form matches.
+A5: Baza
+
+Q6: What are the suspicious external IP addresses contacted, which might be involved in C2 communication?
+# Per ISC SANS writeup: BazaLoader C2 + Cobalt Strike C2 + initial compromise
+A6: 176.111.174.53, 104.21.74.174, 54.184.119.29, 184.72.1.208, 217.12.218.46, 8.209.100.246
+
+Q7: What are the likely suspicious domains for initial infection or C2?
+A7: gtmers.xyz, veso2.xyz
+
+Q8: Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.
+A8: forenzik.kz

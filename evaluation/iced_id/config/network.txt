@@ -1,0 +1,11 @@
+# Network Environment Context
+# This information helps the AI understand your network environment
+
+## Network Information
+- LAN segment range: 10.4.19[.]0/24 (10.4.19[.]1 through 10.4.19[.]255)
+- Domain: boogienights[.]live
+- Domain controller IP address: 10.4.19[.]19
+- Domain controller hostname: WIN-GP4JHCK2JMV
+- LAN segment gateway: 10.4.19[.]1
+- LAN segment broadcast address: 10.4.19[.]255
+

@@ -1,0 +1,162 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "bool": {
+            "should": [
+              {
+                "term": {
+                  "event.dataset": "suricata.alert"
+                }
+              },
+              {
+                "term": {
+                  "event.module": "suricata"
+                }
+              },
+              {
+                "term": {
+                  "tags": "alert"
+                }
+              }
+            ],
+            "minimum_should_match": 1
+          }
+        },
+        {
+          "range": {
+            "source.ip": {
+              "gte": "10.0.0.0",
+              "lte": "172.31.255.255"
+            }
+          }
+        }
+      ],
+      "should": [
+        {
+          "range": {
+            "event.severity": {
+              "gte": 1,
+              "lte": 3
+            }
+          }
+        },
+        {
+          "range": {
+            "rule.severity": {
+              "gte": 1,
+              "lte": 3
+            }
+          }
+        },
+        {
+          "terms": {
+            "rule.category": ["Misc Attack", "Potential Corporate Privacy Violation", "Trojan", "Malware", "Policy Violation"]
+          }
+        },
+        {
+          "wildcard": {
+            "rule.name": "*malware*"
+          }
+        },
+        {
+          "wildcard": {
+            "rule.name": "*trojan*"
+          }
+        },
+        {
+          "wildcard": {
+            "rule.name": "*suspicious*"
+          }
+        },
+        {
+          "wildcard": {
+            "rule.name": "*attack*"
+          }
+        },
+        {
+          "wildcard": {
+            "rule.name": "*DROP*"
+          }
+        },
+        {
+          "wildcard": {
+            "rule.name": "*ET*"
+          }
+        },
+        {
+          "wildcard": {
+            "rule.name": "*SURICATA*"
+          }
+        },
+        {
+          "range": {
+            "destination.port": {
+              "gte": 1024,
+              "lte": 65535
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  },
+  "aggs": {
+    "alert_signatures": {
+      "terms": {
+        "field": "rule.name",
+        "size": 30
+      }
+    },
+    "high_severity_alerts": {
+      "filter": {
+        "range": {
+          "rule.severity": {
+            "gte": 1,
+            "lte": 2
+          }
+        }
+      },
+      "aggs": {
+        "high_severity_signatures": {
+          "terms": {
+            "field": "rule.name",
+            "size": 10
+          }
+        },
+        "high_severity_sources": {
+          "terms": {
+            "field": "source.ip",
+            "size": 10
+          }
+        },
+        "high_severity__destinations": {
+          "terms": {
+            "field": "destination.ip",
+            "size": 5
+          }
+        }
+      }
+    },
+    "alert_timeline": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1h"
+      }
+    }
+  },
+  "sort": [
+    {
+      "rule.severity": {
+        "order": "asc"
+      }
+    },
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
+    }
+  ],
+  "size": 0
+}

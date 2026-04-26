@@ -1,0 +1,29 @@
+# Qakbot Scenario - Ground Truth Answers
+# Date: 2023-02-03
+# Source: https://unit42.paloaltonetworks.com/feb-wireshark-quiz-answers/
+
+Q1: What is the IP address of the potentially infected internal host in the LAN?
+A1: 10.0.0.149
+
+Q2: What is the hostname of the potentially infected machine in the LAN?
+A2: DESKTOP-E7FHJS4
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: damon.bauer
+
+Q4: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A4: 2023-02-03 17:00 UTC
+
+Q5: What is the URL used for the initial malware download?
+A5: http://128.254.207.55/86607.dat
+
+Q6: What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+# C2 IPs per Unit 42 published answers. 5.75.205.43 and 23.111.114.52 have
+# 0 hits in extracted chunks (aggregation truncation or absent from PCAP window).
+A6: 102.156.32.143, 208.187.122.74, 5.75.205.43, 23.111.114.52, 78.31.67.7
+
+Q7: What specific spoofed domain was used in a self-signed certificate during this infection?
+A7: vipsauna.com
+
+Q8: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A8: 208.187.122.74, C2 server

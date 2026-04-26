@@ -1,0 +1,401 @@
+{
+  "metadata": {
+    "query_file": "suricata_alerts.json",
+    "execution_time": "2026-04-10T14:35:09.402341",
+    "status_code": 200,
+    "duration_ms": 164.21099999999998,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2023-02-03T00:00:00",
+      "lte": "2023-02-04T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "event.dataset": "suricata.alert"
+                  }
+                },
+                {
+                  "term": {
+                    "event.module": "suricata"
+                  }
+                },
+                {
+                  "term": {
+                    "tags": "alert"
+                  }
+                }
+              ],
+              "minimum_should_match": 1
+            }
+          },
+          {
+            "range": {
+              "source.ip": {
+                "gte": "10.0.0.0",
+                "lte": "172.31.255.255"
+              }
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2023-02-03T00:00:00",
+                "lte": "2023-02-04T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "range": {
+              "event.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "range": {
+              "rule.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "terms": {
+              "rule.category": [
+                "Misc Attack",
+                "Potential Corporate Privacy Violation",
+                "Trojan",
+                "Malware",
+                "Policy Violation"
+              ]
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*malware*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*trojan*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*suspicious*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*attack*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*DROP*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*ET*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*SURICATA*"
+            }
+          },
+          {
+            "range": {
+              "destination.port": {
+                "gte": 1024,
+                "lte": 65535
+              }
+            }
+          }
+        ],
+        "minimum_should_match": 1
+      }
+    },
+    "aggs": {
+      "alert_signatures": {
+        "terms": {
+          "field": "rule.name",
+          "size": 30
+        }
+      },
+      "high_severity_alerts": {
+        "filter": {
+          "range": {
+            "rule.severity": {
+              "gte": 1,
+              "lte": 2
+            }
+          }
+        },
+        "aggs": {
+          "high_severity_signatures": {
+            "terms": {
+              "field": "rule.name",
+              "size": 10
+            }
+          },
+          "high_severity_sources": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "high_severity__destinations": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 5
+            }
+          }
+        }
+      },
+      "alert_timeline": {
+        "date_histogram": {
+          "field": "@timestamp",
+          "calendar_interval": "1h"
+        }
+      }
+    },
+    "sort": [
+      {
+        "rule.severity": {
+          "order": "asc"
+        }
+      },
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 29,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 110,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 128,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "alert_signatures": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "ET JA3 Hash - [Abuse.ch] Possible Dridex",
+            "doc_count": 87
+          },
+          {
+            "key": "ET INFO SMB2 NT Create AndX Request For a DLL File - Possible Lateral Movement",
+            "doc_count": 9
+          },
+          {
+            "key": "GPL NETBIOS SMB IPC$ unicode share access",
+            "doc_count": 7
+          },
+          {
+            "key": "ET INFO SMB Executable File Transfer",
+            "doc_count": 6
+          },
+          {
+            "key": "ET MALWARE BackConnect CnC Activity (Set Sleep Timer)",
+            "doc_count": 5
+          },
+          {
+            "key": "ET HUNTING SUSPICIOUS Dotted Quad Host MZ Response",
+            "doc_count": 1
+          },
+          {
+            "key": "ET HUNTING curl User-Agent to Dotted Quad",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO DNS Query for Suspicious .ml Domain",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO EXE - Served Attached HTTP",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO EXE IsDebuggerPresent (Used in Malware Anti-Debugging)",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO NTLM Session Setup Request - Auth",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO NTLM Session Setup Request - Negotiate",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO NTLMv1 Session Setup Response - Challenge",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO Observed DNS Query to .biz TLD",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO PE EXE or DLL Windows file download HTTP",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO Suspicious Domain (*.ml) in TLS SNI",
+            "doc_count": 1
+          },
+          {
+            "key": "ET MALWARE BackConnect CnC Activity (Start VNC) M1",
+            "doc_count": 1
+          },
+          {
+            "key": "ET MALWARE W32.DarkVNC Variant Checkin",
+            "doc_count": 1
+          },
+          {
+            "key": "ET RPC DCERPC SVCCTL - Remote Service Control Manager Access",
+            "doc_count": 1
+          }
+        ]
+      },
+      "high_severity_alerts": {
+        "doc_count": 27,
+        "high_severity__destinations": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.0.0.6",
+              "doc_count": 17
+            },
+            {
+              "key": "10.0.0.149",
+              "doc_count": 8
+            },
+            {
+              "key": "78.31.67.7",
+              "doc_count": 1
+            },
+            {
+              "key": "128.254.207.55",
+              "doc_count": 1
+            }
+          ]
+        },
+        "high_severity_signatures": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "ET INFO SMB2 NT Create AndX Request For a DLL File - Possible Lateral Movement",
+              "doc_count": 9
+            },
+            {
+              "key": "ET INFO SMB Executable File Transfer",
+              "doc_count": 6
+            },
+            {
+              "key": "ET MALWARE BackConnect CnC Activity (Set Sleep Timer)",
+              "doc_count": 5
+            },
+            {
+              "key": "ET HUNTING SUSPICIOUS Dotted Quad Host MZ Response",
+              "doc_count": 1
+            },
+            {
+              "key": "ET HUNTING curl User-Agent to Dotted Quad",
+              "doc_count": 1
+            },
+            {
+              "key": "ET INFO Observed DNS Query to .biz TLD",
+              "doc_count": 1
+            },
+            {
+              "key": "ET INFO PE EXE or DLL Windows file download HTTP",
+              "doc_count": 1
+            },
+            {
+              "key": "ET MALWARE BackConnect CnC Activity (Start VNC) M1",
+              "doc_count": 1
+            },
+            {
+              "key": "ET MALWARE W32.DarkVNC Variant Checkin",
+              "doc_count": 1
+            },
+            {
+              "key": "ET RPC DCERPC SVCCTL - Remote Service Control Manager Access",
+              "doc_count": 1
+            }
+          ]
+        },
+        "high_severity_sources": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.0.0.149",
+              "doc_count": 19
+            },
+            {
+              "key": "78.31.67.7",
+              "doc_count": 6
+            },
+            {
+              "key": "128.254.207.55",
+              "doc_count": 2
+            }
+          ]
+        }
+      },
+      "alert_timeline": {
+        "buckets": [
+          {
+            "key_as_string": "2023-02-03T17:00:00.000Z",
+            "key": 1675443600000,
+            "doc_count": 38
+          },
+          {
+            "key_as_string": "2023-02-03T18:00:00.000Z",
+            "key": 1675447200000,
+            "doc_count": 23
+          },
+          {
+            "key_as_string": "2023-02-03T19:00:00.000Z",
+            "key": 1675450800000,
+            "doc_count": 67
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

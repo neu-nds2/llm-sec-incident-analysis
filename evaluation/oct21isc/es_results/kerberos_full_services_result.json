@@ -1,0 +1,447 @@
+{
+  "metadata": {
+    "query_file": "kerberos_full_services.json",
+    "execution_time": "2026-04-13T12:28:33.638791",
+    "status_code": 200,
+    "duration_ms": 133.01,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2021-10-22T00:00:00",
+      "lte": "2021-10-22T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "term": {
+              "destination.port": 88
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2021-10-22T00:00:00",
+                "lte": "2021-10-22T23:59:59"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "full_services": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def service_pattern = /\"service\":\"([^\"]+)\"/; def matcher = service_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } } return 'no_service_found';"
+          },
+          "size": 20
+        },
+        "aggs": {
+          "source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "kerberos.service"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 6,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 152,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "full_services": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 1,
+        "buckets": [
+          {
+            "key": "krb_tcp",
+            "doc_count": 76,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 29
+                },
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 24
+                },
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 23
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/ENEMYWATCH.NET",
+            "doc_count": 32,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 12
+                },
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 10
+                },
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 10
+                }
+              ]
+            }
+          },
+          {
+            "key": "LDAP/ENEMYWATCH-DC.enemywatch.net/enemywatch.net",
+            "doc_count": 6,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 3
+                },
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/enemywatch.net",
+            "doc_count": 6,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "ldap/enemywatch-dc.enemywatch.net/enemywatch.net",
+            "doc_count": 5,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/ENEMYWATCH-DC.enemywatch.net",
+            "doc_count": 4,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/ENEMYWATCH-DC",
+            "doc_count": 3,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/ENEMYWATCH-DC.enemywatch.net/enemywatch.net",
+            "doc_count": 3,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/ENEMYWATCH",
+            "doc_count": 3,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "LDAP/ENEMYWATCH-DC.enemywatch.net",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/ENEMYWATCH.NET",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "DESKTOP-87WCE26$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "DESKTOP-CFA3367$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "DESKTOP-NZ875R4$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/enemywatch.net",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "desktop-87wce26$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "desktop-cfa3367$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "desktop-nz875r4$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.157",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/desktop-87wce26.enemywatch.net",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.158",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/desktop-cfa3367.enemywatch.net",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.10.22.156",
+                  "doc_count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

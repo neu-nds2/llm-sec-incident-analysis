@@ -1,0 +1,269 @@
+{
+  "metadata": {
+    "query_file": "kerberos_full_services.json",
+    "execution_time": "2026-04-11T17:24:14.267735",
+    "status_code": 200,
+    "duration_ms": 145.155,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2021-05-04T00:00:00",
+      "lte": "2021-05-05T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "term": {
+              "destination.port": 88
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2021-05-04T00:00:00",
+                "lte": "2021-05-05T23:59:59"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "full_services": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def service_pattern = /\"service\":\"([^\"]+)\"/; def matcher = service_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } } return 'no_service_found';"
+          },
+          "size": 20
+        },
+        "aggs": {
+          "source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "kerberos.service"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 10,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 48,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "full_services": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "krb_tcp",
+            "doc_count": 24,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 24
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/NUTMEG-STATION.COM",
+            "doc_count": 11,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 11
+                }
+              ]
+            }
+          },
+          {
+            "key": "LDAP/NutmegCrazy-DC.nutmeg-station.com/nutmeg-station.com",
+            "doc_count": 3,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 3
+                }
+              ]
+            }
+          },
+          {
+            "key": "DESKTOP-V0FEH1L$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/NUTMEG-STATION.COM",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/NUTMEGCRAZY-DC",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/NutmegCrazy-DC.nutmeg-station.com",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/NutmegCrazy-DC.nutmeg-station.com/nutmeg-station.com",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "desktop-v0feh1l$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/desktop-v0feh1l.nutmeg-station.com",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/NUTMEG-STATION",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/nutmeg-station.com",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "ldap/nutmegcrazy-dc.nutmeg-station.com/nutmeg-station.com",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "172.17.4.206",
+                  "doc_count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

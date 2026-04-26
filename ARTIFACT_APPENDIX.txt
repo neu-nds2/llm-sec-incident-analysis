@@ -1,0 +1,151 @@
+ARTIFACT APPENDIX
+Retrieval-Augmented LLMs for Security Incident Analysis
+
+1. ABSTRACT
+
+This artifact contains the source code, evaluation data, and results
+for our RAG-based security incident analysis system. It enables
+reproduction of the malware-traffic evaluation (17 scenarios, 8 LLM
+providers) and scoring reported in the paper. The artifact includes
+pre-extracted Elasticsearch query results, embedding caches, LLM
+analysis reports, and automated scoring tools.
+
+2. ARTIFACT DESCRIPTION
+
+2.1 Hardware Requirements
+
+- Cloud LLM evaluation: any machine with internet access (API calls
+  to Anthropic, OpenAI, DeepSeek)
+- Local LLM evaluation (Ollama): GPU with >= 48GB VRAM for
+  Llama 3.1:70b, or >= 8GB VRAM for smaller models
+- Local LLM evaluation (Cisco Foundation-Sec-8B): GPU with >= 16GB
+  VRAM; requires torch, transformers, bitsandbytes
+- Scoring only (no LLM calls): any machine, < 1 minute runtime
+- Storage: ~30 MB for the artifact
+
+2.2 Software Requirements
+
+- Python 3.10+
+- Install dependencies:
+    pip install -r llm_analyzer/requirements.txt
+- For local models (Ollama): https://ollama.com
+- For local models (Cisco): pip install torch transformers bitsandbytes
+- For log extraction (optional): access to Elasticsearch / Security
+  Onion instance
+
+2.3 Artifact Contents
+
+  llm_analyzer/       RAG analysis pipeline (analyze.py)
+  log_extraction/     Elasticsearch query tools
+  evaluation/         17 scenarios, each containing:
+    <scenario>/
+      config/           questions.txt, answers.txt, network.txt
+      es_results/       pre-extracted query result JSONs
+      cache_embeddings/ FAISS embedding cache (.pkl)
+      llm_reports/      generated LLM reports (.md)
+  scoring/            cross-scenario scoring and sweep tools
+    analyze_cross_source.py   score reports against reference answers
+    run_sweep.py              run all providers x scenarios
+    paper_results.md          reference tables from the paper
+    per_answer.csv            per-question scoring output
+    summary.md                aggregate statistics
+
+3. MAJOR CLAIMS AND REPRODUCTION
+
+Claim 1: Recall on 17 malware scenarios across 8 LLM providers.
+  - Pre-computed results in paper_results.md (136 values:
+    17 scenarios x 8 providers).
+  - Verify by re-scoring the included LLM reports (no API keys):
+      cd scoring && python analyze_cross_source.py
+    This re-scores all LLM reports against reference answers and
+    produces summary.md — the per-scenario per-provider table should
+    match paper_results.md.
+  - Expected time: < 1 min.
+
+Claim 2: End-to-end LLM analysis pipeline is reproducible.
+  - Set up API keys (create text files with your key):
+      mkdir -p llm_analyzer/keys
+      echo "sk-..." > llm_analyzer/keys/anthropic.txt
+  - Re-run analysis for any provider and scenario:
+      cd scoring
+      python run_sweep.py --providers anthropic --scenarios fake_auth
+    This generates new LLM reports in evaluation/fake_auth/llm_reports/.
+  - Re-score to verify recall:
+      python analyze_cross_source.py
+    Compare the updated summary.md against paper_results.md.
+  - Expected time: ~2 min per scenario per provider.
+  - Note: LLM outputs are nondeterministic; results may vary by
+    +/- 3% from the pre-computed values.
+
+Claim 3: Retrieval window size (k) affects recall across providers.
+  - Pre-computed LLM reports for k=1, 3, 5, 7, 14 are included in
+    evaluation/<scenario>/llm_reports_k{1,3,5,14}/ (k=7 in
+    llm_reports/). Pre-computed scoring results in
+    scoring/k_ablation/{k1,k3,k5,k14}_summary.md.
+  - Verify by re-scoring the included reports (no API keys):
+      cd scoring
+      python analyze_cross_source.py --reports-dir llm_reports_k1 \
+        --output-prefix k_ablation/k1_
+    Repeat for k3, k5, k14. Compare each output against the
+    context-size ablation table in paper_results.md.
+  - Expected time: < 1 min per k value.
+  - Optionally, re-run the LLM analysis at a different k (requires
+    API keys):
+      cd scoring
+      python run_sweep.py --providers deepseek --scenarios fake_auth \
+        --max-chunks 1
+    Then re-score with the matching --reports-dir.
+
+Claim 4: RAG outperforms No-RAG baseline (fake_auth scenario).
+  - Raw log events for fake_auth (3,694 logs) are included in
+    evaluation/fake_auth/raw_logs/. The No-RAG baseline sends these
+    logs directly to the LLM without embedding or retrieval.
+  - Pre-computed No-RAG reports are included in
+    evaluation/fake_auth/no_rag_reports/ for Claude and DeepSeek.
+    Compare these against the RAG reports in
+    evaluation/fake_auth/llm_reports/ for the same providers:
+    No-RAG finds the victim host (IP, hostname, user) but misses
+    all attack infrastructure (malicious domains, C2 IPs, suspicious
+    certificates). See the "RAG vs No-RAG baseline" table in
+    paper_results.md.
+  - Optionally re-run (requires API key):
+      cd llm_analyzer
+      bash scripts/run_raw_no_rag_anthropic.sh
+  - Expected time: ~5 min per provider.
+
+Claim 5: Cost-effectiveness (timing per provider).
+  - Each LLM report in evaluation/<scenario>/llm_reports/*.md records
+    the wall-clock duration in its METADATA section (e.g.,
+    "Duration: 99.6s"). This is the end-to-end time for the RAG
+    pipeline to answer all questions in one scenario.
+  - Extract timing statistics across all reports (no API keys):
+      cd scoring && python cost_effectiveness.py
+    This produces scoring/cost_effectiveness.md with average duration
+    per scenario and per question for each provider, alongside recall.
+  - Expected time: < 1 min.
+
+4. NOTES
+
+- Scoring (Claims 1, 3, 5) and verifying pre-computed No-RAG reports
+  (Claim 4) require no API keys or GPU. Compare outputs against
+  paper_results.md.
+- LLM report generation (Claim 2) requires API keys for cloud
+  providers or a GPU for local models. LLM outputs are
+  nondeterministic; results may vary by +/- 3%.
+- The pre-computed LLM reports and scoring results are the exact
+  outputs that will be used in the camera-ready version of the paper.
+
+What is covered:
+- Malware-traffic evaluation: 17 scenarios, 8 providers, 5 retrieval
+  window sizes (Claims 1-3).
+- No-RAG baseline on fake_auth (Claim 4).
+- Cost-effectiveness timing data (Claim 5).
+
+What is not covered:
+- Log extraction from a SIEM instance (requires access to Security
+  Onion). We include the pre-extracted data for all 17 scenarios in
+  evaluation/<scenario>/es_results/.
+- AD attack reconstruction (data currently private).
+- No-RAG baseline on scenarios other than fake_auth (raw log data
+  is large; the single-scenario comparison is sufficient to
+  demonstrate the RAG vs No-RAG performance gap).

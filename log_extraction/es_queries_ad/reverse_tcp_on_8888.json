@@ -1,0 +1,40 @@
+{
+    "index": "logs-*",
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "term": {
+                        "destination.port": 8888
+                    }
+                }
+            ]
+        }
+    },
+    "aggs": {
+        "per_minute": {
+            "date_histogram": {
+                "field": "@timestamp",
+                "calendar_interval": "1m",
+                "min_doc_count": 1,
+                "format": "HH:mm"
+            },
+            "aggs": {
+                "connection_count": {
+                    "value_count": {
+                        "field": "@timestamp"
+                    }
+                },
+                "connection_details": {
+                    "terms": {
+                        "script": {
+                            "source": "def host = doc['host.name'].size() > 0 ? doc['host.name'].value : 'unknown'; def src = doc['source.ip'].size() > 0 ? doc['source.ip'].value : 'unknown'; return 'HTTP Download: [From: ' + host + ' (' + src + ') -> ' + destination.ip + ':8888]';"
+                        },
+                        "size": 10
+                    }
+                }
+            }
+        }
+    },
+    "size": 0
+}

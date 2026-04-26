@@ -1,0 +1,27 @@
+# Easy 123 Scenario - Ground Truth Answers (NetSupport RAT)
+# Date: 2026-02-28
+# Source: https://www.malware-traffic-analysis.net/2026/02/28/index.html
+# Note: PDF body has victim IP as 10.1.28.88 but screenshots show 10.2.28.88
+#   (matches LAN range 10.2.28.0/24). Fixed to 10.2.28.88.
+#
+# Removed: Q2 MAC address (not in chunks), Q5 full name (not in chunks)
+# Fixed: victim IP 10.1.28.88 → 10.2.28.88 (matches data + LAN range)
+# Added: C2, timestamp, high-volume questions from data
+
+Q1: What is the IP address of the infected Windows client?
+A1: 10.2.28.88
+
+Q2: What is the host name of the infected Windows client?
+A2: DESKTOP-TEYQ2NR
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: brolf
+
+Q4: What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+A4: 45.131.214.85
+
+Q5: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A5: 2026-02-28 19:00 UTC
+
+Q6: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A6: 45.131.214.85, C2 server

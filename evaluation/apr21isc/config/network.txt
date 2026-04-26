@@ -1,0 +1,6 @@
+# Network Environment Context
+- LAN segment range: 192.168.5.0/24 (192.168.5.0 through 192.168.5.255)
+- Domain: clockwater.net
+- Domain Controller: 192.168.5.5 - Clockwater-DC
+- LAN segment gateway: 192.168.5.1
+- LAN segment broadcast address: 192.168.5.255

@@ -1,0 +1,29 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"term": {"destination.port": 88}}
+      ]
+    }
+  },
+  "aggs": {
+    "full_services": {
+      "terms": {
+        "script": {
+          "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def service_pattern = /\"service\":\"([^\"]+)\"/; def matcher = service_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } } return 'no_service_found';"
+        },
+        "size": 20
+      },
+      "aggs": {
+        "source_ips": {
+          "terms": {
+            "field": "source.ip",
+            "size": 10
+          }
+        }
+      }
+    }
+  },
+  "_source": ["message", "@timestamp", "source.ip", "kerberos.service"],
+  "size": 0
+}

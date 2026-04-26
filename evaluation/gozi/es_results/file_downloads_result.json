@@ -1,0 +1,424 @@
+{
+  "metadata": {
+    "query_file": "file_downloads.json",
+    "execution_time": "2026-04-10T08:21:37.270735",
+    "status_code": 200,
+    "duration_ms": 256.169,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2023-03-06T00:00:00",
+      "lte": "2023-03-08T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443,
+                8080,
+                8443,
+                8000,
+                8888,
+                9000
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2023-03-06T00:00:00",
+                "lte": "2023-03-08T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "wildcard": {
+              "message": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*attachment*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*fuid*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.rar*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/x-msdownload*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.msi*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "download_domains": {
+        "terms": {
+          "field": "http.virtual_host",
+          "size": 20
+        }
+      },
+      "http_requests": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def get_pattern = /GET[ ]+([^\\s\\r\\n]+)/; def matcher = get_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher.group(1); } def uri_pattern = /\"uri\":\"([^\"]+)\"/; def matcher2 = uri_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher2.group(1); } } return 'no_http_uri';"
+          }
+        }
+      },
+      "file_transfers": {
+        "filter": {
+          "wildcard": {
+            "message": "*fuid*"
+          }
+        },
+        "aggs": {
+          "transfer_details": {
+            "terms": {
+              "script": {
+                "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def filename_pattern = /\"filename\":\"([^\"]+)\"/; def matcher = filename_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : file: ' + matcher.group(1); } def fuid_pattern = /\"fuid\":\"([^\"]+)\"/; def matcher2 = fuid_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : fuid: ' + matcher2.group(1); } } return 'file_transfer';"
+              }
+            }
+          }
+        }
+      },
+      "file_types": {
+        "terms": {
+          "script": {
+            "source": "if (doc['http.uri'].size() > 0) { String path = doc['http.uri'].value; if (path.contains('.exe')) return 'exe'; if (path.contains('.msi')) return 'msi'; if (path.contains('.ps1')) return 'powershell'; if (path.contains('.bat') || path.contains('.cmd')) return 'batch'; if (path.contains('.js')) return 'javascript'; if (path.contains('.zip') || path.contains('.rar')) return 'archive'; } if (doc['message.keyword'].size() > 0) { String msg = doc['message.keyword'].value; if (msg.contains('.ps1')) return 'powershell'; if (msg.contains('.exe')) return 'exe'; if (msg.contains('.msi')) return 'msi'; } return 'other';"
+          }
+        }
+      },
+      "download_sources": {
+        "terms": {
+          "field": "source.ip"
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "sort": [
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 118,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 110,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 311,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "download_domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "62.173.138.138",
+            "doc_count": 6
+          },
+          {
+            "key": "46.8.19.233",
+            "doc_count": 4
+          },
+          {
+            "key": "62.173.149.243",
+            "doc_count": 4
+          },
+          {
+            "key": "46.8.19.86",
+            "doc_count": 3
+          },
+          {
+            "key": "62.173.140.103",
+            "doc_count": 3
+          },
+          {
+            "key": "62.173.140.76",
+            "doc_count": 3
+          },
+          {
+            "key": "62.173.140.94",
+            "doc_count": 3
+          },
+          {
+            "key": "31.41.44.49",
+            "doc_count": 2
+          },
+          {
+            "key": "31.41.44.60",
+            "doc_count": 2
+          },
+          {
+            "key": "5.44.45.201",
+            "doc_count": 2
+          },
+          {
+            "key": "89.116.236.41",
+            "doc_count": 2
+          },
+          {
+            "key": "ctldl.windowsupdate.com",
+            "doc_count": 2
+          },
+          {
+            "key": "unapromo.com",
+            "doc_count": 1
+          },
+          {
+            "key": "x1.c.lencr.org",
+            "doc_count": 1
+          }
+        ]
+      },
+      "http_requests": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 52,
+        "buckets": [
+          {
+            "key": "no_http_uri",
+            "doc_count": 212
+          },
+          {
+            "key": "172.16.1.137 -> 62.173.138.138:80 : /drew/uyoXjOLPocMIEKrQlytVaWB/N_2BJo4B1_/2BB8gjy1qo0bUbbKw/vIwLAJ4RuKN1/oCn1JQTfr8y/h_2BXw2JtDeVTV/csllhDtxntvdGZ0FyWsDv/fSjE8DiuaKWiQWY0/KObd8_2FyOCBEgg/RVIw8Nxnyvxjh6Qphy/yOa05BVTB/myKLdYqv5xhF3cKw_2Bk/1eTxJaTw_2BsRm3_2B2/gR91wXW_2BTd_2Fi7OXi4a/b99goSrbSU8HY/uvQDRByh/ge26PVA5hQzSdn6mFkZ_2FH/EPeEp8uQdQ/Jz4vXFskCIDcT3x1x/de3HEew0P9JRhf1/EOzx6q.gif",
+            "doc_count": 9
+          },
+          {
+            "key": "172.16.1.137 -> 62.173.149.243:80 : /stilak32.rar",
+            "doc_count": 7
+          },
+          {
+            "key": "172.16.1.137 -> 62.173.140.103:80 : /drew/Q0EmvhskDMeV_2B/hlZqNxHPY3pA7HNxtL/9pXV5RDXP/1ncHG7VUfpdi2hExi3M2/zb3SUbdKsAKR2OShwxw/qjnkZ5oqJv4hT6UPNNZkp1/2f6D94TlCm0xb/gmA0CcmM/phrug73V9foNtM3B11vM5jg/rA7X6ZhzBR/p4_2FAte6kcuk_2Bm/Xtm1EnGCcDgj/9jmKRuzOnNs/WbgZifdwhLojRD/1Da_2FSDQ0jx0L0y1Fgk_/2Fkd158V_2F_2B0m/8tNGDnszFCXZXxx/_2FZ7dTzFgDYMaDQAF/ObW6rIOZI/ykFyeqNO28k8Ja0sGbR_/2F1mtZYOh2XoT8Sj23_/2BZhn2Et5/tq.jlk",
+            "doc_count": 6
+          },
+          {
+            "key": "172.16.1.137 -> 46.8.19.233:80 : /drew/KU4sSnNPGqF6dYVU/zMqg5LcUpXWHQk4/p13TzrSaxnS204Iq07/xA1Orx2tR/0Mx7AucADFBXLarjDT_2/F6QVzfPmw6J4yJohUa_/2FwRbcVk37yP9QCm8T_2FY/tqTLVPzL1l9MI/Hp0oDTGP/yycBFCiKitaSE7y0P_2FF9B/WAmReIx3ov/DMiE0A8aFFKYTDfeS/0fmxSXouHjux/GMoaaG_2FfD/66nViVQhhjCOoj/5f2icGelZ5pG7_2BVkXpF/RTaez9fYzZ6uEEQI/_2BSQOlZzYe2zMy/ERyIjuPEdaRN6tQCVc/txjClhkG_2FRXUE/Pb0.gif",
+            "doc_count": 5
+          },
+          {
+            "key": "172.16.1.137 -> 46.8.19.86:80 : /drew/87Kol3wsW64/XzUI9sN5W8mEJo/Ry4an4JvksM8Ymx60M6o5/PQtzODDyH1TG1TtY/8vNIghEJJhKHPdL/gvYCzkuSkLZDTME_2B/cpQiO3HFc/1uU4Badum_2FGmMnE2Sm/jmTcOwcinRYLnKFzinH/QZDuBdGarUZTBgmcGsNyb0/qJGDHvwvJi7TX/u7kjTOlL/jXSVBSbsygsjAtMCTJMDmUt/2S5LutpTf1/uPxVt0_2FviDz10Ve/Ud1A_2FveK08/vASJfF50Jai/vvoE5_2BtHnCX9/W_2BFgg9Da_2BUti3nBij/zWBSXWct1CLIqQrz/W8rlNcNnKxoax_2/B7P4uuby6A/M.gif",
+            "doc_count": 5
+          },
+          {
+            "key": "172.16.1.137 -> 62.173.140.76:80 : /drew/iHF4Eh26/Q3FNpetumnIfxyEIRI3Vfxp/SBEUGj9ZO7/mCagQ3YOoif0izyc_/2BtyhigY637d/PbaJQVSWMFJ/t_2FDWcPMz6c8Y/qOToBOeOPCy_2FGd_2BPW/1Gt_2FnTfsDYf8Od/VKBJfwOsfzHldF_/2BtkdGpw2_2BKLwsYd/frjc72YdU/L25r_2FROn2SYmBKe1dW/Hr8_2FZEHfnNt1h_2Fp/MPKuhSSmw1TBpvQzPxh7Xk/Btn_2FNNFO0E8/lzAxx6F0/tNUbEny1AQawIBODnhChg8r/R5xXze3kdB/Z0yujRjFDvKAbE1lO/FQ8Dw2ifHBzN/uVfsl2cTGQo/hdhiMwhkQo1/Qo.gif",
+            "doc_count": 5
+          },
+          {
+            "key": "172.16.1.137 -> 62.173.140.94:80 : /drew/uxz9_2FZjFA2lsXSRhF/dn7GeVjur_2BWkHo0TFsjm/_2BdLWdPjrVgz/vuRlthOJ/GJZhL7UENPlWTewhkMtuIqG/PfN_2BVvtA/WTOvksgw141PATju4/ckYEthTXcMHq/hfFJDT4TVeO/GjDM3EIKlXUgRw/TfTU_2BBfmL1JBPe1Myzm/tXaDVpKVyJQ_2BDu/xHgok3s_2FblMqV/BuufyBmnwonpJDtkZv/Nf1Ql2M0_/2FNjJD7445iCI3PllFrw/L1FssLj9TMTdlnCnIi2/Nv75YjVJHILMDUyyibikX3/zQFSrwauMHkgk/Bp3J7nO8/pELKZaAOjQ0DFuT3oIvhI0B/j74.gif",
+            "doc_count": 4
+          },
+          {
+            "key": "172.16.1.137 -> 31.41.44.49:80 : /drew/LW7Yj7P8/aU1IMxI3vmot8f5MaoVHI4_/2FoM2M420j/wm5nvl8WuEr0nHQSz/1XvCiYB_2Br_/2FY0prndwlt/bWCCqzKGpuUuvr/45F0fIc0rhuN_2B3Qyp22/0McXmQW1NAaxANeE/4iLQYzJnOTvWOE4/iAgdFHN5O4Rck6bjfS/zBk2wfuFS/VzlL6pIosUE_2FBYZPPi/DzHE7LBwVgl83vCDono/I3aSJ_2F5230p_2BVZnkNJ/2kOS9OY5GyO3m/_2FAIQk2/cY_2BU_2Bs9T_2Bf6EuXvew/P7WMuZclIb/E0qO478GaGGMgUSEt/UALULpSPJr/93tEp.gif",
+            "doc_count": 3
+          },
+          {
+            "key": "172.16.1.137 -> 31.41.44.49:80 : /drew/gs0aLJuPN_/2FtqvwmwdMEKNS_2F/sfI_2BmdCLUx/PV04fQ_2BZV/bz1_2FGRALX3SQ/p9_2Fagv5C40Z7AsiRh4V/LAvcLcfM3DNBsyHH/g8U1ixqVzCGmwX2/RDOQXVDQoF1lGtA6p_/2B9HpJXX_/2F6YW0owdYzXEhPkUka3/aqsHTpY3gjKLGYi8p42/UhLdZJJpwW9TA8QC5aTNHS/WUyXKEGpsfPjm/_2BT0GJC/zN60DKGe_2BGNsj5oyd05xc/_2FRHNI2I3/RjYPJv7DyKlmSIgjD/u5to1_2BpF3c/aqC8tgQ_2Ff/jnOzDA_2FO54P2/G_2F5aSE4EiyE21bKpSQq/F2i9QuwyQ3PF7/zE4l.gif",
+            "doc_count": 3
+          }
+        ]
+      },
+      "file_transfers": {
+        "doc_count": 67,
+        "transfer_details": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 44,
+          "buckets": [
+            {
+              "key": "file_transfer",
+              "doc_count": 14
+            },
+            {
+              "key": "172.16.1.137 -> 104.106.107.237:443 : fuid: FzQMvC25dCy0cXTFie",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.137 -> 104.106.121.142:443 : fuid: F080o93E1PwtbhTVEe",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.137 -> 104.106.121.142:443 : fuid: F9FM6Jg7MfOdzHXRh",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.137 -> 104.106.121.142:443 : fuid: FA8nKDH6mb9bKLpf4",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.137 -> 104.106.121.142:443 : fuid: FCzIIV2sngoftXQv72",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.137 -> 104.106.121.142:443 : fuid: Fpo0braufDlYYDneg",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.137 -> 104.106.121.142:443 : fuid: Fv93MvGvtBwa1QgVk",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.137 -> 104.126.37.131:443 : fuid: FRA5P832XpFo1sZ939",
+              "doc_count": 1
+            },
+            {
+              "key": "172.16.1.137 -> 104.126.37.139:443 : fuid: Fo3nAE7DATNDRmwKl",
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      "file_types": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "other",
+            "doc_count": 306
+          },
+          {
+            "key": "archive",
+            "doc_count": 5
+          }
+        ]
+      },
+      "download_sources": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "172.16.1.137",
+            "doc_count": 311
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

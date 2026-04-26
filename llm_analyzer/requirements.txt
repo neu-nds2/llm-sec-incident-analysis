@@ -1,0 +1,12 @@
+# LLM Analyzer Requirements
+
+# Core dependencies
+requests
+numpy
+sentence-transformers
+faiss-cpu
+
+# Required for Cisco Foundation-Sec local model (optional)
+# torch
+# transformers
+# bitsandbytes

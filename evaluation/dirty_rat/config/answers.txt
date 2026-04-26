@@ -1,0 +1,25 @@
+# DIRTY RAT! Scenario - Ground Truth Answers
+# Date: 2024-07-30
+# Source: https://www.malware-traffic-analysis.net/2024/07/30/index.html
+
+Q1: What is the IP address of the potentially infected internal host in the LAN?
+A1: 172.16.1.66
+
+Q2: What is the hostname of the potentially infected machine in the LAN?
+A2: DESKTOP-SKBR25F
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: ccollier
+
+Q4: What external servers (domains and IP addresses) were used to download malicious files?
+# STRRAT staged on GitHub + Maven; ip-api.com used for post-infection recon
+A4: github.com, objects.githubusercontent.com, repo1.maven.org, ip-api.com
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+A5: 141.98.10.79
+
+Q6: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A6: 2024-07-30 02:00 UTC
+
+Q7: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A7: 23.52.9.222, legitimate service

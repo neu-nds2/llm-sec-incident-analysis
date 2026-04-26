@@ -1,0 +1,27 @@
+# Fake Authenticator Scenario - Ground Truth Answers
+# Date: 2025-01-22
+# Source: https://www.malware-traffic-analysis.net/2025/01/22/index.html
+
+Q1: What is the IP address of the potentially infected internal host in the LAN?
+A1: 10.1.17.215
+
+Q2: What is the hostname of the potentially infected machine in the LAN?
+A2: DESKTOP-L8C5GSJ
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: shutchenson
+
+Q4: What are the likely fake or suspicious domains / URLs for initial infection?
+A4: authenticatoor.org
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+A5: 5.252.153.241, 45.125.66.32, 45.125.66.252
+
+Q6: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A6: 2025-01-22 19:00 UTC
+
+Q7: Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.
+A7: 45.125.66.252, 45.125.66.32
+
+Q8: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A8: 5.252.153.241, C2 server

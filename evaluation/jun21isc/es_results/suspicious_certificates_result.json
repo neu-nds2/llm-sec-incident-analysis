@@ -1,0 +1,201 @@
+{
+  "metadata": {
+    "query_file": "suspicious_certificates.json",
+    "execution_time": "2026-04-13T19:37:33.952262",
+    "status_code": 200,
+    "duration_ms": 196.825,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2021-06-16T00:00:00",
+      "lte": "2021-06-16T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "exists": {
+              "field": "x509.certificate.subject"
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2021-06-16T00:00:00",
+                "lte": "2021-06-16T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "wildcard": {
+              "x509.certificate.subject": "*Self-signed certificate*"
+            }
+          },
+          {
+            "wildcard": {
+              "x509.certificate.issuer": "*Self-signed certificate*"
+            }
+          },
+          {
+            "script": {
+              "script": {
+                "source": "doc['x509.certificate.subject'].value.equals(doc['x509.certificate.issuer'].value)"
+              }
+            }
+          },
+          {
+            "regexp": {
+              "x509.certificate.subject": ".*CN=[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}.*"
+            }
+          },
+          {
+            "wildcard": {
+              "x509.certificate.subject": "*localhost*"
+            }
+          },
+          {
+            "wildcard": {
+              "x509.certificate.subject": "*test*"
+            }
+          },
+          {
+            "wildcard": {
+              "x509.certificate.subject": "*example*"
+            }
+          },
+          {
+            "wildcard": {
+              "x509.certificate.subject": "*default*"
+            }
+          },
+          {
+            "script": {
+              "script": {
+                "source": "if (doc['x509.certificate.not_valid_before'].size() > 0 && doc['x509.certificate.not_valid_after'].size() > 0) { long validity = (long)(doc['x509.certificate.not_valid_after'].value * 1000) - (long)(doc['x509.certificate.not_valid_before'].value * 1000); long days = validity / 86400000L; return days < 90; } return false;"
+              }
+            }
+          }
+        ],
+        "minimum_should_match": 1
+      }
+    },
+    "aggs": {
+      "self_signed_analysis": {
+        "filter": {
+          "script": {
+            "script": {
+              "source": "doc['x509.certificate.subject'].value.equals(doc['x509.certificate.issuer'].value)"
+            }
+          }
+        },
+        "aggs": {
+          "self_signed_details": {
+            "terms": {
+              "script": {
+                "source": "def subject = doc['x509.certificate.subject'].value; def ipMatch = /CN=([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})/; def matcher = ipMatch.matcher(subject); if (matcher.find()) { return 'IP_certificate: ' + matcher.group(1); } return 'self_signed: ' + (subject.length() > 50 ? subject.substring(0, 50) : subject);"
+              },
+              "size": 30
+            }
+          }
+        }
+      },
+      "ip_based_certificates": {
+        "filter": {
+          "regexp": {
+            "x509.certificate.subject": ".*CN=[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}.*"
+          }
+        },
+        "aggs": {
+          "ip_cert_details": {
+            "terms": {
+              "script": {
+                "source": "def subject = doc['x509.certificate.subject'].value; def ipMatch = /CN=([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})/; def matcher = ipMatch.matcher(subject); if (matcher.find()) { return 'IP_cert: ' + matcher.group(1); } return 'unknown_ip_cert';"
+              },
+              "size": 20
+            }
+          }
+        }
+      },
+      "short_validity_certs": {
+        "terms": {
+          "script": {
+            "source": "if (doc['x509.certificate.not_valid_before'].size() > 0 && doc['x509.certificate.not_valid_after'].size() > 0) { long validity = (long)(doc['x509.certificate.not_valid_after'].value * 1000) - (long)(doc['x509.certificate.not_valid_before'].value * 1000); long days = validity / 86400000L; if (days < 90) { def subject = doc['x509.certificate.subject'].value; def ipMatch = /CN=([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})/; def matcher = ipMatch.matcher(subject); if (matcher.find()) { return 'short_validity_' + days + 'd: ' + matcher.group(1); } return 'short_validity_' + days + 'd: ' + (subject.length() > 30 ? subject.substring(0, 30) : subject); } } return 'normal_validity';"
+          },
+          "size": 30
+        }
+      }
+    },
+    "sort": [
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 87,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 110,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 4,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "self_signed_analysis": {
+        "doc_count": 1,
+        "self_signed_details": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "self_signed: CN=zqyefcetkqg.biz,O=Acipnee Bku Nibza Zidvi LLC.,",
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      "ip_based_certificates": {
+        "doc_count": 0,
+        "ip_cert_details": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": []
+        }
+      },
+      "short_validity_certs": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "short_validity_84d: CN=upload.video.google.com,O=G",
+            "doc_count": 2
+          },
+          {
+            "key": "normal_validity",
+            "doc_count": 1
+          },
+          {
+            "key": "short_validity_84d: CN=*.google.com,O=Google LLC,L",
+            "doc_count": 1
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

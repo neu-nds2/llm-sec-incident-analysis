@@ -1,0 +1,401 @@
+{
+  "metadata": {
+    "query_file": "suricata_alerts.json",
+    "execution_time": "2026-04-13T12:28:33.978267",
+    "status_code": 200,
+    "duration_ms": 173.137,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2021-10-22T00:00:00",
+      "lte": "2021-10-22T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "event.dataset": "suricata.alert"
+                  }
+                },
+                {
+                  "term": {
+                    "event.module": "suricata"
+                  }
+                },
+                {
+                  "term": {
+                    "tags": "alert"
+                  }
+                }
+              ],
+              "minimum_should_match": 1
+            }
+          },
+          {
+            "range": {
+              "source.ip": {
+                "gte": "10.0.0.0",
+                "lte": "172.31.255.255"
+              }
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2021-10-22T00:00:00",
+                "lte": "2021-10-22T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "range": {
+              "event.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "range": {
+              "rule.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "terms": {
+              "rule.category": [
+                "Misc Attack",
+                "Potential Corporate Privacy Violation",
+                "Trojan",
+                "Malware",
+                "Policy Violation"
+              ]
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*malware*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*trojan*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*suspicious*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*attack*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*DROP*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*ET*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*SURICATA*"
+            }
+          },
+          {
+            "range": {
+              "destination.port": {
+                "gte": 1024,
+                "lte": 65535
+              }
+            }
+          }
+        ],
+        "minimum_should_match": 1
+      }
+    },
+    "aggs": {
+      "alert_signatures": {
+        "terms": {
+          "field": "rule.name",
+          "size": 30
+        }
+      },
+      "high_severity_alerts": {
+        "filter": {
+          "range": {
+            "rule.severity": {
+              "gte": 1,
+              "lte": 2
+            }
+          }
+        },
+        "aggs": {
+          "high_severity_signatures": {
+            "terms": {
+              "field": "rule.name",
+              "size": 10
+            }
+          },
+          "high_severity_sources": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "high_severity__destinations": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 5
+            }
+          }
+        }
+      },
+      "alert_timeline": {
+        "date_histogram": {
+          "field": "@timestamp",
+          "calendar_interval": "1h"
+        }
+      }
+    },
+    "sort": [
+      {
+        "rule.severity": {
+          "order": "asc"
+        }
+      },
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 28,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 110,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 1051,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "alert_signatures": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "ET MALWARE NanoCore RAT CnC 7",
+            "doc_count": 597
+          },
+          {
+            "key": "ET DYN_DNS DNS Query to DynDNS Domain *.ddns .net",
+            "doc_count": 308
+          },
+          {
+            "key": "ET JA3 Hash - [Abuse.ch] Possible Dridex",
+            "doc_count": 65
+          },
+          {
+            "key": "ET INFO External IP Address Lookup Domain (ipify .org) in TLS SNI",
+            "doc_count": 27
+          },
+          {
+            "key": "ET HUNTING Observed DNS Query for EmerDNS TLD (.bazar)",
+            "doc_count": 15
+          },
+          {
+            "key": "ET INFO External IP Lookup Domain (ipify .org) in DNS Lookup",
+            "doc_count": 10
+          },
+          {
+            "key": "ET INFO NTLM Session Setup Request - Auth",
+            "doc_count": 5
+          },
+          {
+            "key": "ET INFO NTLM Session Setup Request - Negotiate",
+            "doc_count": 5
+          },
+          {
+            "key": "ET INFO NTLMv1 Session Setup Response - Challenge",
+            "doc_count": 5
+          },
+          {
+            "key": "ET RPC DCERPC SVCCTL - Remote Service Control Manager Access",
+            "doc_count": 3
+          },
+          {
+            "key": "ET DNS Query for .cc TLD",
+            "doc_count": 2
+          },
+          {
+            "key": "ET DNS Query to a *.top domain - Likely Hostile",
+            "doc_count": 2
+          },
+          {
+            "key": "ET HUNTING Request to .TOP Domain with Minimal Headers",
+            "doc_count": 2
+          },
+          {
+            "key": "ET INFO HTTP Request to a *.top domain",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO IP Check Domain (myexternalip .com in TLS SNI)",
+            "doc_count": 1
+          },
+          {
+            "key": "ET INFO Observed DNS Query to .biz TLD",
+            "doc_count": 1
+          },
+          {
+            "key": "ET MALWARE VNCStartServer BOT Variant CnC Beacon",
+            "doc_count": 1
+          },
+          {
+            "key": "ET MALWARE VNCStartServer USR Variant CnC Beacon",
+            "doc_count": 1
+          }
+        ]
+      },
+      "high_severity_alerts": {
+        "doc_count": 934,
+        "high_severity__destinations": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 6,
+          "buckets": [
+            {
+              "key": "37.0.10.22",
+              "doc_count": 597
+            },
+            {
+              "key": "8.8.8.8",
+              "doc_count": 308
+            },
+            {
+              "key": "130.61.64.122",
+              "doc_count": 14
+            },
+            {
+              "key": "10.10.22.22",
+              "doc_count": 6
+            },
+            {
+              "key": "172.67.139.101",
+              "doc_count": 3
+            }
+          ]
+        },
+        "high_severity_signatures": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 2,
+          "buckets": [
+            {
+              "key": "ET MALWARE NanoCore RAT CnC 7",
+              "doc_count": 597
+            },
+            {
+              "key": "ET DYN_DNS DNS Query to DynDNS Domain *.ddns .net",
+              "doc_count": 308
+            },
+            {
+              "key": "ET HUNTING Observed DNS Query for EmerDNS TLD (.bazar)",
+              "doc_count": 15
+            },
+            {
+              "key": "ET RPC DCERPC SVCCTL - Remote Service Control Manager Access",
+              "doc_count": 3
+            },
+            {
+              "key": "ET DNS Query for .cc TLD",
+              "doc_count": 2
+            },
+            {
+              "key": "ET DNS Query to a *.top domain - Likely Hostile",
+              "doc_count": 2
+            },
+            {
+              "key": "ET HUNTING Request to .TOP Domain with Minimal Headers",
+              "doc_count": 2
+            },
+            {
+              "key": "ET INFO HTTP Request to a *.top domain",
+              "doc_count": 1
+            },
+            {
+              "key": "ET INFO IP Check Domain (myexternalip .com in TLS SNI)",
+              "doc_count": 1
+            },
+            {
+              "key": "ET INFO Observed DNS Query to .biz TLD",
+              "doc_count": 1
+            }
+          ]
+        },
+        "high_severity_sources": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.10.22.157",
+              "doc_count": 905
+            },
+            {
+              "key": "10.10.22.158",
+              "doc_count": 21
+            },
+            {
+              "key": "10.10.22.156",
+              "doc_count": 8
+            }
+          ]
+        }
+      },
+      "alert_timeline": {
+        "buckets": [
+          {
+            "key_as_string": "2021-10-22T14:00:00.000Z",
+            "key": 1634911200000,
+            "doc_count": 285
+          },
+          {
+            "key_as_string": "2021-10-22T15:00:00.000Z",
+            "key": 1634914800000,
+            "doc_count": 728
+          },
+          {
+            "key_as_string": "2021-10-22T16:00:00.000Z",
+            "key": 1634918400000,
+            "doc_count": 38
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

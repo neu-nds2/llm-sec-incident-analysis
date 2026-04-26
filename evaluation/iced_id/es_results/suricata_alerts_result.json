@@ -1,0 +1,338 @@
+{
+  "metadata": {
+    "query_file": "suricata_alerts.json",
+    "query_file_path": "queries_minimal\\suricata_alerts.json",
+    "execution_time": "2026-02-18T12:50:19.065323",
+    "completion_time": "2026-02-18T12:50:19.224681",
+    "elasticsearch_url": "https://localhost:9200/logs-*/_search",
+    "elasticsearch_host": "https://localhost:9200",
+    "elasticsearch_username": "onion@onion.com",
+    "status_code": 200,
+    "execution_duration_ms": 159.358,
+    "elasticsearch_took_ms": 26,
+    "index_used": "logs-*",
+    "time_range_applied": {
+      "field": "@timestamp",
+      "gte": "2023-04-19T00:00:00",
+      "lte": "2023-04-19T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "event.dataset": "suricata.alert"
+                  }
+                },
+                {
+                  "term": {
+                    "event.module": "suricata"
+                  }
+                },
+                {
+                  "term": {
+                    "tags": "alert"
+                  }
+                }
+              ],
+              "minimum_should_match": 1
+            }
+          },
+          {
+            "range": {
+              "source.ip": {
+                "gte": "10.0.0.0",
+                "lte": "172.31.255.255"
+              }
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2023-04-19T00:00:00",
+                "lte": "2023-04-19T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "range": {
+              "event.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "range": {
+              "rule.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "terms": {
+              "rule.category": [
+                "Misc Attack",
+                "Potential Corporate Privacy Violation",
+                "Trojan",
+                "Malware",
+                "Policy Violation"
+              ]
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*malware*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*trojan*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*suspicious*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*attack*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*DROP*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*ET*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*SURICATA*"
+            }
+          },
+          {
+            "range": {
+              "destination.port": {
+                "gte": 1024,
+                "lte": 65535
+              }
+            }
+          }
+        ],
+        "minimum_should_match": 1
+      }
+    },
+    "aggs": {
+      "alert_signatures": {
+        "terms": {
+          "field": "rule.name",
+          "size": 30
+        }
+      },
+      "high_severity_alerts": {
+        "filter": {
+          "range": {
+            "rule.severity": {
+              "gte": 1,
+              "lte": 2
+            }
+          }
+        },
+        "aggs": {
+          "high_severity_signatures": {
+            "terms": {
+              "field": "rule.name",
+              "size": 10
+            }
+          },
+          "high_severity_sources": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "high_severity__destinations": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 5
+            }
+          }
+        }
+      },
+      "alert_timeline": {
+        "date_histogram": {
+          "field": "@timestamp",
+          "calendar_interval": "1h"
+        }
+      }
+    },
+    "sort": [
+      {
+        "rule.severity": {
+          "order": "asc"
+        }
+      },
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 26,
+    "timed_out": false,
+    "_shards": {
+      "total": 92,
+      "successful": 92,
+      "skipped": 91,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 33,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "alert_signatures": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "GPL NETBIOS SMB IPC$ unicode share access",
+            "doc_count": 11
+          },
+          {
+            "key": "ET USER_AGENTS Microsoft Device Metadata Retrieval Client User-Agent",
+            "doc_count": 10
+          },
+          {
+            "key": "ET INFO OpenSSL Demo CA - Internet Widgits Pty (O)",
+            "doc_count": 4
+          },
+          {
+            "key": "ET INFO Windows OS Submitting USB Metadata to Microsoft",
+            "doc_count": 2
+          },
+          {
+            "key": "ET MALWARE IcedID CnC Domain in DNS Lookup (askamoshopsi .com)",
+            "doc_count": 2
+          },
+          {
+            "key": "ET MALWARE IcedID CnC Domain in DNS Lookup (skigimeetroc .com)",
+            "doc_count": 2
+          },
+          {
+            "key": "ET MALWARE Win32/IcedID Request Cookie",
+            "doc_count": 1
+          },
+          {
+            "key": "ET MALWARE Win32/IcedID Requesting Encoded Binary M4",
+            "doc_count": 1
+          }
+        ]
+      },
+      "high_severity_alerts": {
+        "doc_count": 6,
+        "high_severity__destinations": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.4.19.19",
+              "doc_count": 4
+            },
+            {
+              "key": "192.153.57.233",
+              "doc_count": 2
+            }
+          ]
+        },
+        "high_severity_signatures": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "ET MALWARE IcedID CnC Domain in DNS Lookup (askamoshopsi .com)",
+              "doc_count": 2
+            },
+            {
+              "key": "ET MALWARE IcedID CnC Domain in DNS Lookup (skigimeetroc .com)",
+              "doc_count": 2
+            },
+            {
+              "key": "ET MALWARE Win32/IcedID Request Cookie",
+              "doc_count": 1
+            },
+            {
+              "key": "ET MALWARE Win32/IcedID Requesting Encoded Binary M4",
+              "doc_count": 1
+            }
+          ]
+        },
+        "high_severity_sources": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.4.19.136",
+              "doc_count": 6
+            }
+          ]
+        }
+      },
+      "alert_timeline": {
+        "buckets": [
+          {
+            "key_as_string": "2023-04-19T15:00:00.000Z",
+            "key": 1681916400000,
+            "doc_count": 19
+          },
+          {
+            "key_as_string": "2023-04-19T16:00:00.000Z",
+            "key": 1681920000000,
+            "doc_count": 3
+          },
+          {
+            "key_as_string": "2023-04-19T17:00:00.000Z",
+            "key": 1681923600000,
+            "doc_count": 10
+          },
+          {
+            "key_as_string": "2023-04-19T18:00:00.000Z",
+            "key": 1681927200000,
+            "doc_count": 0
+          },
+          {
+            "key_as_string": "2023-04-19T19:00:00.000Z",
+            "key": 1681930800000,
+            "doc_count": 0
+          },
+          {
+            "key_as_string": "2023-04-19T20:00:00.000Z",
+            "key": 1681934400000,
+            "doc_count": 1
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

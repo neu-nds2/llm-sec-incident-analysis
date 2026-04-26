@@ -1,0 +1,21 @@
+# Security Incident Response Questions for Gozi
+# One question per line. Lines starting with # are ignored.
+#
+# Removed (not answerable from the malware query library's 8-chunk output):
+#   - "What are the likely suspicious domains for initial infection?"
+#     (unapromo.com not captured by suspicious_domains query)
+#   - "What is the external IP address that delivered the malware binary via SMB?"
+#     (46.8.19.32 — SMB events not in query library)
+#   - "What is the name of the malware binary delivered over SMB?"
+#     (server.exe — SMB events not in query library)
+
+What is the IP address of the potentially infected internal host in the LAN?
+What is the hostname of the potentially infected machine in the LAN?
+What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+What are the likely suspicious domains for initial infection?
+What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+What are the exact filenames of the encoded modules or plugins downloaded by the malware?
+
+Which of the three CIA components does the attacker target primarily: availability, integrity, or confidentiality?
+During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?

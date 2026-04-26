@@ -1,0 +1,6 @@
+- LAN segment range: 172.16.1[.]0/24 (172.16.1[.]1 through 172.16.1[.]255)
+- Domain: pcapworkshop[.]net
+- Domain Controller IP address: 172.16.1[.]16
+- Domain Controller host name: PCAPWORKSHOP-DC
+- LAN segment gateway: 172.16.1[.]1
+- LAN segment broadcast address: 172.16.1[.]255

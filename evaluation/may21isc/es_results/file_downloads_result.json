@@ -1,0 +1,388 @@
+{
+  "metadata": {
+    "query_file": "file_downloads.json",
+    "execution_time": "2026-04-11T17:24:13.622582",
+    "status_code": 200,
+    "duration_ms": 217.581,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2021-05-04T00:00:00",
+      "lte": "2021-05-05T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443,
+                8080,
+                8443,
+                8000,
+                8888,
+                9000
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2021-05-04T00:00:00",
+                "lte": "2021-05-05T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "wildcard": {
+              "message": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*attachment*"
+            }
+          },
+          {
+            "wildcard": {
+              "message": "*fuid*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.msi*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.zip*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.rar*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.ps1*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.bat*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.cmd*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.vbs*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.uri": "*.js*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/octet-stream*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-type": "*application/x-msdownload*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.exe*"
+            }
+          },
+          {
+            "wildcard": {
+              "http.response.headers.content-disposition": "*filename=*.msi*"
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "download_domains": {
+        "terms": {
+          "field": "http.virtual_host",
+          "size": 20
+        }
+      },
+      "http_requests": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def get_pattern = /GET[ ]+([^\\s\\r\\n]+)/; def matcher = get_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher.group(1); } def uri_pattern = /\"uri\":\"([^\"]+)\"/; def matcher2 = uri_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : ' + matcher2.group(1); } } return 'no_http_uri';"
+          }
+        }
+      },
+      "file_transfers": {
+        "filter": {
+          "wildcard": {
+            "message": "*fuid*"
+          }
+        },
+        "aggs": {
+          "transfer_details": {
+            "terms": {
+              "script": {
+                "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def filename_pattern = /\"filename\":\"([^\"]+)\"/; def matcher = filename_pattern.matcher(msg); if (matcher.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : file: ' + matcher.group(1); } def fuid_pattern = /\"fuid\":\"([^\"]+)\"/; def matcher2 = fuid_pattern.matcher(msg); if (matcher2.find()) { return doc['source.ip'].value + ' -> ' + doc['destination.ip'].value + ':' + doc['destination.port'].value + ' : fuid: ' + matcher2.group(1); } } return 'file_transfer';"
+              }
+            }
+          }
+        }
+      },
+      "file_types": {
+        "terms": {
+          "script": {
+            "source": "if (doc['http.uri'].size() > 0) { String path = doc['http.uri'].value; if (path.contains('.exe')) return 'exe'; if (path.contains('.msi')) return 'msi'; if (path.contains('.ps1')) return 'powershell'; if (path.contains('.bat') || path.contains('.cmd')) return 'batch'; if (path.contains('.js')) return 'javascript'; if (path.contains('.zip') || path.contains('.rar')) return 'archive'; } if (doc['message.keyword'].size() > 0) { String msg = doc['message.keyword'].value; if (msg.contains('.ps1')) return 'powershell'; if (msg.contains('.exe')) return 'exe'; if (msg.contains('.msi')) return 'msi'; } return 'other';"
+          }
+        }
+      },
+      "download_sources": {
+        "terms": {
+          "field": "source.ip"
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "destination.ip"
+    ],
+    "sort": [
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 108,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 110,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 451,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "download_domains": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "store-images.s-microsoft.com",
+            "doc_count": 14
+          },
+          {
+            "key": "download.windowsupdate.com",
+            "doc_count": 12
+          },
+          {
+            "key": "au.download.windowsupdate.com",
+            "doc_count": 3
+          },
+          {
+            "key": "ctldl.windowsupdate.com",
+            "doc_count": 3
+          },
+          {
+            "key": "185.183.99.115",
+            "doc_count": 1
+          }
+        ]
+      },
+      "http_requests": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 23,
+        "buckets": [
+          {
+            "key": "no_http_uri",
+            "doc_count": 418
+          },
+          {
+            "key": "172.17.4.206 -> 8.249.131.254:80 : /c/msdownload/update/software/defu/2021/05/am_delta_patch_1.337.600.0_f8fd1ab601622aa5111bab3b497be9d8ce1b22a6.exe",
+            "doc_count": 2
+          },
+          {
+            "key": "172.17.4.206 -> 185.183.99.115:80 : /44313,6048108796.dat",
+            "doc_count": 1
+          },
+          {
+            "key": "172.17.4.206 -> 23.47.169.154:80 : /image/apps.11693.14503766937567901.176691f4-19f9-48ef-a75c-2af62972b059.04097907-d16b-47f1-b1a6-83fbc59bb15c?w=172&h=258",
+            "doc_count": 1
+          },
+          {
+            "key": "172.17.4.206 -> 23.47.169.154:80 : /image/apps.13825.14369454977035291.312a1827-6832-45f4-885d-562c4148d669.5c931ffa-b74a-45a6-a9cb-082c7d9cddd9?w=172&h=258",
+            "doc_count": 1
+          },
+          {
+            "key": "172.17.4.206 -> 23.47.169.154:80 : /image/apps.15387.13812021519099434.2bf8d983-bebb-467e-9b6a-e52bb2610650.46530b30-f947-46d5-ae2e-dd024af3da59?w=172&h=258",
+            "doc_count": 1
+          },
+          {
+            "key": "172.17.4.206 -> 23.47.169.154:80 : /image/apps.15459.14018880429702282.f227304a-b5a1-43b5-a5ef-c3a2eafb2c2d.9871105b-6b54-4a8b-9295-e4197c93988e?w=172&h=258",
+            "doc_count": 1
+          },
+          {
+            "key": "172.17.4.206 -> 23.47.169.154:80 : /image/apps.15792.14098991041572765.f2e8d44f-55f2-4b91-b7c9-5fe108fe9c1a.f803e6b2-b8a5-47bb-98f1-9843909974ce?w=172&h=258",
+            "doc_count": 1
+          },
+          {
+            "key": "172.17.4.206 -> 23.47.169.154:80 : /image/apps.45464.14137276003875252.d1d6dd04-81e9-424d-a1b6-7a81e52dfeef.656ba41f-9220-4ebf-9cf4-a685da2f558d?w=172&h=258",
+            "doc_count": 1
+          },
+          {
+            "key": "172.17.4.206 -> 23.47.169.154:80 : /image/apps.57047.14380149729470603.1aef82b1-76c1-46e9-b3a7-bfea4ea54b01.ed79b095-68f1-4190-9ff1-74e2fbf0103a?w=172&h=258",
+            "doc_count": 1
+          }
+        ]
+      },
+      "file_transfers": {
+        "doc_count": 92,
+        "transfer_details": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 54,
+          "buckets": [
+            {
+              "key": "file_transfer",
+              "doc_count": 29
+            },
+            {
+              "key": "172.17.4.206 -> 104.93.49.229:443 : fuid: F2YugI1hndkt6JD5Ne",
+              "doc_count": 1
+            },
+            {
+              "key": "172.17.4.206 -> 13.107.246.66:443 : fuid: FEtVKF2lotN7Jqmc5",
+              "doc_count": 1
+            },
+            {
+              "key": "172.17.4.206 -> 13.107.246.66:443 : fuid: FpzdMa114V8kjGBLAh",
+              "doc_count": 1
+            },
+            {
+              "key": "172.17.4.206 -> 13.107.42.23:443 : fuid: F4t0zurNNzt8hfape",
+              "doc_count": 1
+            },
+            {
+              "key": "172.17.4.206 -> 13.107.42.23:443 : fuid: F5n7EL2wssW88sWr1a",
+              "doc_count": 1
+            },
+            {
+              "key": "172.17.4.206 -> 13.107.42.23:443 : fuid: F9hoQd2AyO7PfkaPif",
+              "doc_count": 1
+            },
+            {
+              "key": "172.17.4.206 -> 13.107.42.23:443 : fuid: FBV5Km2eArFsCy4Cnc",
+              "doc_count": 1
+            },
+            {
+              "key": "172.17.4.206 -> 13.107.42.23:443 : fuid: Frp4qe2vODf6xkENH8",
+              "doc_count": 1
+            },
+            {
+              "key": "172.17.4.206 -> 13.107.42.23:443 : fuid: Fu0nuB257f78thDhb2",
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      "file_types": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "other",
+            "doc_count": 445
+          },
+          {
+            "key": "exe",
+            "doc_count": 6
+          }
+        ]
+      },
+      "download_sources": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "172.17.4.206",
+            "doc_count": 451
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

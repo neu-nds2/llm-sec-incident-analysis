@@ -1,0 +1,6 @@
+# Network Environment Context
+- LAN segment range: 10.6.15.0/24 (10.6.15.0 through 10.6.15.255)
+- Domain: saltmobsters.com
+- Domain Controller: 10.6.15.5 - Saltmobsters-DC
+- LAN segment gateway: 10.6.15.1
+- LAN segment broadcast address: 10.6.15.255

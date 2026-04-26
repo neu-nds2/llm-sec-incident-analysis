@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "query_file": "high_activity_external_dest.json",
+    "execution_time": "2026-04-13T18:23:48.110898",
+    "status_code": 200,
+    "duration_ms": 359.82,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2022-03-21T00:00:00",
+      "lte": "2022-03-23T23:59:59"
+    }
+  },
+  "query": {
+    "size": 0,
+    "aggs": {
+      "source_clients": {
+        "terms": {
+          "field": "source.ip",
+          "size": 50,
+          "min_doc_count": 100
+        },
+        "aggs": {
+          "external_destinations": {
+            "cardinality": {
+              "field": "destination.ip"
+            }
+          },
+          "top_destinations": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 5
+            }
+          }
+        }
+      }
+    },
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "range": {
+              "source.ip": {
+                "gte": "10.0.0.0",
+                "lte": "172.31.255.255"
+              }
+            }
+          },
+          {
+            "terms": {
+              "destination.port": [
+                80,
+                443
+              ]
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2022-03-21T00:00:00",
+                "lte": "2022-03-23T23:59:59"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "took": 12,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 683,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "source_clients": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "10.0.19.14",
+            "doc_count": 683,
+            "external_destinations": {
+              "value": 50
+            },
+            "top_destinations": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 181,
+              "buckets": [
+                {
+                  "key": "157.245.142.66",
+                  "doc_count": 267
+                },
+                {
+                  "key": "91.193.16.181",
+                  "doc_count": 175
+                },
+                {
+                  "key": "40.83.240.146",
+                  "doc_count": 20
+                },
+                {
+                  "key": "52.183.220.149",
+                  "doc_count": 20
+                },
+                {
+                  "key": "52.185.211.133",
+                  "doc_count": 20
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

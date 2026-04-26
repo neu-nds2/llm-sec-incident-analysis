@@ -1,0 +1,283 @@
+{
+  "metadata": {
+    "query_file": "kerberos_full_services.json",
+    "execution_time": "2026-04-08T15:52:02.120448",
+    "status_code": 200,
+    "duration_ms": 135.293,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2024-08-14T00:00:00",
+      "lte": "2024-08-16T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "term": {
+              "destination.port": 88
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2024-08-14T00:00:00",
+                "lte": "2024-08-16T23:59:59"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "full_services": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def service_pattern = /\"service\":\"([^\"]+)\"/; def matcher = service_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } } return 'no_service_found';"
+          },
+          "size": 20
+        },
+        "aggs": {
+          "source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "kerberos.service"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 7,
+    "timed_out": false,
+    "_shards": {
+      "total": 102,
+      "successful": 102,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 50,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "full_services": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "krb_tcp",
+            "doc_count": 25,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 25
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/LAFONTAINEBLEU.ORG",
+            "doc_count": 10,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 10
+                }
+              ]
+            }
+          },
+          {
+            "key": "LDAP/WIN-JEGJIX7Q9RS.lafontainebleu.org/lafontainebleu.org",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/WIN-JEGJIX7Q9RS.lafontainebleu.org",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/lafontainebleu.org",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "DESKTOP-H8ALZBV$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "LDAP/WIN-JEGJIX7Q9RS.lafontainebleu.org",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/WIN-JEGJIX7Q9RS",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/WIN-JEGJIX7Q9RS.lafontainebleu.org/lafontainebleu.org",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "desktop-h8alzbv$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/desktop-h8alzbv.lafontainebleu.org",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/LAFONTAINEBLEU",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "ldap/win-jegjix7q9rs.lafontainebleu.org",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "ldap/win-jegjix7q9rs.lafontainebleu.org/lafontainebleu.org",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.8.15.133",
+                  "doc_count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

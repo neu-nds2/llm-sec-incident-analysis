@@ -1,0 +1,11 @@
+# April 2021 ISC Forensic Contest (BazaLoader)
+# One question per line
+
+What was the IP address of the infected Windows computer?
+What was the host name of the infected Windows computer?
+What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+What malware family do the IDS alerts identify?
+What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+What are the likely suspicious domains for initial infection or C2?
+Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.

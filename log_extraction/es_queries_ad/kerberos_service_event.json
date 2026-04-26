@@ -1,0 +1,36 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.code:4769 AND user.name:* AND service.name:*krbtgt* AND NOT source.ip:\"::1\"",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "yyyy-MM-dd HH:mm"
+      },
+      "aggs": {
+        "service_request_count": {
+          "value_count": {
+            "field": "@timestamp"
+          }
+        },
+        "service_request_details": {
+          "terms": {
+            "script": {
+              "source": "'Kerberos Service Ticket: [Host: ' + doc['host.name'].value + ', User: ' + doc['user.name'].value + ', Service: ' + doc['service.name'].value +']'"
+            },
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}
+

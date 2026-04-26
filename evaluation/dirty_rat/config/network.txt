@@ -1,0 +1,9 @@
+# Network Environment Context
+# This information helps the AI understand your network environment
+
+## Network Information for the NetSupport RAT Scenario
+- LAN segment range:  172.16.1.0/24 (172.16.1.0 through 172.16.1.255)
+- Domain:  wiresharkworkshop.online
+- Domain Controller:  172.16.1.4 - WIRESHARK-WS-DC
+- LAN segment gateway: 172.16.1.1
+- LAN segment broadcast address:  172.16.1.255

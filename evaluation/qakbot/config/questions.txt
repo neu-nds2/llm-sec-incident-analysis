@@ -1,0 +1,11 @@
+# Qakbot Scenario
+# One question per line
+
+What is the IP address of the potentially infected internal host in the LAN?
+What is the hostname of the potentially infected machine in the LAN?
+What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+What is the URL used for the initial malware download?
+What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+What specific spoofed domain was used in a self-signed certificate during this infection?
+According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?

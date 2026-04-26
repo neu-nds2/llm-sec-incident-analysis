@@ -1,0 +1,383 @@
+{
+  "metadata": {
+    "query_file": "suricata_alerts.json",
+    "execution_time": "2026-04-13T18:12:18.103149",
+    "status_code": 200,
+    "duration_ms": 403.204,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2026-02-28T00:00:00",
+      "lte": "2026-03-02T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "event.dataset": "suricata.alert"
+                  }
+                },
+                {
+                  "term": {
+                    "event.module": "suricata"
+                  }
+                },
+                {
+                  "term": {
+                    "tags": "alert"
+                  }
+                }
+              ],
+              "minimum_should_match": 1
+            }
+          },
+          {
+            "range": {
+              "source.ip": {
+                "gte": "10.0.0.0",
+                "lte": "172.31.255.255"
+              }
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2026-02-28T00:00:00",
+                "lte": "2026-03-02T23:59:59"
+              }
+            }
+          }
+        ],
+        "should": [
+          {
+            "range": {
+              "event.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "range": {
+              "rule.severity": {
+                "gte": 1,
+                "lte": 3
+              }
+            }
+          },
+          {
+            "terms": {
+              "rule.category": [
+                "Misc Attack",
+                "Potential Corporate Privacy Violation",
+                "Trojan",
+                "Malware",
+                "Policy Violation"
+              ]
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*malware*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*trojan*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*suspicious*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*attack*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*DROP*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*ET*"
+            }
+          },
+          {
+            "wildcard": {
+              "rule.name": "*SURICATA*"
+            }
+          },
+          {
+            "range": {
+              "destination.port": {
+                "gte": 1024,
+                "lte": 65535
+              }
+            }
+          }
+        ],
+        "minimum_should_match": 1
+      }
+    },
+    "aggs": {
+      "alert_signatures": {
+        "terms": {
+          "field": "rule.name",
+          "size": 30
+        }
+      },
+      "high_severity_alerts": {
+        "filter": {
+          "range": {
+            "rule.severity": {
+              "gte": 1,
+              "lte": 2
+            }
+          }
+        },
+        "aggs": {
+          "high_severity_signatures": {
+            "terms": {
+              "field": "rule.name",
+              "size": 10
+            }
+          },
+          "high_severity_sources": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          },
+          "high_severity__destinations": {
+            "terms": {
+              "field": "destination.ip",
+              "size": 5
+            }
+          }
+        }
+      },
+      "alert_timeline": {
+        "date_histogram": {
+          "field": "@timestamp",
+          "calendar_interval": "1h"
+        }
+      }
+    },
+    "sort": [
+      {
+        "rule.severity": {
+          "order": "asc"
+        }
+      },
+      {
+        "@timestamp": {
+          "order": "desc"
+        }
+      }
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 32,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 104,
+      "skipped": 103,
+      "failed": 7,
+      "failures": [
+        {
+          "shard": 0,
+          "index": ".ds-logs-elastic_agent.filebeat-default-2026.02.08-000002",
+          "node": "BSM35hs8Tzq4C8bK7NRz1A",
+          "reason": {
+            "type": "query_shard_exception",
+            "reason": "No mapping found for [rule.severity] in order to sort on",
+            "index_uuid": "Zxy0MqL6QKObCHEXU1GWEA",
+            "index": ".ds-logs-elastic_agent.filebeat-default-2026.02.08-000002"
+          }
+        },
+        {
+          "shard": 0,
+          "index": ".ds-logs-elastic_agent.fleet_server-default-2026.02.08-000002",
+          "node": "BSM35hs8Tzq4C8bK7NRz1A",
+          "reason": {
+            "type": "query_shard_exception",
+            "reason": "No mapping found for [rule.severity] in order to sort on",
+            "index_uuid": "-b0tu7dDS7adPf7D8KJ5eA",
+            "index": ".ds-logs-elastic_agent.fleet_server-default-2026.02.08-000002"
+          }
+        },
+        {
+          "shard": 0,
+          "index": ".ds-logs-elasticsearch.server-default-2026.02.08-000002",
+          "node": "BSM35hs8Tzq4C8bK7NRz1A",
+          "reason": {
+            "type": "query_shard_exception",
+            "reason": "No mapping found for [rule.severity] in order to sort on",
+            "index_uuid": "wRKB5mtfTsi2CtoRpE6gPA",
+            "index": ".ds-logs-elasticsearch.server-default-2026.02.08-000002"
+          }
+        },
+        {
+          "shard": 0,
+          "index": ".ds-logs-kratos-so-2026.02.08-000002",
+          "node": "BSM35hs8Tzq4C8bK7NRz1A",
+          "reason": {
+            "type": "query_shard_exception",
+            "reason": "No mapping found for [rule.severity] in order to sort on",
+            "index_uuid": "EGsBaAG9Q9GVRjazPxv_Vw",
+            "index": ".ds-logs-kratos-so-2026.02.08-000002"
+          }
+        },
+        {
+          "shard": 0,
+          "index": ".ds-logs-soc-so-2026.02.08-000002",
+          "node": "BSM35hs8Tzq4C8bK7NRz1A",
+          "reason": {
+            "type": "query_shard_exception",
+            "reason": "No mapping found for [rule.severity] in order to sort on",
+            "index_uuid": "_lC4b00_QSidLE0nOuqSlA",
+            "index": ".ds-logs-soc-so-2026.02.08-000002"
+          }
+        },
+        {
+          "shard": 0,
+          "index": ".ds-logs-system.auth-default-2026.02.08-000002",
+          "node": "BSM35hs8Tzq4C8bK7NRz1A",
+          "reason": {
+            "type": "query_shard_exception",
+            "reason": "No mapping found for [rule.severity] in order to sort on",
+            "index_uuid": "D6uQWjWuRnqL2GZ0KrRN_g",
+            "index": ".ds-logs-system.auth-default-2026.02.08-000002"
+          }
+        },
+        {
+          "shard": 0,
+          "index": ".ds-logs-system.syslog-default-2026.02.08-000002",
+          "node": "BSM35hs8Tzq4C8bK7NRz1A",
+          "reason": {
+            "type": "query_shard_exception",
+            "reason": "No mapping found for [rule.severity] in order to sort on",
+            "index_uuid": "i6ojhNepTBSfLdM5CLFaZA",
+            "index": ".ds-logs-system.syslog-default-2026.02.08-000002"
+          }
+        }
+      ]
+    },
+    "hits": {
+      "total": {
+        "value": 543,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "alert_signatures": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "ET INFO HTTP traffic on port 443 (POST)",
+            "doc_count": 264
+          },
+          {
+            "key": "ET REMOTE_ACCESS NetSupport Remote Admin Checkin",
+            "doc_count": 264
+          },
+          {
+            "key": "ET JA3 Hash - Possible SoftEther Windows Client SSTP Traffic",
+            "doc_count": 12
+          },
+          {
+            "key": "ET REMOTE_ACCESS NetSupport Remote Admin Response",
+            "doc_count": 2
+          },
+          {
+            "key": "ET INFO Microsoft Connection Test",
+            "doc_count": 1
+          }
+        ]
+      },
+      "high_severity_alerts": {
+        "doc_count": 264,
+        "high_severity__destinations": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "45.131.214.85",
+              "doc_count": 264
+            }
+          ]
+        },
+        "high_severity_signatures": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "ET INFO HTTP traffic on port 443 (POST)",
+              "doc_count": 264
+            }
+          ]
+        },
+        "high_severity_sources": {
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0,
+          "buckets": [
+            {
+              "key": "10.2.28.88",
+              "doc_count": 264
+            }
+          ]
+        }
+      },
+      "alert_timeline": {
+        "buckets": [
+          {
+            "key_as_string": "2026-02-28T19:00:00.000Z",
+            "key": 1772305200000,
+            "doc_count": 28
+          },
+          {
+            "key_as_string": "2026-02-28T20:00:00.000Z",
+            "key": 1772308800000,
+            "doc_count": 119
+          },
+          {
+            "key_as_string": "2026-02-28T21:00:00.000Z",
+            "key": 1772312400000,
+            "doc_count": 120
+          },
+          {
+            "key_as_string": "2026-02-28T22:00:00.000Z",
+            "key": 1772316000000,
+            "doc_count": 120
+          },
+          {
+            "key_as_string": "2026-02-28T23:00:00.000Z",
+            "key": 1772319600000,
+            "doc_count": 120
+          },
+          {
+            "key_as_string": "2026-03-01T00:00:00.000Z",
+            "key": 1772323200000,
+            "doc_count": 36
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

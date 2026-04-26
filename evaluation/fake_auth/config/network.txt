@@ -1,0 +1,11 @@
+# Network Environment Context
+# This information helps the AI understand your network environment
+
+## Network Information for the Fake Authenticator Scenario
+- LAN segment range: 10.1.17.0/24 (10.1.17.0 through 10.1.17.255)
+- Domain: bluemoontuesday.com
+- Active Directory domain controller: 10.1.17.2 - WIN-GSH54QLW48D
+- AD environment name: BLUEMOONTUESDAY
+- LAN segment gateway: 10.1.17.1
+- LAN segment broadcast address: 10.1.17.255
+

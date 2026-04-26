@@ -1,0 +1,433 @@
+{
+  "metadata": {
+    "query_file": "kerberos_full_services.json",
+    "execution_time": "2026-04-13T19:37:33.461480",
+    "status_code": 200,
+    "duration_ms": 142.313,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2021-06-16T00:00:00",
+      "lte": "2021-06-16T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "term": {
+              "destination.port": 88
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2021-06-16T00:00:00",
+                "lte": "2021-06-16T23:59:59"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "full_services": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def service_pattern = /\"service\":\"([^\"]+)\"/; def matcher = service_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } } return 'no_service_found';"
+          },
+          "size": 20
+        },
+        "aggs": {
+          "source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip",
+      "kerberos.service"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 8,
+    "timed_out": false,
+    "_shards": {
+      "total": 111,
+      "successful": 111,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 142,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "full_services": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "krb_tcp",
+            "doc_count": 71,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 29
+                },
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 21
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 21
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/SALTMOBSTERS.COM",
+            "doc_count": 29,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 11
+                },
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 9
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 9
+                }
+              ]
+            }
+          },
+          {
+            "key": "LDAP/Saltmobsters-DC.saltmobsters.com/saltmobsters.com",
+            "doc_count": 7,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 3
+                },
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/SALTMOBSTERS.COM",
+            "doc_count": 4,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/Saltmobsters-DC",
+            "doc_count": 4,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/Saltmobsters-DC.saltmobsters.com",
+            "doc_count": 4,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/SALTMOBSTERS",
+            "doc_count": 4,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 2
+                },
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "cifs/Saltmobsters-DC.saltmobsters.com/saltmobsters.com",
+            "doc_count": 3,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "krbtgt/saltmobsters.com",
+            "doc_count": 3,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "ldap/saltmobsters-dc.saltmobsters.com/saltmobsters.com",
+            "doc_count": 3,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 1
+                },
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/desktop-niee9lp.saltmobsters.com",
+            "doc_count": 2,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 2
+                }
+              ]
+            }
+          },
+          {
+            "key": "DEKSTOP-A1CTJVY$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "DESKTOP-NIEE9LP$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "DESKTOP-YS6FZ2G$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "dekstop-a1ctjvy$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "desktop-niee9lp$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.119",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "desktop-ys6fz2g$",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/dekstop-a1ctjvy.saltmobsters.com",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.93",
+                  "doc_count": 1
+                }
+              ]
+            }
+          },
+          {
+            "key": "host/desktop-ys6fz2g.saltmobsters.com",
+            "doc_count": 1,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.6.15.187",
+                  "doc_count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

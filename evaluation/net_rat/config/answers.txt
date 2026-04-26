@@ -1,0 +1,24 @@
+# NetSupport RAT Scenario - Ground Truth Answers
+# Date: 2024-11-26
+# Source: https://www.malware-traffic-analysis.net/2024/11/26/index.html
+
+Q1: What is the IP address of the potentially infected internal host in the LAN?
+A1: 10.11.26.183
+
+Q2: What is the hostname of the potentially infected machine in the LAN?
+A2: DESKTOP-B8TQK49
+
+Q3: What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+A3: oboomwald
+
+Q4: What are the likely fake or suspicious domains / URLs for initial infection?
+A4: modandcrackedapk.com (SmartApeSG/fake browser update), classicgrand.com (compromised site)
+
+Q5: What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+A5: 194.180.191.64
+
+Q6: During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+A6: 2024-11-26 04:00 UTC
+
+Q7: According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?
+A7: 194.180.191.64, C2 server

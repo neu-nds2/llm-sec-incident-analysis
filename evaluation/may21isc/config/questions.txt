@@ -1,0 +1,14 @@
+# May 2021 ISC Forensic Contest (Qakbot)
+# One question per line
+#
+# Removed: "What family of malware was involved?" — Suricata says
+#   "Possible Dridex" (JA3 overlap) but actual malware is Qakbot.
+#   Same JA3 misattribution issue as dec21isc.
+
+What was the IP address of the infected Windows computer?
+What was the host name of the infected Windows computer?
+What is the Windows human user account name (not machine accounts ending in $) of the potentially infected machine in the LAN?
+During what hour did the first signs of infection activity appear? Provide the earliest date and time in YYYY-MM-DD HH:MM UTC format.
+What are the suspicious external IP addresses contacted, which might be involved in command-and-control (C2) communication?
+Were any suspicious certificates observed in the encrypted network traffic? If so, identify the domain or IP in the certificate.
+According to the connection volume statistics, what single external IP address received the most connections from the infected hosts? Is it a C2 server or a legitimate service?

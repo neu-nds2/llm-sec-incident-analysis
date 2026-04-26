@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "query_file": "kerberos_clients.json",
+    "execution_time": "2026-02-23T18:58:32.978724",
+    "status_code": 200,
+    "duration_ms": 107.918,
+    "index": "logs-*",
+    "time_range": {
+      "field": "@timestamp",
+      "gte": "2024-11-26T00:00:00",
+      "lte": "2024-11-26T23:59:59"
+    }
+  },
+  "query": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "term": {
+              "destination.port": 88
+            }
+          },
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "2024-11-26T00:00:00",
+                "lte": "2024-11-26T23:59:59"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "aggs": {
+      "client_accounts": {
+        "terms": {
+          "script": {
+            "source": "if (doc['message.keyword'].size() > 0) { def msg = doc['message.keyword'].value; def client_pattern = /\"client\":\"([^\\/\"]+)/; def matcher = client_pattern.matcher(msg); if (matcher.find()) { return matcher.group(1); } def service_pattern2 = /\"service\":\"([^\"]+)\"/; def matcher2 = service_pattern2.matcher(msg); if (matcher2.find()) { def service = matcher2.group(1); if (service.startsWith('host/')) { def parts = service.split('/'); if (parts.length > 1) { def hostname_domain = parts[1]; def hostname_parts = hostname_domain.split('\\\\.'); return hostname_parts[0]; } } } }"
+          },
+          "size": 20
+        },
+        "aggs": {
+          "source_ips": {
+            "terms": {
+              "field": "source.ip",
+              "size": 10
+            }
+          }
+        }
+      }
+    },
+    "_source": [
+      "message",
+      "@timestamp",
+      "source.ip"
+    ],
+    "size": 0
+  },
+  "response": {
+    "took": 4,
+    "timed_out": false,
+    "_shards": {
+      "total": 92,
+      "successful": 92,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": {
+        "value": 16,
+        "relation": "eq"
+      },
+      "max_score": null,
+      "hits": []
+    },
+    "aggregations": {
+      "client_accounts": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 0,
+        "buckets": [
+          {
+            "key": "oboomwald",
+            "doc_count": 8,
+            "source_ips": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "10.11.26.183",
+                  "doc_count": 8
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "success": true
+}

@@ -1,0 +1,35 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.code:7045",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "HH:mm"
+      },
+      "aggs": {
+        "service_install_count": {
+          "value_count": {
+            "field": "@timestamp"
+          }
+        },
+        "service_details": {
+          "terms": {
+            "script": {
+              "source": "'Service install: [Host: ' + doc['host.name'].value + ', Service: ' + doc['winlog.event_data.ServiceName'].value + ']'"
+            },
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}

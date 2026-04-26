@@ -1,0 +1,35 @@
+{
+  "index": "logs-*",
+  "query": {
+    "query_string": {
+      "query": "event.code:4728 OR event.code:4732 OR event.code:4756",
+      "analyze_wildcard": true
+    }
+  },
+  "aggs": {
+    "per_minute": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "1m",
+        "min_doc_count": 1,
+        "format": "HH:mm"
+      },
+      "aggs": {
+        "group_mod_count": {
+          "value_count": {
+            "field": "@timestamp"
+          }
+        },
+        "group_mod_details": {
+          "terms": {
+            "script": {
+              "source": "'Group modification: [Host: ' + doc['host.name'].value + ', Group: ' + doc['group.name'].value + ', User added: ' + doc['user.target.name'].value + ']'"
+            },
+            "size": 20
+          }
+        }
+      }
+    }
+  },
+  "size": 0
+}
