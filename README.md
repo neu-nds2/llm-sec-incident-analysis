@@ -34,14 +34,14 @@ We include pre-extracted query results, reference answers, and LLM
 analysis reports for 17 malware-traffic scenarios from three
 independent challenge sources:
 
-**Malware-Traffic-Analysis.net exercises (8 scenarios):**
+**[Malware-Traffic-Analysis.net](https://www.malware-traffic-analysis.net/training-exercises.html) exercises (8 scenarios):**
 fake_auth, koi_stealer, net_rat, dirty_rat, warmcookie,
 lumma_stealer, burnincandle, easy_123
 
-**Palo Alto Unit 42 Wireshark Quizzes (4 scenarios):**
+**[Palo Alto Unit 42](https://unit42.paloaltonetworks.com/category/cybersecurity-tutorials/) Wireshark Quizzes (4 scenarios):**
 iced_id, gozi, qakbot, redline_stlr
 
-**SANS Internet Storm Center forensic contests (5 scenarios):**
+**[SANS Internet Storm Center](https://isc.sans.edu/diary/28160) forensic contests (5 scenarios):**
 dec21isc, apr21isc, may21isc, oct21isc, jun21isc
 
 Each scenario directory contains:
@@ -158,7 +158,7 @@ python query_executor_with_time_range.py es_queries_malware \
 ## Requirements
 
 - Python 3.10+
-- API key for cloud providers, or Ollama installed for local models
+- API key for cloud providers, or Ollama installed for local models (Llama 3.1:70b), or GPU with ≥16GB VRAM for Cisco Foundation-Sec-8B
 - For log extraction: access to Elasticsearch/Security Onion
 
 ## Citation
