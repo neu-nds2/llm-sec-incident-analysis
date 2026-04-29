@@ -1,9 +1,8 @@
 # Paper Results
 
-These results will be included in the camera-ready version of the
-paper. They extend the original submission (4 scenarios, 3 providers)
-to 17 scenarios and 8 providers. See the artifact appendix for
-instructions on how to reproduce each table.
+Published results from *Retrieval-Augmented LLMs for Security Incident
+Analysis* (CAIS 2026). These are the reference tables for verifying
+reproduction — see [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for instructions.
 
 ## Recall (%) by scenario and provider
 

@@ -1,5 +1,9 @@
 # Retrieval-Augmented LLMs for Security Incident Analysis
 
+> **Paper:** Xavier Cadet, Aditya Vikram Singh, Harsh Mamania, Edward Koh, Alex Fitts, Dirk Van Bruggen, Simona Boboila, Peter Chin, and Alina Oprea.
+> *Retrieval-Augmented LLMs for Security Incident Analysis.*
+> ACM Conference on AI and Agentic Systems (CAIS), 2026.
+
 Analyze security incidents from SIEM logs using Large Language Models
 with RAG (Retrieval-Augmented Generation).
 
@@ -156,3 +160,19 @@ python query_executor_with_time_range.py es_queries_malware \
 - Python 3.10+
 - API key for cloud providers, or Ollama installed for local models
 - For log extraction: access to Elasticsearch/Security Onion
+
+## Citation
+
+If you use this artifact, please cite the associated paper:
+
+```bibtex
+@inproceedings{cadet2026ragllm,
+  author    = {Cadet, Xavier and Singh, Aditya Vikram and Mamania, Harsh and
+               Koh, Edward and Fitts, Alex and Van Bruggen, Dirk and
+               Boboila, Simona and Chin, Peter and Oprea, Alina},
+  title     = {Retrieval-Augmented {LLMs} for Security Incident Analysis},
+  booktitle = {Proceedings of the ACM Conference on AI and Agentic Systems (CAIS)},
+  year      = {2026},
+
+}
+```
