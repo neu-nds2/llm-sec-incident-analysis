@@ -1,5 +1,7 @@
 # Retrieval-Augmented LLMs for Security Incident Analysis
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19895154.svg)](https://doi.org/10.5281/zenodo.19895154)
+
 > **Paper:** Xavier Cadet, Aditya Vikram Singh, Harsh Mamania, Edward Koh, Alex Fitts, Dirk Van Bruggen, Simona Boboila, Peter Chin, and Alina Oprea.
 > *Retrieval-Augmented LLMs for Security Incident Analysis.*
 > ACM Conference on AI and Agentic Systems (CAIS), 2026.
@@ -173,6 +175,7 @@ If you use this artifact, please cite the associated paper:
   title     = {Retrieval-Augmented {LLMs} for Security Incident Analysis},
   booktitle = {Proceedings of the ACM Conference on AI and Agentic Systems (CAIS)},
   year      = {2026},
+  doi       = {10.5281/zenodo.19895154},
 
 }
 ```
