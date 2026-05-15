@@ -74,9 +74,9 @@ C:\path\to\venv\Scripts\Activate.ps1
 pip install -r llm_analyzer/requirements.txt
 ```
 
-> **Python version.** Tested on Python 3.11.1, 3.12.1, and 3.12.3.
-> Python 3.13 and 3.14 are NOT supported — the pinned `numpy` and
-> `faiss-cpu` wheels do not resolve on 3.13+.
+> **Python version.** Tested on Python 3.11 and 3.12. Python 3.13 and
+> 3.14 are NOT supported — the pinned `numpy` and `faiss-cpu` wheels
+> do not resolve on 3.13+.
 >
 > **Windows users.** Enable UTF-8 mode before running the scoring
 > scripts, otherwise the report parser may fail on non-ASCII tokens:

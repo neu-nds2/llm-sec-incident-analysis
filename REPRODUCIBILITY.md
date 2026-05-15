@@ -17,8 +17,8 @@ Published results are in [paper_results.md](paper_results.md).
 
 ### Supported Python versions
 
-Tested on Python **3.11.1**, **3.12.1**, and **3.12.3**. Python 3.13 and 3.14
-are **not supported**: the pinned `numpy` and `faiss-cpu` wheels resolve only
+Tested on Python **3.11** and **3.12**. Python 3.13 and 3.14 are
+**not supported**: the pinned `numpy` and `faiss-cpu` wheels resolve only
 up to Python 3.12.
 
 ### Create a virtual environment (recommended)
