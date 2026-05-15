@@ -244,6 +244,27 @@ _FILLER = {"at", "approximately", "around", "about", "on", "the", "of", "in",
            "utc", "pm", "am"}
 
 
+_DT_RE = re.compile(r"(\d{4}-\d{2}-\d{2})[\sT]+(\d{2})")
+
+
+def _hour_match(ref_token: str, predicted: set) -> bool:
+    """Date+hour match for 'during what hour' questions.
+
+    The reference timestamp uses HH:00 (top-of-hour) to denote the hour
+    window. A prediction within that hour (e.g. 19:45 for reference 19:00)
+    is semantically correct. Match if both share YYYY-MM-DD and HH.
+    """
+    m = _DT_RE.search(ref_token)
+    if not m:
+        return False
+    ref_date, ref_hour = m.group(1), m.group(2)
+    for p in predicted:
+        mp = _DT_RE.search(p)
+        if mp and mp.group(1) == ref_date and mp.group(2) == ref_hour:
+            return True
+    return False
+
+
 def _keyword_match(ref_token: str, predicted: set) -> bool:
     """Fallback for reformatted timestamps: check if all significant words
     in the reference appear somewhere in the combined predicted text."""
@@ -270,6 +291,8 @@ def score(predicted: set, reference: set) -> tuple:
     for r in reference:
         r_norm = _normalize(r)
         if any(r_norm in p or p in r_norm for p in pred_norm):
+            matched += 1
+        elif _hour_match(r, predicted):
             matched += 1
         elif _keyword_match(r, predicted):
             matched += 1

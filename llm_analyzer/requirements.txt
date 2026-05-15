@@ -1,12 +1,26 @@
 # LLM Analyzer Requirements
+#
+# Tested with Python 3.11.1 (also verified on 3.12.1 and 3.12.3 by AE
+# reviewers). Python 3.13 and 3.14 are NOT supported: the pinned
+# numpy/faiss-cpu wheels resolve only up to Python 3.12.
+#
+# Use a virtual environment:
+#   python3.11 -m venv venv && source venv/bin/activate
+#   pip install -r requirements.txt
 
-# Core dependencies
-requests
-numpy
-sentence-transformers
-faiss-cpu
+# Core dependencies (RAG pipeline + cloud LLM providers).
+# Note: the scoring scripts (scoring/analyze_cross_source.py,
+# scoring/cost_effectiveness.py) use only the Python standard library
+# and do NOT need these packages.
+requests==2.32.4
+numpy==1.26.4
+sentence-transformers==5.2.2
+faiss-cpu==1.13.2
 
 # Required for Cisco Foundation-Sec local model (optional)
-# torch
-# transformers
+# Uncomment to enable the local Cisco provider. Requires a GPU with
+# at least 16 GB VRAM (or use load_in_8bit / load_in_4bit quantization).
+# torch==2.2.2
+# transformers==4.54.1
+# accelerate==1.9.0
 # bitsandbytes

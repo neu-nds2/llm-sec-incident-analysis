@@ -4,7 +4,7 @@ Published results from *Retrieval-Augmented LLMs for Security Incident
 Analysis* (CAIS 2026). These are the reference tables for verifying
 reproduction — see [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for instructions.
 
-## Recall (%) by scenario and provider
+## Table 1: Recall (%) by scenario and provider
 
 | Scenario | Claude | DeepSeek | Ollama | Cisco | GPT-4 | GPT-4o | GPT-5m | GPT-5.2 |
 |---|---|---|---|---|---|---|---|---|
@@ -27,7 +27,7 @@ reproduction — see [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for instructions.
 | warmcookie | 96 | 93 | 79 | 86 | 68 | 68 | 68 | 68 |
 | **Average** | **94** | **89** | **81** | **71** | **67** | **69** | **64** | **68** |
 
-## Context-size ablation: Recall (%) by k
+## Table 3: Context-size ablation: Recall (%) by k
 
 | Provider | k=1 | k=3 | k=5 | k=7 | k=14 |
 |---|---|---|---|---|---|
@@ -40,20 +40,27 @@ reproduction — see [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for instructions.
 | GPT-5m | 44 | 62 | 65 | 64 | 66 |
 | GPT-5.2 | 46 | 62 | 64 | 68 | 64 |
 
-## Cost-effectiveness: timing per provider
+## Table 5: Cost-effectiveness — timing and USD per provider
 
-| Provider | Type | Avg time/scenario | Avg time/question | Recall | Total time (17 scenarios) |
-|---|---|---|---|---|---|
-| Claude Sonnet 4 | Cloud | 100s | 13.1s | 94% | 1692s |
-| DeepSeek V3 | Cloud | 110s | 14.4s | 89% | 1863s |
-| GPT-4 | Cloud | 18s | 2.4s | 67% | 312s |
-| GPT-4o | Cloud | 19s | 2.6s | 69% | 331s |
-| GPT-5-mini | Cloud | 18s | 2.4s | 64% | 304s |
-| GPT-5.2 | Cloud | 17s | 2.3s | 68% | 293s |
-| Ollama 3.1:70b | Local | 200s | 26.4s | 81% | 3403s |
-| Cisco 8B | Local | 376s | 49.5s | 71% | 6391s |
+| Provider | Recall | Avg time/scenario | Avg time/question | In ($/M) | Out ($/M) | Cost/Analysis |
+|---|---|---|---|---|---|---|
+| Claude Sonnet 4 | 94% | 100s | 13.1s | 3.00 | 15.00 | $0.12 |
+| DeepSeek V3 | 89% | 110s | 14.4s | 0.28 | 0.42 | $0.0080 |
+| GPT-4† | 67% | 18s | 2.4s | 3.00 | 12.00 | $0.11 |
+| GPT-4o | 69% | 19s | 2.6s | 2.50 | 10.00 | $0.09 |
+| GPT-5-mini | 64% | 18s | 2.4s | 0.25 | 2.00 | $0.01 |
+| GPT-5.2 | 68% | 17s | 2.3s | 1.75 | 14.00 | $0.09 |
+| Ollama 3.1:70b | 81% | 200s | 26.4s | – | – | $0* |
+| Cisco 8B | 71% | 376s | 49.5s | – | – | $0* |
 
-## RAG vs No-RAG baseline (fake_auth scenario, 8 questions)
+† GPT-4.1 pricing used; GPT-4 no longer published.
+\* Local deployment; requires GPU infrastructure, cost not included.
+
+Cost per analysis computed via Equation 1 (Section 6.5):
+C = N_calls × (T_in/1e6 × P_in + T_out/1e6 × P_out), with N_calls=8,
+T_in=3000, T_out=400.
+
+## Table 4: RAG vs No-RAG baseline (fake_auth scenario, 8 questions)
 
 The No-RAG baseline sends raw logs directly to the LLM without
 embedding or retrieval. Each provider can only process as many logs

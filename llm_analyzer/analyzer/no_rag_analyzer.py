@@ -183,6 +183,25 @@ INSTRUCTIONS:
 - If the information is not found in the logs, say "Not found in provided logs"
 - Be specific and cite evidence
 
+OUTPUT FORMAT (MANDATORY).
+Provide your analysis, then on the LAST line write EXACTLY one line of the
+form below — no extra prose after it, no markdown, no brackets around the
+literal word "FINAL ANSWER":
+
+FINAL ANSWER = value1, value2, ...
+
+Where each value is a concrete indicator (IP, hostname, username, domain,
+or timestamp in YYYY-MM-DD HH:MM UTC). Use "N/A" if not found in logs.
+
+Example for the IP question:
+  FINAL ANSWER = 10.1.17.215
+
+Example for the timestamp question:
+  FINAL ANSWER = 2025-01-22 19:00 UTC
+
+Example for the C2 IPs question:
+  FINAL ANSWER = 5.252.153.241, 45.125.66.32
+
 NETWORK CONTEXT: {network_info}
 
 RAW SECURITY LOGS ({logs_included:,} entries from {self.log_stats.get('total_logs', 0):,} total):
@@ -361,6 +380,17 @@ ANSWER:"""
         for i, r in enumerate(results, 1):
             findings.append(f"**{i}. {r['question']}**\n\n{r['answer']}\n")
         
+        # Provider label normalized to match analyze_cross_source.py /
+        # cost_effectiveness.py expectations (e.g. "Anthropic", "OpenAI",
+        # "DeepSeek").
+        prov_label = {
+            "anthropic": "Anthropic",
+            "openai":    "OpenAI",
+            "deepseek":  "DeepSeek",
+            "ollama":    "Ollama",
+            "cisco":     "CiscoFoundationLocal",
+        }.get(meta['provider'], meta['provider'].title())
+
         report = f"""# SECURITY INCIDENT ANALYSIS (No-RAG Full Context)
 
 ## APPROACH
@@ -376,14 +406,14 @@ This analysis used the **No-RAG Full Context** approach:
 
 ## METADATA
 
-- **Provider:** {meta['provider']}
+- **Provider:** {prov_label}
 - **Model:** {meta.get('model', 'default')}
 - **Approach:** {meta['approach']}
 - **Total Logs Available:** {meta['total_logs_available']:,}
 - **Logs Analyzed Per Question:** {meta['logs_analyzed_per_question']:,}
 - **Context Limit:** ~{meta['max_context_tokens']:,} tokens
-- **Questions Processed:** {meta['questions_count']}
-- **Total Duration:** {meta['total_duration_seconds']:.1f}s
+- **Questions:** {meta['questions_count']}
+- **Duration:** {meta['total_duration_seconds']:.1f}s
 - **Avg Time Per Question:** {meta['total_duration_seconds']/meta['questions_count']:.1f}s
 - **Analysis Date:** {meta['analysis_timestamp']}
 

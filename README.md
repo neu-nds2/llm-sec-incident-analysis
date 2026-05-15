@@ -59,11 +59,30 @@ evaluation/<scenario>/
 ## Quick Start
 
 ### 1. Install dependencies
-> **Tip:** Use a virtual environment to avoid dependency conflicts.
+
+Create and activate a virtual environment, then install pinned dependencies:
+
 ```bash
-cd llm_analyzer
-pip install -r requirements.txt
+# macOS / Linux
+python3.11 -m venv /path/to/venv
+source /path/to/venv/bin/activate
+
+# Windows (PowerShell)
+py -3.11 -m venv C:\path\to\venv
+C:\path\to\venv\Scripts\Activate.ps1
+
+pip install -r llm_analyzer/requirements.txt
 ```
+
+> **Python version.** Tested on Python 3.11.1, 3.12.1, and 3.12.3.
+> Python 3.13 and 3.14 are NOT supported — the pinned `numpy` and
+> `faiss-cpu` wheels do not resolve on 3.13+.
+>
+> **Windows users.** Enable UTF-8 mode before running the scoring
+> scripts, otherwise the report parser may fail on non-ASCII tokens:
+> ```powershell
+> $env:PYTHONUTF8=1
+> ```
 
 ### 2. Run analysis on an existing scenario
 
@@ -159,7 +178,7 @@ python query_executor_with_time_range.py es_queries_malware \
 
 ## Requirements
 
-- Python 3.10+
+- Python 3.11 or 3.12 (3.13/3.14 not supported — see Quick Start)
 - API key for cloud providers, or Ollama installed for local models (Llama 3.1:70b), or GPU with ≥16GB VRAM for Cisco Foundation-Sec-8B
 - For log extraction: access to Elasticsearch/Security Onion
 

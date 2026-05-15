@@ -1,0 +1,49 @@
+scenario,provider,question,recall,correct,n_cited,n_retrieved,single_chunk,multi_chunk,citation_precision,citation_efficiency,cited,retrieved,predicted,reference
+fake_auth,Claude Sonnet 4,1,1.0,1,0,0,0,0,,,,,10.1.17.215,10.1.17.215
+fake_auth,Claude Sonnet 4,2,1.0,1,0,0,0,0,,,,,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,Claude Sonnet 4,3,1.0,1,0,0,0,0,,,,,shutchenson,shutchenson
+fake_auth,Claude Sonnet 4,4,0.0,0,0,0,0,0,,,,,(none),authenticatoor.org
+fake_auth,Claude Sonnet 4,5,0.0,0,0,0,0,0,,,,,(none),45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,Claude Sonnet 4,6,1.0,1,0,0,0,0,,,,,2025-01-22 19:45:00 utc,2025-01-22 19:00 utc
+fake_auth,Claude Sonnet 4,7,0.0,0,0,0,0,0,,,,,52.156.123.84;52.178.17.235,45.125.66.252;45.125.66.32
+fake_auth,Claude Sonnet 4,8,0.0,0,0,0,0,0,,,,,52.178.17.235;legitimate service (microsoft telemetry - events.data.microsoft.com),5.252.153.241;c2 server
+fake_auth,DeepSeek V3,1,1.0,1,0,0,0,0,,,,,10.1.17.215;desktop-l8c5gsj;desktop-l8c5gsj.bluemoontuesday.com;shutchenson,10.1.17.215
+fake_auth,DeepSeek V3,2,1.0,1,0,0,0,0,,,,,10.1.17.215;bluemoontuesday.com;desktop-l8c5gsj;shutchenson,desktop-l8c5gsj
+fake_auth,DeepSeek V3,3,1.0,1,0,0,0,0,,,,,shutchenson,shutchenson
+fake_auth,DeepSeek V3,4,0.0,0,0,0,0,0,,,,,(none),authenticatoor.org
+fake_auth,DeepSeek V3,5,0.0,0,0,0,0,0,,,,,23.40.146.4;52.156.123.84;52.178.17.235,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,DeepSeek V3,6,1.0,1,0,0,0,0,,,,,10.1.17.215;2025-01-22 19:45;bluemoontuesday.com;desktop-l8c5gsj;shutchenson,2025-01-22 19:00 utc
+fake_auth,DeepSeek V3,7,0.0,0,0,0,0,0,,,,,geo.prod.do.dsp.mp.microsoft.com;v10.events.data.microsoft.com;v20.events.data.microsoft.com,45.125.66.252;45.125.66.32
+fake_auth,DeepSeek V3,8,0.0,0,0,0,0,0,,,,,52.178.17.235;legitimate service,5.252.153.241;c2 server
+fake_auth,GPT-4,1,1.0,1,0,0,0,0,,,,,10.1.17.215,10.1.17.215
+fake_auth,GPT-4,2,1.0,1,0,0,0,0,,,,,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,GPT-4,3,0.0,0,0,0,0,0,,,,,desktop-l8c5gsj,shutchenson
+fake_auth,GPT-4,4,0.0,0,0,0,0,0,,,,,win-gsh54qlw48d.bluemoontuesday.com;wpad.bluemoontuesday.com,authenticatoor.org
+fake_auth,GPT-4,5,0.0,0,0,0,0,0,,,,,10.1.17.215,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,GPT-4,6,1.0,1,0,0,0,0,,,,,2025-01-22 19:44 utc,2025-01-22 19:00 utc
+fake_auth,GPT-4,7,0.0,0,0,0,0,0,,,,,not found in provided logs,45.125.66.252;45.125.66.32
+fake_auth,GPT-4,8,0.0,0,0,0,0,0,,,,,10.1.17.215,5.252.153.241;c2 server
+fake_auth,GPT-4o,1,1.0,1,0,0,0,0,,,,,10.1.17.215,10.1.17.215
+fake_auth,GPT-4o,2,1.0,1,0,0,0,0,,,,,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,GPT-4o,3,0.0,0,0,0,0,0,,,,,desktop-l8c5gsj,shutchenson
+fake_auth,GPT-4o,4,0.0,0,0,0,0,0,,,,,win-gsh54qlw48d.bluemoontuesday.com;wpad.bluemoontuesday.com,authenticatoor.org
+fake_auth,GPT-4o,5,0.0,0,0,0,0,0,,,,,10.1.17.215,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,GPT-4o,6,1.0,1,0,0,0,0,,,,,2025-01-22 19:44 utc,2025-01-22 19:00 utc
+fake_auth,GPT-4o,7,0.0,0,0,0,0,0,,,,,not found in provided logs,45.125.66.252;45.125.66.32
+fake_auth,GPT-4o,8,0.0,0,0,0,0,0,,,,,10.1.17.215,5.252.153.241;c2 server
+fake_auth,GPT-5.2,1,1.0,1,0,0,0,0,,,,,10.1.17.215,10.1.17.215
+fake_auth,GPT-5.2,2,1.0,1,0,0,0,0,,,,,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,GPT-5.2,3,0.0,0,0,0,0,0,,,,,desktop-l8c5gsj,shutchenson
+fake_auth,GPT-5.2,4,0.0,0,0,0,0,0,,,,,win-gsh54qlw48d.bluemoontuesday.com;wpad.bluemoontuesday.com,authenticatoor.org
+fake_auth,GPT-5.2,5,0.0,0,0,0,0,0,,,,,10.1.17.215,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,GPT-5.2,6,1.0,1,0,0,0,0,,,,,2025-01-22 19:44 utc,2025-01-22 19:00 utc
+fake_auth,GPT-5.2,7,0.0,0,0,0,0,0,,,,,not found in provided logs,45.125.66.252;45.125.66.32
+fake_auth,GPT-5.2,8,0.0,0,0,0,0,0,,,,,10.1.17.215,5.252.153.241;c2 server
+fake_auth,GPT-5-mini,1,1.0,1,0,0,0,0,,,,,10.1.17.215,10.1.17.215
+fake_auth,GPT-5-mini,2,1.0,1,0,0,0,0,,,,,desktop-l8c5gsj,desktop-l8c5gsj
+fake_auth,GPT-5-mini,3,0.0,0,0,0,0,0,,,,,desktop-l8c5gsj,shutchenson
+fake_auth,GPT-5-mini,4,0.0,0,0,0,0,0,,,,,win-gsh54qlw48d.bluemoontuesday.com;wpad.bluemoontuesday.com,authenticatoor.org
+fake_auth,GPT-5-mini,5,0.0,0,0,0,0,0,,,,,10.1.17.215,45.125.66.252;45.125.66.32;5.252.153.241
+fake_auth,GPT-5-mini,6,1.0,1,0,0,0,0,,,,,2025-01-22 19:44 utc,2025-01-22 19:00 utc
+fake_auth,GPT-5-mini,7,0.0,0,0,0,0,0,,,,,not found in provided logs,45.125.66.252;45.125.66.32
+fake_auth,GPT-5-mini,8,0.0,0,0,0,0,0,,,,,10.1.17.215,5.252.153.241;c2 server
